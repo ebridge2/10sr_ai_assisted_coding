@@ -1,6 +1,4 @@
 # Table of content
-# Learn more at https://jupyterbook.org/customize/toc.html
-#
 format: jb-book
 root: coverpage
 parts:
@@ -12,22 +10,22 @@ parts:
       chapters:
         - file: rules/prep/prep
           sections:
-            - rules/prep/rule1
-            - rules/prep/rule2
-            - rules/prep/rule3
+            - file: rules/prep/rule1
+            - file: rules/prep/rule2
+            - file: rules/prep/rule3
         - file: rules/context/context
           sections:
-            - rules/context/rule4
-            - rules/context/rule5
-            - rules/context/rule6
+            - file: rules/context/rule4
+            - file: rules/context/rule5
+            - file: rules/context/rule6
         - file: rules/testing/testing
           sections:
-            - rules/testing/rule7
-            - rules/testing/rule8
-            - rules/testing/rule9
+            - file: rules/testing/rule7
+            - file: rules/testing/rule8
+            - file: rules/testing/rule9
         - file: rules/quality/quality
           sections:
-            - rules/quality/rule10
+            - file: rules/quality/rule10
     - caption: Conclusion
       chapters:
-        - file: conclusion/conclusios
+        - file: conclusion/conclusion
