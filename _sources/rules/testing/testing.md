@@ -1,3 +1,5 @@
+(rules:testing)=
+# Testing & Validation
 
 Testing becomes even more critical when AI generates implementation code. The speed at which AI can produce code creates a dangerous illusion: you have working software when you actually have plausible-looking code that may fail in subtle ways. AI models are prone to specific failure modes in testing contexts that human developers rarely exhibit. They will modify tests to pass rather than fixing the underlying code. They will generate tests that check implementation details rather than behavior. They will claim success based on superficial validation while missing fundamental correctness issues.
 

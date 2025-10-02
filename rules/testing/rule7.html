@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3. Rule 7: Implement Test-Driven Development with AI &#8212; Ten Simple Rules for AI-assisted Coding in Open Science</title>
+    <title>3.1. Rule 7: Implement Test-Driven Development with AI &#8212; Ten Simple Rules for AI-assisted Coding in Open Science</title>
   
   
   
@@ -61,8 +61,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'rules/testing/rule7';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4. Rule 8: Build Comprehensive Testing Infrastructure Early" href="rule8.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="testing.html" />
+    <link rel="next" title="3.2. Rule 8: Build Comprehensive Testing Infrastructure Early" href="rule8.html" />
+    <link rel="prev" title="3. Testing &amp; Validation" href="testing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,6 +183,7 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/background.html">Background concepts and vocabulary</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Rules</span></p>
 <ul class="current nav bd-sidenav">
@@ -198,11 +199,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../context/rule6.html">2.3. Rule 6: Monitor Progress and Know When to Restart</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Rule 7: Implement Test-Driven Development with AI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rule8.html">4. Rule 8: Build Comprehensive Testing Infrastructure Early</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rule9.html">5. Rule 9: Use AI to Refine and Validate Tests</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../quality/quality.html">6. Code Quality</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../quality/rule10.html">6.1. Rule 10: Critically Review Generated Code</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="testing.html">3. Testing &amp; Validation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.1. Rule 7: Implement Test-Driven Development with AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rule8.html">3.2. Rule 8: Build Comprehensive Testing Infrastructure Early</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rule9.html">3.3. Rule 9: Use AI to Refine and Validate Tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../quality/quality.html">4. Code Quality</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quality/rule10.html">4.1. Rule 10: Critically Review Generated Code</a></li>
 </ul>
 </details></li>
 </ul>
@@ -417,11 +421,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">3.1. What separates positive from flawed examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-implementation-first-tests-as-afterthought">3.2. Example 1: Implementation First, Tests as Afterthought</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-tests-define-behavior-first">3.3. Example 2: Tests Define Behavior First</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-test-first-bug-prevention">3.4. Example 3: Test-First Bug Prevention</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-catching-ai-test-manipulation">3.5. Example 4: Catching AI Test Manipulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">3.1.1. What separates positive from flawed examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-implementation-first-tests-as-afterthought">3.1.2. Example 1: Implementation First, Tests as Afterthought</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-tests-define-behavior-first">3.1.3. Example 2: Tests Define Behavior First</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-test-first-bug-prevention">3.1.4. Example 3: Test-First Bug Prevention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-catching-ai-test-manipulation">3.1.5. Example 4: Catching AI Test Manipulation</a></li>
 </ul>
             </nav>
         </div>
@@ -434,16 +438,16 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="rule-7-implement-test-driven-development-with-ai">
-<span id="rules-rule-7"></span><h1><span class="section-number">3. </span>Rule 7: Implement Test-Driven Development with AI<a class="headerlink" href="#rule-7-implement-test-driven-development-with-ai" title="Link to this heading">#</a></h1>
+<span id="rules-rule-7"></span><h1><span class="section-number">3.1. </span>Rule 7: Implement Test-Driven Development with AI<a class="headerlink" href="#rule-7-implement-test-driven-development-with-ai" title="Link to this heading">#</a></h1>
 <p>Frame your test requirements as behavioral specifications before requesting implementation code, and tell the AI what success looks like through concrete test cases. This test-first approach forces you to articulate edge cases, expected inputs/outputs, and failure modes that might otherwise be overlooked. The AI responds better to specific test scenarios than vague functionality descriptions. By providing comprehensive test specifications, you guide the AI toward more robust, production-ready implementations. AI tools (such as chatbots or Github’s Spec Kit) can help develop these specifications in a way that will optimally guide the model. Keep a close eye on the tests that are generated, since the models will often modify the tests to pass without actually solving the problem rather than generating suitable code. In addition, whenever a bug is identified during your development cycle, ask the model to generate a test that catches the bug, to ensure that it’s not re-introduced in the future.</p>
 <section id="what-separates-positive-from-flawed-examples">
-<h2><span class="section-number">3.1. </span>What separates positive from flawed examples<a class="headerlink" href="#what-separates-positive-from-flawed-examples" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.1.1. </span>What separates positive from flawed examples<a class="headerlink" href="#what-separates-positive-from-flawed-examples" title="Link to this heading">#</a></h2>
 <p>Flawed examples ask for implementation first and maybe add tests later as an afterthought. You get code that technically works for the happy path but fails on edge cases you didn’t think about. When bugs appear, you patch the code without adding tests, so the same bugs reappear later. The AI often modifies tests to make them pass rather than fixing the actual problem.</p>
 <p>Positive examples start with tests that specify the expected behavior. You articulate success criteria through concrete test cases before any implementation. When the AI generates code, you can immediately verify it meets your specifications. When bugs appear, you first write a test that catches the bug, then fix the implementation. You watch carefully to ensure the AI doesn’t modify tests to make them pass.</p>
 </section>
 <hr class="docutils" />
 <section id="example-1-implementation-first-tests-as-afterthought">
-<h2><span class="section-number">3.2. </span>Example 1: Implementation First, Tests as Afterthought<a class="headerlink" href="#example-1-implementation-first-tests-as-afterthought" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.1.2. </span>Example 1: Implementation First, Tests as Afterthought<a class="headerlink" href="#example-1-implementation-first-tests-as-afterthought" title="Link to this heading">#</a></h2>
 <p>The user asks for code without specifying what success looks like. The AI generates something that works for basic cases but has no clear specification. When tests are added later, they just verify what the code currently does rather than what it should do. Edge cases are discovered in production. When bugs appear, the code gets patched without adding tests to prevent regression. The cycle repeats.</p>
 <div class="proof example dropdown admonition" id="rule7-bad-ex1">
 <p class="admonition-title"><span class="caption-number">Example 3.1 </span> (Code without behavioral specification)</p>
@@ -484,7 +488,7 @@ document.write(`
 </div></section>
 <hr class="docutils" />
 <section id="example-2-tests-define-behavior-first">
-<h2><span class="section-number">3.3. </span>Example 2: Tests Define Behavior First<a class="headerlink" href="#example-2-tests-define-behavior-first" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.1.3. </span>Example 2: Tests Define Behavior First<a class="headerlink" href="#example-2-tests-define-behavior-first" title="Link to this heading">#</a></h2>
 <p>The user specifies expected behavior through comprehensive test cases before asking for implementation. The tests cover happy path, edge cases, error conditions, and domain-specific requirements (like preserving the diagonal). The AI now has a clear specification of what success looks like. The implementation naturally handles all specified cases. When bugs appear later, tests are added first to catch the bug, then the implementation is fixed.</p>
 <div class="proof example dropdown admonition" id="rule7-good-ex1">
 <p class="admonition-title"><span class="caption-number">Example 3.2 </span> (Behavioral specification through tests)</p>
@@ -577,7 +581,7 @@ document.write(`
 </div></section>
 <hr class="docutils" />
 <section id="example-3-test-first-bug-prevention">
-<h2><span class="section-number">3.4. </span>Example 3: Test-First Bug Prevention<a class="headerlink" href="#example-3-test-first-bug-prevention" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.1.4. </span>Example 3: Test-First Bug Prevention<a class="headerlink" href="#example-3-test-first-bug-prevention" title="Link to this heading">#</a></h2>
 <p>A bug is discovered in production. Instead of immediately patching the code, the user first writes a test that catches the bug. This ensures the bug won’t be reintroduced later. Then the implementation is fixed to pass the new test. The test suite grows to cover real-world failure modes. Each bug becomes a permanent regression test.</p>
 <div class="proof example dropdown admonition" id="rule7-good-ex2">
 <p class="admonition-title"><span class="caption-number">Example 3.3 </span> (Bug found, test added first, then fix)</p>
@@ -648,7 +652,7 @@ document.write(`
 </div></section>
 <hr class="docutils" />
 <section id="example-4-catching-ai-test-manipulation">
-<h2><span class="section-number">3.5. </span>Example 4: Catching AI Test Manipulation<a class="headerlink" href="#example-4-catching-ai-test-manipulation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.1.5. </span>Example 4: Catching AI Test Manipulation<a class="headerlink" href="#example-4-catching-ai-test-manipulation" title="Link to this heading">#</a></h2>
 <p>The user provides test specifications, but the AI modifies the tests to make them pass rather than fixing the implementation. The user catches this by carefully reviewing what changed. They explicitly instruct the AI to not modify tests and to fix the implementation instead. This prevents the AI from taking the easy path of making tests less strict.</p>
 <div class="proof example dropdown admonition" id="rule7-good-ex3">
 <p class="admonition-title"><span class="caption-number">Example 3.4 </span> (AI tries to modify tests, user catches it)</p>
@@ -780,7 +784,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Testing &amp; Validation</p>
       </div>
     </a>
     <a class="right-next"
@@ -788,7 +792,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Rule 8: Build Comprehensive Testing Infrastructure Early</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span>Rule 8: Build Comprehensive Testing Infrastructure Early</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -808,11 +812,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">3.1. What separates positive from flawed examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-implementation-first-tests-as-afterthought">3.2. Example 1: Implementation First, Tests as Afterthought</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-tests-define-behavior-first">3.3. Example 2: Tests Define Behavior First</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-test-first-bug-prevention">3.4. Example 3: Test-First Bug Prevention</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-catching-ai-test-manipulation">3.5. Example 4: Catching AI Test Manipulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">3.1.1. What separates positive from flawed examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-implementation-first-tests-as-afterthought">3.1.2. Example 1: Implementation First, Tests as Afterthought</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-tests-define-behavior-first">3.1.3. Example 2: Tests Define Behavior First</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-test-first-bug-prevention">3.1.4. Example 3: Test-First Bug Prevention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-catching-ai-test-manipulation">3.1.5. Example 4: Catching AI Test Manipulation</a></li>
 </ul>
   </nav></div>
 

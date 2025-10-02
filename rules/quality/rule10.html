@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6.1. Rule 10: Critically Review Generated Code &#8212; Ten Simple Rules for AI-assisted Coding in Open Science</title>
+    <title>4.1. Rule 10: Critically Review Generated Code &#8212; Ten Simple Rules for AI-assisted Coding in Open Science</title>
   
   
   
@@ -62,7 +62,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="&lt;no title&gt;" href="../../conclusion/conclusion.html" />
-    <link rel="prev" title="6. Code Quality" href="quality.html" />
+    <link rel="prev" title="4. Code Quality" href="quality.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,6 +183,7 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/background.html">Background concepts and vocabulary</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Rules</span></p>
 <ul class="current nav bd-sidenav">
@@ -198,11 +199,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../context/rule6.html">2.3. Rule 6: Monitor Progress and Know When to Restart</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../testing/rule7.html">3. Rule 7: Implement Test-Driven Development with AI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../testing/rule8.html">4. Rule 8: Build Comprehensive Testing Infrastructure Early</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../testing/rule9.html">5. Rule 9: Use AI to Refine and Validate Tests</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="quality.html">6. Code Quality</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.1. Rule 10: Critically Review Generated Code</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../testing/testing.html">3. Testing &amp; Validation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../testing/rule7.html">3.1. Rule 7: Implement Test-Driven Development with AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/rule8.html">3.2. Rule 8: Build Comprehensive Testing Infrastructure Early</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/rule9.html">3.3. Rule 9: Use AI to Refine and Validate Tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="quality.html">4. Code Quality</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.1. Rule 10: Critically Review Generated Code</a></li>
 </ul>
 </details></li>
 </ul>
@@ -417,11 +421,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">6.1.1. What separates positive from flawed examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-accepting-code-without-review">6.1.2. Example 1: Accepting Code Without Review</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-critical-review-catches-methodological-issues">6.1.3. Example 2: Critical Review Catches Methodological Issues</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-verifying-implementation-matches-expectations">6.1.4. Example 3: Verifying Implementation Matches Expectations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-testing-against-known-results">6.1.5. Example 4: Testing Against Known Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">4.1.1. What separates positive from flawed examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-accepting-code-without-review">4.1.2. Example 1: Accepting Code Without Review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-critical-review-catches-methodological-issues">4.1.3. Example 2: Critical Review Catches Methodological Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-verifying-implementation-matches-expectations">4.1.4. Example 3: Verifying Implementation Matches Expectations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-testing-against-known-results">4.1.5. Example 4: Testing Against Known Results</a></li>
 </ul>
             </nav>
         </div>
@@ -434,19 +438,19 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="rule-10-critically-review-generated-code">
-<span id="rules-rule-10"></span><h1><span class="section-number">6.1. </span>Rule 10: Critically Review Generated Code<a class="headerlink" href="#rule-10-critically-review-generated-code" title="Link to this heading">#</a></h1>
+<span id="rules-rule-10"></span><h1><span class="section-number">4.1. </span>Rule 10: Critically Review Generated Code<a class="headerlink" href="#rule-10-critically-review-generated-code" title="Link to this heading">#</a></h1>
 <p>Be skeptical about AI’s claims of success; the models tend to claim success even when they haven’t really solved the problem. You always need to test the solution independently. Read and understand the code to ensure it solves problems in ways that make sense for your domain and match your prior expectation of how the problem should be solved (e.g., how you anticipated a solution looking based on your pseudocode or architecture schematics you developed in Rule 4). AI-generated code requires careful human review to ensure scientific appropriateness, methodological soundness, and alignment with domain standards.</p>
 <section id="what-separates-positive-from-flawed-examples">
-<h2><span class="section-number">6.1.1. </span>What separates positive from flawed examples<a class="headerlink" href="#what-separates-positive-from-flawed-examples" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1.1. </span>What separates positive from flawed examples<a class="headerlink" href="#what-separates-positive-from-flawed-examples" title="Link to this heading">#</a></h2>
 <p>Flawed examples accept AI-generated code at face value because it runs without errors and the AI claims it’s correct. You don’t actually read through the implementation to verify it does what you think. The code might be using inappropriate algorithms, violating domain conventions, or producing subtly wrong results. You discover the problems later, possibly after publishing analyses based on the flawed code.</p>
 <p>Positive examples involve thorough critical review of generated code. You read the implementation and verify it matches your conceptual understanding of the solution. You check that algorithms are scientifically appropriate for your domain. You verify outputs make sense and align with established methods. You catch issues before the code gets used for real analyses.</p>
 </section>
 <hr class="docutils" />
 <section id="example-1-accepting-code-without-review">
-<h2><span class="section-number">6.1.2. </span>Example 1: Accepting Code Without Review<a class="headerlink" href="#example-1-accepting-code-without-review" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1.2. </span>Example 1: Accepting Code Without Review<a class="headerlink" href="#example-1-accepting-code-without-review" title="Link to this heading">#</a></h2>
 <p>The user asks for an implementation, the AI provides code that runs without errors, and the user accepts it because the AI says it’s correct. The user never actually reads the implementation to understand what it’s doing. Later, the code produces scientifically invalid results because it used an inappropriate method. The problem could have been caught with basic code review.</p>
 <div class="proof example dropdown admonition" id="rule10-bad-ex1">
-<p class="admonition-title"><span class="caption-number">Example 6.1 </span> (Trusting AI claims without verification)</p>
+<p class="admonition-title"><span class="caption-number">Example 4.1 </span> (Trusting AI claims without verification)</p>
 <section class="example-content" id="proof-content">
 <p><strong>User Prompt:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Implement</span> <span class="n">false</span> <span class="n">discovery</span> <span class="n">rate</span> <span class="n">correction</span> <span class="k">for</span> <span class="n">multiple</span> <span class="n">comparisons</span> <span class="ow">in</span> 
@@ -483,10 +487,10 @@ document.write(`
 </div></section>
 <hr class="docutils" />
 <section id="example-2-critical-review-catches-methodological-issues">
-<h2><span class="section-number">6.1.3. </span>Example 2: Critical Review Catches Methodological Issues<a class="headerlink" href="#example-2-critical-review-catches-methodological-issues" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1.3. </span>Example 2: Critical Review Catches Methodological Issues<a class="headerlink" href="#example-2-critical-review-catches-methodological-issues" title="Link to this heading">#</a></h2>
 <p>The user receives code from AI and immediately reviews it critically. They notice the implementation doesn’t match standard practice in their field. They ask clarifying questions and verify the approach is scientifically appropriate. They catch a methodological issue before using the code for real analysis.</p>
 <div class="proof example dropdown admonition" id="rule10-good-ex1">
-<p class="admonition-title"><span class="caption-number">Example 6.2 </span> (Reading code to verify scientific appropriateness)</p>
+<p class="admonition-title"><span class="caption-number">Example 4.2 </span> (Reading code to verify scientific appropriateness)</p>
 <section class="example-content" id="proof-content">
 <p><strong>User Prompt:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Implement</span> <span class="n">statistical</span> <span class="n">comparison</span> <span class="n">of</span> <span class="n">connectivity</span> <span class="n">matrices</span> <span class="n">between</span> <span class="n">two</span> <span class="n">groups</span> 
@@ -586,10 +590,10 @@ Let me ask for clarification...
 </div></section>
 <hr class="docutils" />
 <section id="example-3-verifying-implementation-matches-expectations">
-<h2><span class="section-number">6.1.4. </span>Example 3: Verifying Implementation Matches Expectations<a class="headerlink" href="#example-3-verifying-implementation-matches-expectations" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1.4. </span>Example 3: Verifying Implementation Matches Expectations<a class="headerlink" href="#example-3-verifying-implementation-matches-expectations" title="Link to this heading">#</a></h2>
 <p>The user has a clear expectation of how the algorithm should work (from Rule 4). When reviewing the generated code, they notice the implementation doesn’t match their understanding. They identify the discrepancy and get it corrected before using the code.</p>
 <div class="proof example dropdown admonition" id="rule10-good-ex2">
-<p class="admonition-title"><span class="caption-number">Example 6.3 </span> (Checking implementation matches prior expectations)</p>
+<p class="admonition-title"><span class="caption-number">Example 4.3 </span> (Checking implementation matches prior expectations)</p>
 <section class="example-content" id="proof-content">
 <p><strong>User Context (from Rule 4 planning):</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">need</span> <span class="n">hierarchical</span> <span class="n">clustering</span> <span class="n">of</span> <span class="n">brain</span> <span class="n">connectivity</span> <span class="n">patterns</span><span class="o">.</span>
@@ -677,10 +681,10 @@ Let me ask for clarification...
 </div></section>
 <hr class="docutils" />
 <section id="example-4-testing-against-known-results">
-<h2><span class="section-number">6.1.5. </span>Example 4: Testing Against Known Results<a class="headerlink" href="#example-4-testing-against-known-results" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1.5. </span>Example 4: Testing Against Known Results<a class="headerlink" href="#example-4-testing-against-known-results" title="Link to this heading">#</a></h2>
 <p>The user generates code and immediately tests it against cases where they know the correct answer. This catches implementation errors that might not be obvious from reading the code alone. The test reveals the implementation is computing the wrong thing despite looking reasonable.</p>
 <div class="proof example dropdown admonition" id="rule10-good-ex3">
-<p class="admonition-title"><span class="caption-number">Example 6.4 </span> (Validating against known ground truth)</p>
+<p class="admonition-title"><span class="caption-number">Example 4.4 </span> (Validating against known ground truth)</p>
 <section class="example-content" id="proof-content">
 <p><strong>AI Generated Code:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_graph_efficiency</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">):</span>
@@ -831,7 +835,7 @@ Let me revise to explicitly handle both weighted and unweighted cases.
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Code Quality</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Code Quality</p>
       </div>
     </a>
     <a class="right-next"
@@ -859,11 +863,11 @@ Let me revise to explicitly handle both weighted and unweighted cases.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">6.1.1. What separates positive from flawed examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-accepting-code-without-review">6.1.2. Example 1: Accepting Code Without Review</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-critical-review-catches-methodological-issues">6.1.3. Example 2: Critical Review Catches Methodological Issues</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-verifying-implementation-matches-expectations">6.1.4. Example 3: Verifying Implementation Matches Expectations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-testing-against-known-results">6.1.5. Example 4: Testing Against Known Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">4.1.1. What separates positive from flawed examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-accepting-code-without-review">4.1.2. Example 1: Accepting Code Without Review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-critical-review-catches-methodological-issues">4.1.3. Example 2: Critical Review Catches Methodological Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-verifying-implementation-matches-expectations">4.1.4. Example 3: Verifying Implementation Matches Expectations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-testing-against-known-results">4.1.5. Example 4: Testing Against Known Results</a></li>
 </ul>
   </nav></div>
 

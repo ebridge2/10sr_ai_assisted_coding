@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; Ten Simple Rules for AI-assisted Coding in Open Science</title>
+    <title>3. Testing &amp; Validation &#8212; Ten Simple Rules for AI-assisted Coding in Open Science</title>
   
   
   
@@ -61,7 +61,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'rules/testing/testing';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3. Rule 7: Implement Test-Driven Development with AI" href="rule7.html" />
+    <link rel="next" title="3.1. Rule 7: Implement Test-Driven Development with AI" href="rule7.html" />
     <link rel="prev" title="2.3. Rule 6: Monitor Progress and Know When to Restart" href="../context/rule6.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -183,9 +183,10 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/background.html">Background concepts and vocabulary</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Rules</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../prep/prep.html">1. Preparation &amp; Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../prep/rule1.html">1.1. Rule 1: Gather Domain Knowledge Before Implementation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../prep/rule2.html">1.2. Rule 2: Distinguish Programming from Coding</a></li>
@@ -198,11 +199,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../context/rule6.html">2.3. Rule 6: Monitor Progress and Know When to Restart</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="rule7.html">3. Rule 7: Implement Test-Driven Development with AI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rule8.html">4. Rule 8: Build Comprehensive Testing Infrastructure Early</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rule9.html">5. Rule 9: Use AI to Refine and Validate Tests</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../quality/quality.html">6. Code Quality</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../quality/rule10.html">6.1. Rule 10: Critically Review Generated Code</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">3. Testing &amp; Validation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="rule7.html">3.1. Rule 7: Implement Test-Driven Development with AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rule8.html">3.2. Rule 8: Build Comprehensive Testing Infrastructure Early</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rule9.html">3.3. Rule 9: Use AI to Refine and Validate Tests</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../quality/quality.html">4. Code Quality</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quality/rule10.html">4.1. Rule 10: Critically Review Generated Code</a></li>
 </ul>
 </details></li>
 </ul>
@@ -394,9 +398,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -407,7 +409,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Testing & Validation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,10 +423,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>Testing becomes even more critical when AI generates implementation code. The speed at which AI can produce code creates a dangerous illusion: you have working software when you actually have plausible-looking code that may fail in subtle ways. AI models are prone to specific failure modes in testing contexts that human developers rarely exhibit. They will modify tests to pass rather than fixing the underlying code. They will generate tests that check implementation details rather than behavior. They will claim success based on superficial validation while missing fundamental correctness issues.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="testing-validation">
+<span id="rules-testing"></span><h1><span class="section-number">3. </span>Testing &amp; Validation<a class="headerlink" href="#testing-validation" title="Link to this heading">#</a></h1>
+<p>Testing becomes even more critical when AI generates implementation code. The speed at which AI can produce code creates a dangerous illusion: you have working software when you actually have plausible-looking code that may fail in subtle ways. AI models are prone to specific failure modes in testing contexts that human developers rarely exhibit. They will modify tests to pass rather than fixing the underlying code. They will generate tests that check implementation details rather than behavior. They will claim success based on superficial validation while missing fundamental correctness issues.</p>
 <p>The three rules in this section establish practices for making testing your primary defense against these failure modes. These practices transform testing from a validation step into a specification and guidance mechanism. When you leverage tests early and often in your development cycle, you give AI concrete targets that are harder to misinterpret than natural language requirements. When you build infrastructure early, you catch integration problems before they compound. When you use AI to explore edge cases, you find failure modes you might have missed, but you must verify the tests themselves are actually testing what matters.</p>
 <div class="toctree-wrapper compound">
 </div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -470,7 +475,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Rule 7: Implement Test-Driven Development with AI</p>
+        <p class="prev-next-title"><span class="section-number">3.1. </span>Rule 7: Implement Test-Driven Development with AI</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
