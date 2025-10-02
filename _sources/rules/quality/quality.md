@@ -1,0 +1,7 @@
+
+(rules:quality)=
+# Code Quality
+
+The final critical step in AI-assisted coding is ensuring that generated code meets scientific standards for correctness, appropriateness, and methodological soundness. This becomes more challenging because AI models tend to claim success even when they haven't actually solved the problem. They generate code that looks plausible and may even run without errors, but subtly violates domain conventions, uses inappropriate algorithms, or produces scientifically meaningless results. The confidence with which AI presents incorrect solutions makes this particularly dangerous in scientific contexts where methodological errors can invalidate entire analyses.
+
+Without this critical review, you risk publishing analyses based on fundamentally flawed implementations that happened to pass tests but don't actually compute what you think they compute. The AI's tendency to claim success makes it easy to accept code that fails in subtle ways, and the speed of generation makes it tempting to skip thorough review. This final rule emphasizes that human judgment about scientific appropriateness cannot be delegated to AI, no matter how confident the model sounds about its solution.

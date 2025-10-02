@@ -1,0 +1,810 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1.3. Rule 3: Choose Appropriate AI Interaction Models &#8212; Ten Simple Rules for AI-assisted Coding in Open Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'rules/prep/rule3';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2. Context Engineering &amp; Interaction" href="../context/context.html" />
+    <link rel="prev" title="1.2. Rule 2: Distinguish Programming from Coding" href="rule2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../coverpage.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Ten Simple Rules for AI-assisted Coding in Open Science - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Ten Simple Rules for AI-assisted Coding in Open Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../coverpage.html">
+                    10 Simple Rules for AI-assisted Coding in Open Science
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Rules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="prep.html">1. Preparation &amp; Understanding</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rule1.html">1.1. Rule 1: Gather Domain Knowledge Before Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rule2.html">1.2. Rule 2: Distinguish Programming from Coding</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.3. Rule 3: Choose Appropriate AI Interaction Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../context/context.html">2. Context Engineering &amp; Interaction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../context/rule4.html">2.1. Rule 4: Start by Thinking Through a Potential Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../context/rule5.html">2.2. Rule 5: Manage Context Strategically</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../context/rule6.html">2.3. Rule 6: Monitor Progress and Know When to Restart</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/rule7.html">3. Rule 7: Implement Test-Driven Development with AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/rule8.html">4. Rule 8: Build Comprehensive Testing Infrastructure Early</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/rule9.html">5. Rule 9: Use AI to Refine and Validate Tests</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../quality/quality.html">6. Code Quality</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quality/rule10.html">6.1. Rule 10: Critically Review Generated Code</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ebridge2/10sr_ai_assisted_coding" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ebridge2/10sr_ai_assisted_coding/edit/master/paper/rules/prep/rule3.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ebridge2/10sr_ai_assisted_coding/issues/new?title=Issue%20on%20page%20%2Frules/prep/rule3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/rules/prep/rule3.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Rule 3: Choose Appropriate AI Interaction Models</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">1.3.1. What separates positive from flawed examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-wrong-tool-for-the-job">1.3.2. Example 1: Wrong Tool for the Job</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-ide-assistant-for-codebase-integration">1.3.3. Example 2: IDE Assistant for Codebase Integration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-autonomous-agent-for-well-specified-feature">1.3.4. Example 3: Autonomous Agent for Well-Specified Feature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-conversational-interface-for-exploratory-analysis">1.3.5. Example 4: Conversational Interface for Exploratory Analysis</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="rule-3-choose-appropriate-ai-interaction-models">
+<span id="rules-rule-3"></span><h1><span class="section-number">1.3. </span>Rule 3: Choose Appropriate AI Interaction Models<a class="headerlink" href="#rule-3-choose-appropriate-ai-interaction-models" title="Link to this heading">#</a></h1>
+<p>It’s tempting to use the AI tools to independently generate a complete codebase, but one quickly ends up being divorced from the code. A pair programming model, where one directs IDE-based AI assistants through comments in the code, is a way to stay in close touch with the code. Different interaction paradigms (including IDE-integrated assistants, conversational interfaces, and autonomous coding agents) offer distinct advantages for different types of development tasks. Match AI tool capabilities with task requirements, developer preferences, and project constraints. A summary of different interaction paradigms, as well as their strengths and limitations in 2025, are provided in Table 1.</p>
+<p><strong>Table 1: Comparison of AI coding tool interaction models</strong></p>
+<p>AI-assisted development tools are categorized by interaction model and deployment scenario. Each paradigm offers distinct advantages for different phases of software development, with trade-offs between automation level and developer control.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool Type</p></th>
+<th class="head"><p>Best For</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Conversational (ChatGPT, Claude, etc.)</p></td>
+<td><p>Architecture design, complex debugging, learning new concepts</p></td>
+<td><p>Deep reasoning and flexible problem-solving with extensive context handling, but requires manual code transfer and loses context between sessions</p></td>
+</tr>
+<tr class="row-odd"><td><p>IDE Assistant (CoPilot, IntelliSense, etc.)</p></td>
+<td><p>Code completion, refactoring, maintaining flow</p></td>
+<td><p>Seamless workflow integration with immediate feedback and preserved code context, but limited reasoning for complex architectural decisions</p></td>
+</tr>
+<tr class="row-even"><td><p>Autonomous Agents (Claude Code, Cursor, Aider, etc.)</p></td>
+<td><p>Rapid prototyping, multi-file changes, large refactoring</p></td>
+<td><p>High-speed implementation that can work independently across multiple files, but risks code divergence and requires careful monitoring</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="what-separates-positive-from-flawed-examples">
+<h2><span class="section-number">1.3.1. </span>What separates positive from flawed examples<a class="headerlink" href="#what-separates-positive-from-flawed-examples" title="Link to this heading">#</a></h2>
+<p>Flawed examples use the wrong tool for the job. You might use a conversational interface for tasks requiring tight integration with your codebase, or an autonomous agent for exploratory work where you need to understand every step. The mismatch leads to wasted time, loss of context, or code you don’t understand.</p>
+<p>Positive examples deliberately choose interaction models based on the task. Quick exploratory analysis? Conversational interface works fine. Complex refactoring across multiple files? IDE assistant keeps you in the code. Building a new feature with clear specs? Autonomous agent can handle it while you verify the approach. The key is maintaining appropriate oversight for the task complexity.</p>
+</section>
+<hr class="docutils" />
+<section id="example-1-wrong-tool-for-the-job">
+<h2><span class="section-number">1.3.2. </span>Example 1: Wrong Tool for the Job<a class="headerlink" href="#example-1-wrong-tool-for-the-job" title="Link to this heading">#</a></h2>
+<p>Using a conversational interface for complex codebase modifications creates multiple integration problems. You lose context of the full codebase structure since the AI only sees what you paste. The AI regenerates entire code blocks that you have to manually copy back into files, with no clear indication of what changed versus what stayed the same. This breaks your git history and makes it impossible to review changes properly. You can’t easily test the modification in isolation, and you have to manually figure out import statements and dependencies. Worse, you lose track of how the change integrates with other parts of your system (in this case, how skull-stripping affects QualityControl reports). By the time you’re done, you have to manually verify the entire class still works rather than just verifying the new feature.</p>
+<div class="proof example dropdown admonition" id="rule3-bad-ex1">
+<p class="admonition-title"><span class="caption-number">Example 1.7 </span> (Using conversational interface for complex codebase integration)</p>
+<section class="example-content" id="proof-content">
+<p><strong>User Prompt (in ChatGPT):</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">need</span> <span class="n">to</span> <span class="n">add</span> <span class="n">a</span> <span class="n">new</span> <span class="n">preprocessing</span> <span class="n">step</span> <span class="n">to</span> <span class="n">my</span> <span class="n">neuroimaging</span> <span class="n">pipeline</span><span class="o">.</span> <span class="n">The</span> <span class="n">pipeline</span> <span class="n">has</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">DataLoader</span> <span class="k">class</span><span class="w"> </span><span class="nc">that</span> <span class="n">reads</span> <span class="n">BIDS</span> <span class="n">data</span>
+<span class="o">-</span> <span class="n">Preprocessor</span> <span class="k">class</span><span class="w"> </span><span class="nc">with</span> <span class="n">motion</span> <span class="n">correction</span><span class="p">,</span> <span class="n">normalization</span><span class="p">,</span> <span class="n">smoothing</span>
+<span class="o">-</span> <span class="n">QualityControl</span> <span class="k">class</span><span class="w"> </span><span class="nc">that</span> <span class="n">generates</span> <span class="n">reports</span>
+<span class="o">-</span> <span class="n">Main</span> <span class="n">script</span> <span class="n">that</span> <span class="n">orchestrates</span> <span class="n">everything</span>
+
+<span class="n">Add</span> <span class="n">skull</span><span class="o">-</span><span class="n">stripping</span> <span class="n">before</span> <span class="n">normalization</span><span class="o">.</span> <span class="n">Here</span><span class="s1">&#39;s my current Preprocessor code:</span>
+<span class="p">[</span><span class="n">pastes</span> <span class="mi">200</span> <span class="n">lines</span> <span class="n">of</span> <span class="n">code</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>AI Response:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Updated Preprocessor class</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Preprocessor</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+        <span class="c1"># [AI regenerates entire class with skull-stripping added]</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+        <span class="c1"># [150 lines of modified code]</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_skull_strip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
+        <span class="c1"># [new method]</span>
+        <span class="c1"># ...</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+<hr class="docutils" />
+<section id="example-2-ide-assistant-for-codebase-integration">
+<h2><span class="section-number">1.3.3. </span>Example 2: IDE Assistant for Codebase Integration<a class="headerlink" href="#example-2-ide-assistant-for-codebase-integration" title="Link to this heading">#</a></h2>
+<p>The IDE maintains full context of existing code automatically. Changes are made in place in actual files. You can immediately see what’s different with a git diff. Integration with existing methods is preserved naturally. Import statements get suggested automatically as you need them. You can run tests immediately to verify everything still works. This maintains your natural development workflow. Most importantly, you stay oriented in the codebase throughout the entire process instead of copying and pasting code between a chat window and your editor.</p>
+<div class="proof example dropdown admonition" id="rule3-good-ex1">
+<p class="admonition-title"><span class="caption-number">Example 1.8 </span> (Using IDE-integrated assistant for in-context modification)</p>
+<section class="example-content" id="proof-content">
+<p><strong>Context:</strong> Same task (add skull-stripping), but using IDE assistant (GitHub Copilot, Cursor, etc.)</p>
+<p><strong>User Approach:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In Preprocessor.py file, user adds comment before _normalize method:</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Preprocessor</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">images</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Process images through pipeline.&quot;&quot;&quot;</span>
+        <span class="n">bold_img</span> <span class="o">=</span> <span class="n">images</span><span class="p">[</span><span class="s1">&#39;bold&#39;</span><span class="p">]</span>
+        
+        <span class="c1"># Apply motion correction</span>
+        <span class="n">corrected</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_motion_correct</span><span class="p">(</span><span class="n">bold_img</span><span class="p">)</span>
+        
+        <span class="c1"># ADD: Skull-strip the motion-corrected image before normalization</span>
+        <span class="c1"># Use FSL&#39;s BET algorithm with default parameters</span>
+        <span class="c1"># Input: 3D or 4D NIfTI image</span>
+        <span class="c1"># Output: skull-stripped NIfTI image</span>
+        <span class="c1"># Should preserve image dimensions and affine</span>
+        
+        <span class="c1"># [Copilot suggests implementation here]</span>
+</pre></div>
+</div>
+<p><strong>IDE Assistant Response:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="c1"># Skull-strip before normalization</span>
+        <span class="n">stripped</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_skull_strip</span><span class="p">(</span><span class="n">corrected</span><span class="p">)</span>
+        
+        <span class="c1"># Apply normalization</span>
+        <span class="n">normalized</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize</span><span class="p">(</span><span class="n">stripped</span><span class="p">,</span> <span class="n">template</span><span class="o">=</span><span class="s1">&#39;MNI152&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>User scrolls down, adds method signature:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span><span class="w"> </span><span class="nf">_skull_strip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Remove skull from brain image using FSL BET.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        img : nibabel.Nifti1Image</span>
+<span class="sd">            Motion-corrected image (3D or 4D)</span>
+<span class="sd">            </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        stripped : nibabel.Nifti1Image</span>
+<span class="sd">            Skull-stripped image with same dimensions</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># [Copilot generates implementation using nipype BET interface]</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+<hr class="docutils" />
+<section id="example-3-autonomous-agent-for-well-specified-feature">
+<h2><span class="section-number">1.3.4. </span>Example 3: Autonomous Agent for Well-Specified Feature<a class="headerlink" href="#example-3-autonomous-agent-for-well-specified-feature" title="Link to this heading">#</a></h2>
+<p>The task is well-defined and isolated, making it suitable for autonomous development. Clear specifications and acceptance criteria guide the agent. The agent has enough context (existing code style) to match conventions. The user maintains oversight by reviewing everything before integration. Task complexity matches what agents can actually handle reliably. Final verification ensures quality before accepting anything into the codebase. The key is that this feature can be developed somewhat independently, reviewed as a unit, and integrated deliberately.</p>
+<div class="proof example dropdown admonition" id="rule3-good-ex2">
+<p class="admonition-title"><span class="caption-number">Example 1.9 </span> (Using autonomous agent for isolated feature development)</p>
+<section class="example-content" id="proof-content">
+<p><strong>User Prompt (to Claude Code or similar agent):</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Create a new module `pipeline/quality_control.py` that generates QC reports for neuroimaging preprocessing. 
+
+**Requirements:**
+- Function generate_qc_report(preprocessed_data, output_dir)
+- Input: dict with keys &#39;original&#39;, &#39;motion_corrected&#39;, &#39;normalized&#39;, &#39;smoothed&#39;
+- Each value is a nibabel.Nifti1Image object
+
+**Report should include:**
+1. Before/after montages (original vs. final)
+2. Motion parameter plots (translation, rotation over time)
+3. SNR calculations (mean/std in brain mask)
+4. Framewise displacement timeseries
+5. Output as HTML report with embedded images
+
+**Code structure:**
+- Use plotly for interactive plots
+- Use nilearn for brain visualizations
+- Follow existing code style in pipeline/preprocessor.py
+- Include comprehensive docstrings
+- Create tests in tests/test_quality_control.py
+
+**Dependencies:**
+Can use: nibabel, nilearn, plotly, numpy, pandas
+Must be compatible with existing pipeline in pipeline/preprocessor.py
+
+I&#39;ll review the implementation before integrating.
+</pre></div>
+</div>
+<p><strong>Agent Actions:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">Reads</span> <span class="n">pipeline</span><span class="o">/</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">py</span> <span class="n">to</span> <span class="n">understand</span> <span class="n">existing</span> <span class="n">style</span>
+<span class="mf">2.</span> <span class="n">Creates</span> <span class="n">pipeline</span><span class="o">/</span><span class="n">quality_control</span><span class="o">.</span><span class="n">py</span> <span class="k">with</span> <span class="n">complete</span> <span class="n">implementation</span>
+<span class="mf">3.</span> <span class="n">Creates</span> <span class="n">tests</span><span class="o">/</span><span class="n">test_quality_control</span><span class="o">.</span><span class="n">py</span> <span class="k">with</span> <span class="n">unit</span> <span class="n">tests</span>
+<span class="mf">4.</span> <span class="n">Generates</span> <span class="n">example</span> <span class="n">HTML</span> <span class="n">report</span> <span class="ow">in</span> <span class="n">examples</span><span class="o">/</span>
+<span class="mf">5.</span> <span class="n">Updates</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span> <span class="k">with</span> <span class="n">new</span> <span class="n">dependencies</span>
+<span class="mf">6.</span> <span class="n">Creates</span> <span class="n">documentation</span> <span class="ow">in</span> <span class="n">docs</span><span class="o">/</span><span class="n">quality_control</span><span class="o">.</span><span class="n">md</span>
+</pre></div>
+</div>
+<p><strong>User Review:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">Checks</span> <span class="n">implementation</span> <span class="n">matches</span> <span class="n">specification</span>
+<span class="o">-</span> <span class="n">Reviews</span> <span class="n">test</span> <span class="n">coverage</span>
+<span class="o">-</span> <span class="n">Runs</span> <span class="n">tests</span> <span class="n">to</span> <span class="n">verify</span> <span class="n">functionality</span>
+<span class="o">-</span> <span class="n">Examines</span> <span class="n">example</span> <span class="n">report</span> <span class="n">output</span>
+<span class="o">-</span> <span class="n">Verifies</span> <span class="n">integration</span> <span class="n">points</span> <span class="k">with</span> <span class="n">existing</span> <span class="n">pipeline</span>
+<span class="o">-</span> <span class="n">Provides</span> <span class="n">feedback</span> <span class="n">on</span> <span class="nb">any</span> <span class="n">issues</span> <span class="n">before</span> <span class="n">accepting</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+<hr class="docutils" />
+<section id="example-4-conversational-interface-for-exploratory-analysis">
+<h2><span class="section-number">1.3.5. </span>Example 4: Conversational Interface for Exploratory Analysis<a class="headerlink" href="#example-4-conversational-interface-for-exploratory-analysis" title="Link to this heading">#</a></h2>
+<p>This is a quick exploratory task, not building production code. The conversational back-and-forth helps understand data issues naturally. You don’t need to integrate this exploration into your codebase at all. You can iterate quickly on visualization and analysis without worrying about code style or test coverage. Once you understand what you’re dealing with, you can write the proper pipeline with whichever tool makes sense for that. The exploration stays in the chat where it belongs, and the real implementation goes into your codebase properly.</p>
+<div class="proof example dropdown admonition" id="rule3-good-ex3">
+<p class="admonition-title"><span class="caption-number">Example 1.10 </span> (Using chat interface for quick data exploration)</p>
+<section class="example-content" id="proof-content">
+<p><strong>Context:</strong> Exploring a new dataset before implementing pipeline</p>
+<p><strong>User Prompt:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I have a CSV file with brain connectivity data (attached: connectivity_matrix.csv). 
+Before I build my analysis pipeline, help me understand the data structure:
+
+1. What are the dimensions?
+2. Are there any NaN or infinite values?
+3. What&#39;s the distribution of values?
+4. Are there any suspicious patterns (e.g., all zeros in certain rows)?
+5. Suggest appropriate preprocessing steps
+</pre></div>
+</div>
+<p><strong>AI Response:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Load and examine</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;connectivity_matrix.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;NaN count: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Infinite values: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Value range: [</span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Check for problematic patterns</span>
+<span class="n">zero_rows</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">All-zero rows: </span><span class="si">{</span><span class="n">zero_rows</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Visualize distribution</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of connectivity values&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Findings:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Shape</span><span class="p">:</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">NaN</span> <span class="n">count</span><span class="p">:</span> <span class="mi">245</span>
+<span class="n">Infinite</span> <span class="n">values</span><span class="p">:</span> <span class="mi">0</span>
+
+<span class="n">Value</span> <span class="nb">range</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.856</span><span class="p">,</span> <span class="mf">0.923</span><span class="p">]</span>
+<span class="n">Mean</span><span class="p">:</span> <span class="mf">0.234</span>
+
+<span class="n">All</span><span class="o">-</span><span class="n">zero</span> <span class="n">rows</span><span class="p">:</span> <span class="mi">3</span>
+
+<span class="n">Distribution</span> <span class="n">appears</span> <span class="n">bimodal</span> <span class="o">-</span> <span class="n">suggests</span> <span class="n">two</span> <span class="n">different</span> <span class="n">connectivity</span> <span class="n">regimes</span>
+</pre></div>
+</div>
+<p><strong>User:</strong> “Why would I have all-zero rows?”</p>
+<p><strong>AI:</strong> “Likely those brain regions were excluded during preprocessing (e.g., due to artifacts)…”</p>
+</section>
+</div><hr class="docutils" />
+<p><strong>Key Takeaways:</strong></p>
+<ul class="simple">
+<li><p>Match interaction model to task complexity and integration needs</p></li>
+<li><p>IDE assistants for modifying existing code in context</p></li>
+<li><p>Autonomous agents for well-specified, isolated features</p></li>
+<li><p>Conversational interfaces for exploration and quick analysis</p></li>
+<li><p>Maintain appropriate oversight regardless of tool choice</p></li>
+<li><p>Stay in touch with your code rather than generating it externally</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./rules/prep"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="rule2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1.2. </span>Rule 2: Distinguish Programming from Coding</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../context/context.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Context Engineering &amp; Interaction</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">1.3.1. What separates positive from flawed examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-wrong-tool-for-the-job">1.3.2. Example 1: Wrong Tool for the Job</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-ide-assistant-for-codebase-integration">1.3.3. Example 2: IDE Assistant for Codebase Integration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-autonomous-agent-for-well-specified-feature">1.3.4. Example 3: Autonomous Agent for Well-Specified Feature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-conversational-interface-for-exploratory-analysis">1.3.5. Example 4: Conversational Interface for Exploratory Analysis</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eric W. Bridgeford, et al., Russell Poldrack
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

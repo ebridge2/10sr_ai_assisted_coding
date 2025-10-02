@@ -1,0 +1,838 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2.1. Rule 4: Start by Thinking Through a Potential Solution &#8212; Ten Simple Rules for AI-assisted Coding in Open Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'rules/context/rule4';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.2. Rule 5: Manage Context Strategically" href="rule5.html" />
+    <link rel="prev" title="2. Context Engineering &amp; Interaction" href="context.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../coverpage.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Ten Simple Rules for AI-assisted Coding in Open Science - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Ten Simple Rules for AI-assisted Coding in Open Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../coverpage.html">
+                    10 Simple Rules for AI-assisted Coding in Open Science
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Rules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../prep/prep.html">1. Preparation &amp; Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../prep/rule1.html">1.1. Rule 1: Gather Domain Knowledge Before Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../prep/rule2.html">1.2. Rule 2: Distinguish Programming from Coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../prep/rule3.html">1.3. Rule 3: Choose Appropriate AI Interaction Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="context.html">2. Context Engineering &amp; Interaction</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.1. Rule 4: Start by Thinking Through a Potential Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rule5.html">2.2. Rule 5: Manage Context Strategically</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rule6.html">2.3. Rule 6: Monitor Progress and Know When to Restart</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/rule7.html">3. Rule 7: Implement Test-Driven Development with AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/rule8.html">4. Rule 8: Build Comprehensive Testing Infrastructure Early</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/rule9.html">5. Rule 9: Use AI to Refine and Validate Tests</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../quality/quality.html">6. Code Quality</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quality/rule10.html">6.1. Rule 10: Critically Review Generated Code</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ebridge2/10sr_ai_assisted_coding" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ebridge2/10sr_ai_assisted_coding/edit/master/paper/rules/context/rule4.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ebridge2/10sr_ai_assisted_coding/issues/new?title=Issue%20on%20page%20%2Frules/context/rule4.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/rules/context/rule4.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Rule 4: Start by Thinking Through a Potential Solution</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">2.1.1. What separates positive from flawed examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-vague-requirements-without-planning">2.1.2. Example 1: Vague Requirements Without Planning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-upfront-architecture-specification">2.1.3. Example 2: Upfront Architecture Specification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-iterative-refinement-with-clear-goals">2.1.4. Example 3: Iterative Refinement with Clear Goals</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="rule-4-start-by-thinking-through-a-potential-solution">
+<span id="rules-rule-4"></span><h1><span class="section-number">2.1. </span>Rule 4: Start by Thinking Through a Potential Solution<a class="headerlink" href="#rule-4-start-by-thinking-through-a-potential-solution" title="Link to this heading">#</a></h1>
+<p>Begin every AI coding session by thoroughly understanding and articulating the problem you’re trying to solve, specified at a level of abstraction that makes it solvable by code, and think through how you anticipate it might be solved. Think through the entire problem space: What are the inputs and expected outputs? What are the key constraints and edge cases? What does success look like? This problem-focused approach serves a dual purpose: it helps you clarify exactly what you want the AI to accomplish so that you can evaluate its outputs appropriately, and it prevents the AI from making incorrect assumptions about your goals. When you provide this clear problem context along with architectural details about your existing system, the AI generates code that fits naturally into your codebase rather than creating isolated solutions. Include details about data flow, component interactions, and expected interfaces when possible or if relevant. This approach transforms the AI from a code generator into an architecture-aware development partner. You can use LLMs to help generate memory files, and also look at GitHub Spec Kit. AI can help you implement sophisticated patterns like structured checklists for iterative development that would be tedious to write from scratch.</p>
+<section id="what-separates-positive-from-flawed-examples">
+<h2><span class="section-number">2.1.1. </span>What separates positive from flawed examples<a class="headerlink" href="#what-separates-positive-from-flawed-examples" title="Link to this heading">#</a></h2>
+<p>Flawed examples dump vague requirements on the AI without any planning. You haven’t thought through how the pieces should fit together, what the data flow looks like, or what success actually means. The AI fills in the gaps with its own assumptions, which are probably wrong for your use case. You end up with code that technically does something but doesn’t integrate well with your existing system.</p>
+<p>Positive examples start with upfront planning. You’ve thought through the problem structure, anticipated how it should be solved, and specified the architectural context. You can articulate inputs, outputs, data flow, and how this component interacts with others. This gives the AI enough structure to generate code that actually fits your needs rather than creating a standalone solution that requires major rework.</p>
+</section>
+<hr class="docutils" />
+<section id="example-1-vague-requirements-without-planning">
+<h2><span class="section-number">2.1.2. </span>Example 1: Vague Requirements Without Planning<a class="headerlink" href="#example-1-vague-requirements-without-planning" title="Link to this heading">#</a></h2>
+<p>The user hasn’t thought through what they actually need. No specification of how this integrates with existing code. No clarity on data flow or expected behavior. The AI has to guess at everything (data format, processing steps, output structure). What comes back is generic code that probably doesn’t match the actual system architecture. When the user tries to integrate this, they’ll discover all sorts of mismatches they should have specified upfront. The validation function is completely arbitrary because the user never specified what valid data looks like.</p>
+<div class="proof example dropdown admonition" id="rule4-bad-ex1">
+<p class="admonition-title"><span class="caption-number">Example 2.1 </span> (Dumping requirements without architectural context)</p>
+<section class="example-content" id="proof-content">
+<p><strong>User Prompt:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">need</span> <span class="n">a</span> <span class="n">preprocessing</span> <span class="n">pipeline</span> <span class="k">for</span> <span class="n">fMRI</span> <span class="n">data</span><span class="o">.</span> <span class="n">It</span> <span class="n">should</span> <span class="n">do</span> <span class="n">motion</span> <span class="n">correction</span><span class="p">,</span> 
+<span class="n">normalization</span><span class="p">,</span> <span class="ow">and</span> <span class="n">smoothing</span><span class="o">.</span> <span class="n">Make</span> <span class="n">it</span> <span class="n">modular</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>AI Response:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">preprocess_fmri</span><span class="p">(</span><span class="n">input_file</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Preprocess fMRI data.&quot;&quot;&quot;</span>
+    <span class="c1"># Load data</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
+    
+    <span class="c1"># Motion correction</span>
+    <span class="n">corrected</span> <span class="o">=</span> <span class="n">motion_correct</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    
+    <span class="c1"># Normalize</span>
+    <span class="n">normalized</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">corrected</span><span class="p">)</span>
+    
+    <span class="c1"># Smooth</span>
+    <span class="n">smoothed</span> <span class="o">=</span> <span class="n">smooth</span><span class="p">(</span><span class="n">normalized</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">smoothed</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">motion_correct</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="c1"># Implementation</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">normalize</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="c1"># Implementation</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">smooth</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="c1"># Implementation  </span>
+    <span class="k">pass</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_data</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="c1"># Some validation</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+<hr class="docutils" />
+<section id="example-2-upfront-architecture-specification">
+<h2><span class="section-number">2.1.3. </span>Example 2: Upfront Architecture Specification<a class="headerlink" href="#example-2-upfront-architecture-specification" title="Link to this heading">#</a></h2>
+<p>The user has done the planning work before asking for code. They specify the complete system architecture with clear class boundaries and responsibilities. They define the exact API for each component including input/output types, error conditions, and side effects. They explain how data flows through the system and what each transformation does. They specify which parts are already implemented versus what needs to be created. This gives the AI everything it needs to generate code that integrates naturally. The resulting implementation can actually be dropped into the codebase because it matches the existing architecture.</p>
+<div class="proof example dropdown admonition" id="rule4-good-ex1">
+<p class="admonition-title"><span class="caption-number">Example 2.2 </span> (Clear architectural specification before implementation)</p>
+<section class="example-content" id="proof-content">
+<p><strong>User Prompt:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span><span class="s1">&#39;m building a neuroimaging pipeline with these components:</span>
+<span class="o">-</span> <span class="n">DataLoader</span> <span class="n">class</span><span class="p">:</span> <span class="n">reads</span> <span class="n">BIDS</span><span class="o">-</span><span class="n">formatted</span> <span class="n">data</span><span class="p">,</span> <span class="n">returns</span> <span class="n">NiBabel</span> <span class="n">objects</span>
+<span class="o">-</span> <span class="n">Preprocessor</span> <span class="n">class</span><span class="p">:</span> <span class="n">takes</span> <span class="n">NiBabel</span> <span class="n">objects</span><span class="p">,</span> <span class="n">applies</span> <span class="n">motion</span> <span class="n">correction</span><span class="p">,</span> 
+  <span class="n">returns</span> <span class="n">processed</span> <span class="n">arrays</span>
+<span class="o">-</span> <span class="n">Analyzer</span> <span class="n">class</span><span class="p">:</span> <span class="n">takes</span> <span class="n">processed</span> <span class="n">arrays</span><span class="p">,</span> <span class="n">computes</span> <span class="n">statistics</span>
+
+<span class="n">Here</span><span class="s1">&#39;s the complete API structure:</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">DataLoader</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">nib</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Returns: {&#39;T1w&#39;: Nifti1Image, &#39;bold&#39;: Nifti1Image}</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Preprocessor</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">images</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">nib</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Main method to implement. Must call internal methods in sequence.</span>
+<span class="sd">        Returns: 4D array (x, y, z, time) of preprocessed BOLD data</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_motion_correct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">nib</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">nib</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Already implemented. Applies 6-parameter rigid body correction.</span>
+<span class="sd">        Args: </span>
+<span class="sd">            img: 4D NIfTI image (x, y, z, time)</span>
+<span class="sd">        Returns: </span>
+<span class="sd">            Motion-corrected NIfTI with same dimensions</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: if image is not 4D</span>
+<span class="sd">        Side effects: </span>
+<span class="sd">            Sets self.motion_parameters (n_timepoints, 6) array</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">nib</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">,</span> <span class="n">template</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;MNI152&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">nib</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Already implemented. Warps to template space.</span>
+<span class="sd">        Args:</span>
+<span class="sd">            img: 3D or 4D NIfTI image</span>
+<span class="sd">            template: One of [&#39;MNI152&#39;, &#39;MNI305&#39;, &#39;Talairach&#39;]</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Normalized image in template space (may have different dimensions)</span>
+<span class="sd">        Note: </span>
+<span class="sd">            Uses affine from self.normalization_matrix if available</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">_smooth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img</span><span class="p">:</span> <span class="n">nib</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">,</span> <span class="n">fwhm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">6.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Already implemented. Applies Gaussian smoothing.</span>
+<span class="sd">        Args:</span>
+<span class="sd">            img: NIfTI image to smooth</span>
+<span class="sd">            fwhm: Full-width half-maximum in mm</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Smoothed data as numpy array (loses NIfTI header info)</span>
+<span class="sd">        Important: </span>
+<span class="sd">            Returns numpy array, not NIfTI object</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Analyzer</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_glm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">design</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">StatsResult</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            data: 4D array (x, y, z, time) from Preprocessor.process()</span>
+<span class="sd">            design: Design matrix with columns as regressors, rows as timepoints</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            StatsResult with attributes: .beta_maps, .t_maps, .p_values</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+<span class="n">Now</span> <span class="n">implement</span> <span class="n">Preprocessor</span><span class="o">.</span><span class="n">process</span><span class="p">()</span> <span class="n">considering</span><span class="p">:</span>
+<span class="mf">1.</span> <span class="n">Must</span> <span class="n">handle</span> <span class="n">the</span> <span class="s1">&#39;bold&#39;</span> <span class="n">key</span> <span class="kn">from</span><span class="w"> </span><span class="nn">images</span> <span class="nb">dict</span>
+<span class="mf">2.</span> <span class="n">Chain</span> <span class="n">the</span> <span class="n">three</span> <span class="n">internal</span> <span class="n">methods</span> <span class="n">correctly</span>
+<span class="mf">3.</span> <span class="n">Handle</span> <span class="n">the</span> <span class="nb">type</span> <span class="n">conversion</span> <span class="kn">from</span><span class="w"> </span><span class="nn">NIfTI</span> <span class="n">to</span> <span class="n">numpy</span> <span class="n">array</span>
+<span class="mf">4.</span> <span class="n">Include</span> <span class="n">proper</span> <span class="n">error</span> <span class="n">handling</span> <span class="k">for</span> <span class="n">missing</span> <span class="n">keys</span>
+<span class="mf">5.</span> <span class="n">Preserve</span> <span class="n">metadata</span> <span class="n">needed</span> <span class="k">for</span> <span class="n">later</span> <span class="n">analysis</span>
+</pre></div>
+</div>
+<p><strong>AI Response:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">images</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">nib</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Process BOLD images through full preprocessing pipeline.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    images : dict[str, nib.Nifti1Image]</span>
+<span class="sd">        Dictionary with &#39;bold&#39; key containing 4D fMRI data</span>
+<span class="sd">        </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    np.ndarray</span>
+<span class="sd">        Preprocessed 4D array (x, y, z, time)</span>
+<span class="sd">        </span>
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If &#39;bold&#39; key missing or image has wrong dimensions</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="s1">&#39;bold&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;images dict must contain &#39;bold&#39; key&quot;</span><span class="p">)</span>
+    
+    <span class="n">bold_img</span> <span class="o">=</span> <span class="n">images</span><span class="p">[</span><span class="s1">&#39;bold&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># Validate 4D</span>
+    <span class="k">if</span> <span class="n">bold_img</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BOLD must be 4D, got </span><span class="si">{</span><span class="n">bold_img</span><span class="o">.</span><span class="n">ndim</span><span class="si">}</span><span class="s2">D&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Step 1: Motion correction (returns NIfTI)</span>
+    <span class="n">corrected</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_motion_correct</span><span class="p">(</span><span class="n">bold_img</span><span class="p">)</span>
+    
+    <span class="c1"># Step 2: Normalization (returns NIfTI, may change dimensions)</span>
+    <span class="n">normalized</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize</span><span class="p">(</span><span class="n">corrected</span><span class="p">,</span> <span class="n">template</span><span class="o">=</span><span class="s1">&#39;MNI152&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Step 3: Smoothing (returns numpy array)</span>
+    <span class="n">smoothed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_smooth</span><span class="p">(</span><span class="n">normalized</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mf">6.0</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">smoothed</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+<hr class="docutils" />
+<section id="example-3-iterative-refinement-with-clear-goals">
+<h2><span class="section-number">2.1.4. </span>Example 3: Iterative Refinement with Clear Goals<a class="headerlink" href="#example-3-iterative-refinement-with-clear-goals" title="Link to this heading">#</a></h2>
+<p>The user starts with a basic specification to establish the core functionality. Once that works, they add complexity through well-defined iterations. Each iteration has clear success criteria and builds naturally on the previous version. The user can verify each iteration independently before moving to the next. This prevents the AI from trying to solve everything at once and making wrong assumptions about priorities. The progressive refinement keeps the conversation focused and makes debugging much easier.</p>
+<div class="proof example dropdown admonition" id="rule4-good-ex2">
+<p class="admonition-title"><span class="caption-number">Example 2.3 </span> (Progressive specification with clear success criteria)</p>
+<section class="example-content" id="proof-content">
+<p><strong>User Prompt (Initial):</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Create</span> <span class="n">a</span> <span class="n">function</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">correlation</span> <span class="n">between</span> <span class="n">brain</span> <span class="n">regions</span><span class="o">.</span> <span class="n">Here</span><span class="s1">&#39;s the initial API:</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_brain_correlation</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>  <span class="c1"># Shape: (n_regions, n_timepoints)</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>  <span class="c1"># Shape: (n_regions, n_regions)</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Compute Pearson correlation between brain region timeseries&#39;&#39;&#39;</span>
+
+<span class="n">It</span> <span class="n">should</span> <span class="k">pass</span> <span class="n">this</span> <span class="n">basic</span> <span class="n">test</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_basic_correlation</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+    <span class="n">corr</span> <span class="o">=</span> <span class="n">compute_brain_correlation</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">corr</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">corr</span><span class="o">.</span><span class="n">diagonal</span><span class="p">(),</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>AI Response:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_brain_correlation</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>User Follow-up:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Good</span> <span class="n">foundation</span><span class="o">.</span> <span class="n">Now</span> <span class="n">extend</span> <span class="n">to</span> <span class="n">handle</span> <span class="n">missing</span> <span class="n">data</span><span class="p">:</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_brain_correlation</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">missing_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;pairwise&#39;</span>  <span class="c1"># &#39;pairwise&#39; or &#39;listwise&#39;</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+
+<span class="n">Add</span> <span class="n">this</span> <span class="n">test</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_missing_data</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+    <span class="n">corr_pair</span> <span class="o">=</span> <span class="n">compute_brain_correlation</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;pairwise&#39;</span><span class="p">)</span>
+    <span class="n">corr_list</span> <span class="o">=</span> <span class="n">compute_brain_correlation</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;listwise&#39;</span><span class="p">)</span>
+    <span class="c1"># Pairwise uses available pairs, listwise drops entire timepoint</span>
+    <span class="k">assert</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">corr_pair</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">corr_list</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><strong>AI Response:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_brain_correlation</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">missing_method</span><span class="o">=</span><span class="s1">&#39;pairwise&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">missing_method</span> <span class="o">==</span> <span class="s1">&#39;pairwise&#39;</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+    <span class="k">elif</span> <span class="n">missing_method</span> <span class="o">==</span> <span class="s1">&#39;listwise&#39;</span><span class="p">:</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">clean_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="n">mask</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">clean_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">clean_data</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown method: </span><span class="si">{</span><span class="n">missing_method</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>User:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Perfect</span><span class="o">.</span> <span class="n">Final</span> <span class="n">iteration</span> <span class="o">-</span> <span class="n">add</span> <span class="n">Fisher</span> <span class="n">z</span><span class="o">-</span><span class="n">transformation</span><span class="p">:</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_brain_correlation</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">missing_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;pairwise&#39;</span><span class="p">,</span>
+    <span class="n">fisher_z</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>  <span class="c1"># Returns dict with &#39;correlation&#39;, &#39;p_values&#39;, &#39;z_scores&#39; keys</span>
+
+<span class="n">Test</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_fisher_transform</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">compute_brain_correlation</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fisher_z</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;correlation&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">z_expected</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">r</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;z_scores&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">z_expected</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</div><hr class="docutils" />
+<p><strong>Key Takeaways:</strong></p>
+<ul class="simple">
+<li><p>Think through the problem structure before asking AI to implement</p></li>
+<li><p>Specify architectural context so code integrates naturally</p></li>
+<li><p>Define clear inputs, outputs, data flow, and component interactions</p></li>
+<li><p>Break complex problems into well-defined iterations</p></li>
+<li><p>Provide enough detail that you can verify the solution makes sense</p></li>
+<li><p>Use AI to help with planning tools (memory files, checklists) not just code</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./rules/context"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="context.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Context Engineering &amp; Interaction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="rule5.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.2. </span>Rule 5: Manage Context Strategically</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">2.1.1. What separates positive from flawed examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-vague-requirements-without-planning">2.1.2. Example 1: Vague Requirements Without Planning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-upfront-architecture-specification">2.1.3. Example 2: Upfront Architecture Specification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-iterative-refinement-with-clear-goals">2.1.4. Example 3: Iterative Refinement with Clear Goals</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eric W. Bridgeford, et al., Russell Poldrack
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

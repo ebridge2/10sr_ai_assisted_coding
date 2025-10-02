@@ -1,0 +1,870 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3. Rule 7: Implement Test-Driven Development with AI &#8212; Ten Simple Rules for AI-assisted Coding in Open Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'rules/testing/rule7';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4. Rule 8: Build Comprehensive Testing Infrastructure Early" href="rule8.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="testing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../coverpage.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Ten Simple Rules for AI-assisted Coding in Open Science - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Ten Simple Rules for AI-assisted Coding in Open Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../coverpage.html">
+                    10 Simple Rules for AI-assisted Coding in Open Science
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Rules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../prep/prep.html">1. Preparation &amp; Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../prep/rule1.html">1.1. Rule 1: Gather Domain Knowledge Before Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../prep/rule2.html">1.2. Rule 2: Distinguish Programming from Coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../prep/rule3.html">1.3. Rule 3: Choose Appropriate AI Interaction Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../context/context.html">2. Context Engineering &amp; Interaction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../context/rule4.html">2.1. Rule 4: Start by Thinking Through a Potential Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../context/rule5.html">2.2. Rule 5: Manage Context Strategically</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../context/rule6.html">2.3. Rule 6: Monitor Progress and Know When to Restart</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Rule 7: Implement Test-Driven Development with AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rule8.html">4. Rule 8: Build Comprehensive Testing Infrastructure Early</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rule9.html">5. Rule 9: Use AI to Refine and Validate Tests</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../quality/quality.html">6. Code Quality</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quality/rule10.html">6.1. Rule 10: Critically Review Generated Code</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ebridge2/10sr_ai_assisted_coding" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ebridge2/10sr_ai_assisted_coding/edit/master/paper/rules/testing/rule7.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ebridge2/10sr_ai_assisted_coding/issues/new?title=Issue%20on%20page%20%2Frules/testing/rule7.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/rules/testing/rule7.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Rule 7: Implement Test-Driven Development with AI</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">3.1. What separates positive from flawed examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-implementation-first-tests-as-afterthought">3.2. Example 1: Implementation First, Tests as Afterthought</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-tests-define-behavior-first">3.3. Example 2: Tests Define Behavior First</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-test-first-bug-prevention">3.4. Example 3: Test-First Bug Prevention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-catching-ai-test-manipulation">3.5. Example 4: Catching AI Test Manipulation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="rule-7-implement-test-driven-development-with-ai">
+<span id="rules-rule-7"></span><h1><span class="section-number">3. </span>Rule 7: Implement Test-Driven Development with AI<a class="headerlink" href="#rule-7-implement-test-driven-development-with-ai" title="Link to this heading">#</a></h1>
+<p>Frame your test requirements as behavioral specifications before requesting implementation code, and tell the AI what success looks like through concrete test cases. This test-first approach forces you to articulate edge cases, expected inputs/outputs, and failure modes that might otherwise be overlooked. The AI responds better to specific test scenarios than vague functionality descriptions. By providing comprehensive test specifications, you guide the AI toward more robust, production-ready implementations. AI tools (such as chatbots or Github’s Spec Kit) can help develop these specifications in a way that will optimally guide the model. Keep a close eye on the tests that are generated, since the models will often modify the tests to pass without actually solving the problem rather than generating suitable code. In addition, whenever a bug is identified during your development cycle, ask the model to generate a test that catches the bug, to ensure that it’s not re-introduced in the future.</p>
+<section id="what-separates-positive-from-flawed-examples">
+<h2><span class="section-number">3.1. </span>What separates positive from flawed examples<a class="headerlink" href="#what-separates-positive-from-flawed-examples" title="Link to this heading">#</a></h2>
+<p>Flawed examples ask for implementation first and maybe add tests later as an afterthought. You get code that technically works for the happy path but fails on edge cases you didn’t think about. When bugs appear, you patch the code without adding tests, so the same bugs reappear later. The AI often modifies tests to make them pass rather than fixing the actual problem.</p>
+<p>Positive examples start with tests that specify the expected behavior. You articulate success criteria through concrete test cases before any implementation. When the AI generates code, you can immediately verify it meets your specifications. When bugs appear, you first write a test that catches the bug, then fix the implementation. You watch carefully to ensure the AI doesn’t modify tests to make them pass.</p>
+</section>
+<hr class="docutils" />
+<section id="example-1-implementation-first-tests-as-afterthought">
+<h2><span class="section-number">3.2. </span>Example 1: Implementation First, Tests as Afterthought<a class="headerlink" href="#example-1-implementation-first-tests-as-afterthought" title="Link to this heading">#</a></h2>
+<p>The user asks for code without specifying what success looks like. The AI generates something that works for basic cases but has no clear specification. When tests are added later, they just verify what the code currently does rather than what it should do. Edge cases are discovered in production. When bugs appear, the code gets patched without adding tests to prevent regression. The cycle repeats.</p>
+<div class="proof example dropdown admonition" id="rule7-bad-ex1">
+<p class="admonition-title"><span class="caption-number">Example 3.1 </span> (Code without behavioral specification)</p>
+<section class="example-content" id="proof-content">
+<p><strong>User Prompt:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Create</span> <span class="n">a</span> <span class="n">function</span> <span class="n">to</span> <span class="n">threshold</span> <span class="n">brain</span> <span class="n">connectivity</span> <span class="n">matrices</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>AI Response:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">threshold_connectivity</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Threshold connectivity matrix.&quot;&quot;&quot;</span>
+    <span class="n">thresholded</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">thresholded</span><span class="p">[</span><span class="n">matrix</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">thresholded</span>
+</pre></div>
+</div>
+<p><strong>Later, user adds tests:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_threshold</span><span class="p">():</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]])</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">threshold_connectivity</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.8</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+<p><strong>Production Bug Discovered:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">User</span><span class="p">:</span> <span class="s2">&quot;It&#39;s zeroing the diagonal! Brain regions are perfectly correlated with </span>
+<span class="n">themselves</span><span class="p">,</span> <span class="n">we</span> <span class="n">need</span> <span class="n">to</span> <span class="n">preserve</span> <span class="n">the</span> <span class="n">diagonal</span><span class="o">.</span><span class="s2">&quot;</span>
+
+<span class="n">AI</span><span class="p">:</span> <span class="s2">&quot;Let me fix that...&quot;</span>
+<span class="p">[</span><span class="n">Patches</span> <span class="n">code</span> <span class="n">without</span> <span class="n">adding</span> <span class="n">test</span> <span class="k">for</span> <span class="n">diagonal</span> <span class="n">preservation</span><span class="p">]</span>
+
+<span class="p">[</span><span class="n">Later</span><span class="p">,</span> <span class="n">another</span> <span class="n">bug</span><span class="p">:</span> <span class="n">negative</span> <span class="n">correlations</span> <span class="n">being</span> <span class="n">zeroed</span><span class="p">]</span>
+<span class="p">[</span><span class="n">Another</span> <span class="n">patch</span> <span class="n">without</span> <span class="n">test</span><span class="p">]</span>
+<span class="p">[</span><span class="n">Cycle</span> <span class="n">continues</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+<hr class="docutils" />
+<section id="example-2-tests-define-behavior-first">
+<h2><span class="section-number">3.3. </span>Example 2: Tests Define Behavior First<a class="headerlink" href="#example-2-tests-define-behavior-first" title="Link to this heading">#</a></h2>
+<p>The user specifies expected behavior through comprehensive test cases before asking for implementation. The tests cover happy path, edge cases, error conditions, and domain-specific requirements (like preserving the diagonal). The AI now has a clear specification of what success looks like. The implementation naturally handles all specified cases. When bugs appear later, tests are added first to catch the bug, then the implementation is fixed.</p>
+<div class="proof example dropdown admonition" id="rule7-good-ex1">
+<p class="admonition-title"><span class="caption-number">Example 3.2 </span> (Behavioral specification through tests)</p>
+<section class="example-content" id="proof-content">
+<p><strong>User Prompt:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">need</span> <span class="n">a</span> <span class="n">function</span> <span class="n">to</span> <span class="n">threshold</span> <span class="n">brain</span> <span class="n">connectivity</span> <span class="n">matrices</span><span class="o">.</span> <span class="n">Here</span><span class="s1">&#39;s what success </span>
+<span class="n">looks</span> <span class="n">like</span> <span class="n">through</span> <span class="n">test</span> <span class="n">cases</span><span class="p">:</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_basic_thresholding</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Values below threshold should be zeroed.&quot;&quot;&quot;</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]])</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">threshold_connectivity</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.8</span>  <span class="c1"># Above threshold preserved</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span>  <span class="c1"># Below threshold zeroed</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.9</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_preserve_diagonal</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Diagonal should always be preserved (self-correlation = 1).&quot;&quot;&quot;</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">threshold_connectivity</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.0</span>  <span class="c1"># Diagonal preserved even if would be zeroed</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_negative_correlations</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Negative correlations should be preserved if above absolute threshold.&quot;&quot;&quot;</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">threshold_connectivity</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mf">0.7</span>  <span class="c1"># Strong negative preserved</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mf">0.7</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_weak_negative_zeroed</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Weak negative correlations should be zeroed.&quot;&quot;&quot;</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">threshold_connectivity</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_symmetry_preserved</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Thresholding should preserve matrix symmetry.&quot;&quot;&quot;</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">threshold_connectivity</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>  <span class="c1"># Still symmetric</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_input_validation</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Should reject invalid inputs.&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">threshold_connectivity</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>  <span class="c1"># Not 2D</span>
+    
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">threshold_connectivity</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]))</span>  <span class="c1"># Not symmetric</span>
+
+<span class="n">Now</span> <span class="n">implement</span> <span class="n">threshold_connectivity</span><span class="p">()</span> <span class="n">to</span> <span class="k">pass</span> <span class="nb">all</span> <span class="n">these</span> <span class="n">tests</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>AI Response:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">threshold_connectivity</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Threshold connectivity matrix while preserving key properties.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    matrix : np.ndarray</span>
+<span class="sd">        Symmetric connectivity matrix</span>
+<span class="sd">    threshold : float</span>
+<span class="sd">        Threshold value (applied to absolute values)</span>
+<span class="sd">        </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    np.ndarray</span>
+<span class="sd">        Thresholded matrix with diagonal and symmetry preserved</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Validation</span>
+    <span class="k">if</span> <span class="n">matrix</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Matrix must be 2D&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">matrix</span><span class="o">.</span><span class="n">T</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Matrix must be symmetric&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Threshold by absolute value, preserving sign</span>
+    <span class="n">thresholded</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">threshold</span>
+    
+    <span class="c1"># Zero values below threshold, but preserve diagonal</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">thresholded</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">return</span> <span class="n">thresholded</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+<hr class="docutils" />
+<section id="example-3-test-first-bug-prevention">
+<h2><span class="section-number">3.4. </span>Example 3: Test-First Bug Prevention<a class="headerlink" href="#example-3-test-first-bug-prevention" title="Link to this heading">#</a></h2>
+<p>A bug is discovered in production. Instead of immediately patching the code, the user first writes a test that catches the bug. This ensures the bug won’t be reintroduced later. Then the implementation is fixed to pass the new test. The test suite grows to cover real-world failure modes. Each bug becomes a permanent regression test.</p>
+<div class="proof example dropdown admonition" id="rule7-good-ex2">
+<p class="admonition-title"><span class="caption-number">Example 3.3 </span> (Bug found, test added first, then fix)</p>
+<section class="example-content" id="proof-content">
+<p><strong>Production Bug Report:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">User</span><span class="p">:</span> <span class="s2">&quot;The connectivity thresholding is failing when the matrix contains NaN </span>
+<span class="n">values</span> <span class="p">(</span><span class="n">which</span> <span class="n">happens</span> <span class="n">when</span> <span class="n">some</span> <span class="n">brain</span> <span class="n">regions</span> <span class="n">were</span> <span class="n">censored</span> <span class="n">during</span> <span class="n">preprocessing</span><span class="p">)</span><span class="o">.</span> 
+<span class="n">It</span><span class="s1">&#39;s not handling NaN correctly.&quot;</span>
+</pre></div>
+</div>
+<p><strong>User Response:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">First</span><span class="p">,</span> <span class="n">let</span><span class="s1">&#39;s write a test that catches this bug:</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_nan_handling</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;NaN values should be preserved through thresholding.&quot;&quot;&quot;</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span> 
+                       <span class="p">[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> 
+                       <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">threshold_connectivity</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    
+    <span class="c1"># NaN should be preserved</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    
+    <span class="c1"># Valid values should be thresholded normally</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.6</span>  <span class="c1"># Above threshold</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span>  <span class="c1"># Below threshold</span>
+    
+    <span class="c1"># Diagonal preserved</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.0</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.0</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.0</span>
+
+<span class="n">Run</span> <span class="n">this</span> <span class="n">test</span> <span class="k">with</span> <span class="n">the</span> <span class="n">current</span> <span class="n">implementation</span> <span class="o">-</span> <span class="n">it</span> <span class="n">should</span> <span class="n">fail</span><span class="p">,</span> <span class="n">confirming</span> <span class="n">the</span> <span class="n">bug</span><span class="o">.</span>
+
+<span class="n">Then</span> <span class="n">fix</span> <span class="n">threshold_connectivity</span><span class="p">()</span> <span class="n">to</span> <span class="k">pass</span> <span class="n">this</span> <span class="n">test</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>AI verifies test fails, then fixes:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">threshold_connectivity</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Threshold connectivity matrix while preserving key properties.&quot;&quot;&quot;</span>
+    <span class="c1"># Validation</span>
+    <span class="k">if</span> <span class="n">matrix</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Matrix must be 2D&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">matrix</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">equal_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>  <span class="c1"># Allow NaN</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Matrix must be symmetric&quot;</span><span class="p">)</span>
+    
+    <span class="n">thresholded</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    
+    <span class="c1"># Create mask for values below threshold, excluding NaN</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    
+    <span class="c1"># Preserve diagonal</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    
+    <span class="c1"># Zero values below threshold</span>
+    <span class="n">thresholded</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">return</span> <span class="n">thresholded</span>
+</pre></div>
+</div>
+<p><strong>Result:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Bug</span> <span class="ow">is</span> <span class="n">fixed</span><span class="p">,</span> <span class="ow">and</span> <span class="n">we</span> <span class="n">now</span> <span class="n">have</span> <span class="n">a</span> <span class="n">permanent</span> <span class="n">test</span> <span class="n">that</span> <span class="n">prevents</span> <span class="n">this</span> <span class="n">bug</span> <span class="kn">from</span><span class="w"> </span>
+<span class="nn">being</span> <span class="n">reintroduced</span><span class="o">.</span> <span class="n">The</span> <span class="n">test</span> <span class="n">suite</span> <span class="ow">is</span> <span class="n">growing</span> <span class="n">to</span> <span class="n">cover</span> <span class="n">real</span><span class="o">-</span><span class="n">world</span> <span class="n">edge</span> <span class="n">cases</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+<hr class="docutils" />
+<section id="example-4-catching-ai-test-manipulation">
+<h2><span class="section-number">3.5. </span>Example 4: Catching AI Test Manipulation<a class="headerlink" href="#example-4-catching-ai-test-manipulation" title="Link to this heading">#</a></h2>
+<p>The user provides test specifications, but the AI modifies the tests to make them pass rather than fixing the implementation. The user catches this by carefully reviewing what changed. They explicitly instruct the AI to not modify tests and to fix the implementation instead. This prevents the AI from taking the easy path of making tests less strict.</p>
+<div class="proof example dropdown admonition" id="rule7-good-ex3">
+<p class="admonition-title"><span class="caption-number">Example 3.4 </span> (AI tries to modify tests, user catches it)</p>
+<section class="example-content" id="proof-content">
+<p><strong>User Prompt:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Implement</span> <span class="n">normalize_timeseries</span><span class="p">()</span> <span class="n">to</span> <span class="k">pass</span> <span class="n">these</span> <span class="n">tests</span><span class="p">:</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_zero_mean</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalized timeseries should have zero mean.&quot;&quot;&quot;</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+    <span class="n">normalized</span> <span class="o">=</span> <span class="n">normalize_timeseries</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">normalized</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mf">1e-10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_unit_variance</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalized timeseries should have unit variance.&quot;&quot;&quot;</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+    <span class="n">normalized</span> <span class="o">=</span> <span class="n">normalize_timeseries</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">normalized</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_preserves_shape</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Should preserve input shape.&quot;&quot;&quot;</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+    <span class="n">normalized</span> <span class="o">=</span> <span class="n">normalize_timeseries</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">normalized</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">ts</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+<p><strong>AI Response (WRONG APPROACH):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">normalize_timeseries</span><span class="p">(</span><span class="n">ts</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalize timeseries.&quot;&quot;&quot;</span>
+    <span class="c1"># Forgot to handle the case where std = 0</span>
+    <span class="n">normalized</span> <span class="o">=</span> <span class="p">(</span><span class="n">ts</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ts</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">normalized</span>
+
+<span class="c1"># AI also modified tests to make them less strict:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_zero_mean</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalized timeseries should have approximately zero mean.&quot;&quot;&quot;</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+    <span class="n">normalized</span> <span class="o">=</span> <span class="n">normalize_timeseries</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">normalized</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mf">0.1</span>  <span class="c1"># CHANGED: was &lt; 1e-10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_unit_variance</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalized timeseries should have approximately unit variance.&quot;&quot;&quot;</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+    <span class="n">normalized</span> <span class="o">=</span> <span class="n">normalize_timeseries</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">normalized</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.1</span>  <span class="c1"># CHANGED: was &lt; 1e-10</span>
+</pre></div>
+</div>
+<p><strong>User:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STOP</span><span class="o">.</span> <span class="n">You</span> <span class="n">modified</span> <span class="n">my</span> <span class="n">tests</span> <span class="n">to</span> <span class="n">make</span> <span class="n">them</span> <span class="n">less</span> <span class="n">strict</span><span class="o">.</span> <span class="n">Do</span> <span class="n">NOT</span> <span class="n">change</span> <span class="n">the</span> <span class="n">tests</span><span class="o">.</span> 
+<span class="n">The</span> <span class="n">tests</span> <span class="n">define</span> <span class="n">the</span> <span class="n">specification</span><span class="o">.</span>
+
+<span class="n">The</span> <span class="n">original</span> <span class="n">tolerances</span> <span class="p">(</span><span class="o">&lt;</span> <span class="mf">1e-10</span><span class="p">)</span> <span class="n">are</span> <span class="n">correct</span> <span class="k">for</span> <span class="n">this</span> <span class="n">simple</span> <span class="n">normalization</span><span class="o">.</span>
+<span class="n">Your</span> <span class="n">implementation</span> <span class="n">should</span> <span class="k">pass</span> <span class="n">those</span> <span class="n">strict</span> <span class="n">tests</span><span class="o">.</span>
+
+<span class="n">Keep</span> <span class="n">the</span> <span class="n">tests</span> <span class="n">EXACTLY</span> <span class="k">as</span> <span class="n">I</span> <span class="n">specified</span> <span class="n">them</span><span class="o">.</span> <span class="n">The</span> <span class="n">implementation</span> <span class="ow">is</span> <span class="n">fine</span><span class="p">,</span>
+<span class="n">just</span> <span class="n">restore</span> <span class="n">the</span> <span class="n">original</span> <span class="n">test</span> <span class="n">tolerances</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>AI Response (CORRECTED):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">normalize_timeseries</span><span class="p">(</span><span class="n">ts</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Normalize timeseries to zero mean and unit variance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">normalized</span> <span class="o">=</span> <span class="p">(</span><span class="n">ts</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ts</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">normalized</span>
+
+<span class="c1"># Tests remain UNCHANGED from original specification with strict tolerances</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_zero_mean</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalized timeseries should have zero mean.&quot;&quot;&quot;</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+    <span class="n">normalized</span> <span class="o">=</span> <span class="n">normalize_timeseries</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">normalized</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mf">1e-10</span>  <span class="c1"># Original spec</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_unit_variance</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalized timeseries should have unit variance.&quot;&quot;&quot;</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+    <span class="n">normalized</span> <span class="o">=</span> <span class="n">normalize_timeseries</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">normalized</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-10</span>  <span class="c1"># Original spec</span>
+</pre></div>
+</div>
+</section>
+</div><hr class="docutils" />
+<p><strong>Key Takeaways:</strong></p>
+<ul class="simple">
+<li><p>Write tests before implementation to specify expected behavior</p></li>
+<li><p>Tests should cover happy path, edge cases, and error conditions</p></li>
+<li><p>When bugs appear, write a test that catches the bug first, then fix</p></li>
+<li><p>Watch carefully that AI doesn’t modify tests to make them pass</p></li>
+<li><p>Use AI to help generate comprehensive test specifications</p></li>
+<li><p>Tests are specifications, not just validation tools</p></li>
+<li><p>Build a regression test suite that grows with discovered bugs</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./rules/testing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="testing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="rule8.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Rule 8: Build Comprehensive Testing Infrastructure Early</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">3.1. What separates positive from flawed examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-implementation-first-tests-as-afterthought">3.2. Example 1: Implementation First, Tests as Afterthought</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-tests-define-behavior-first">3.3. Example 2: Tests Define Behavior First</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-test-first-bug-prevention">3.4. Example 3: Test-First Bug Prevention</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-catching-ai-test-manipulation">3.5. Example 4: Catching AI Test Manipulation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eric W. Bridgeford, et al., Russell Poldrack
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

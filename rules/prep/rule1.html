@@ -1,0 +1,722 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1.1. Rule 1: Gather Domain Knowledge Before Implementation &#8212; Ten Simple Rules for AI-assisted Coding in Open Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'rules/prep/rule1';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.2. Rule 2: Distinguish Programming from Coding" href="rule2.html" />
+    <link rel="prev" title="1. Preparation &amp; Understanding" href="prep.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../coverpage.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Ten Simple Rules for AI-assisted Coding in Open Science - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Ten Simple Rules for AI-assisted Coding in Open Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../coverpage.html">
+                    10 Simple Rules for AI-assisted Coding in Open Science
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Rules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="prep.html">1. Preparation &amp; Understanding</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.1. Rule 1: Gather Domain Knowledge Before Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rule2.html">1.2. Rule 2: Distinguish Programming from Coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rule3.html">1.3. Rule 3: Choose Appropriate AI Interaction Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../context/context.html">2. Context Engineering &amp; Interaction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../context/rule4.html">2.1. Rule 4: Start by Thinking Through a Potential Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../context/rule5.html">2.2. Rule 5: Manage Context Strategically</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../context/rule6.html">2.3. Rule 6: Monitor Progress and Know When to Restart</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/rule7.html">3. Rule 7: Implement Test-Driven Development with AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/rule8.html">4. Rule 8: Build Comprehensive Testing Infrastructure Early</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/rule9.html">5. Rule 9: Use AI to Refine and Validate Tests</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../quality/quality.html">6. Code Quality</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quality/rule10.html">6.1. Rule 10: Critically Review Generated Code</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ebridge2/10sr_ai_assisted_coding" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ebridge2/10sr_ai_assisted_coding/edit/master/paper/rules/prep/rule1.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ebridge2/10sr_ai_assisted_coding/issues/new?title=Issue%20on%20page%20%2Frules/prep/rule1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/rules/prep/rule1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Rule 1: Gather Domain Knowledge Before Implementation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">1.1.1. What separates positive from flawed examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-insufficient-domain-research">1.1.2. Example 1: Insufficient Domain Research</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-thorough-domain-exploration">1.1.3. Example 2: Thorough Domain Exploration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-learning-community-standards">1.1.4. Example 3: Learning Community Standards</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="rule-1-gather-domain-knowledge-before-implementation">
+<span id="rules-rule-1"></span><h1><span class="section-number">1.1. </span>Rule 1: Gather Domain Knowledge Before Implementation<a class="headerlink" href="#rule-1-gather-domain-knowledge-before-implementation" title="Link to this heading">#</a></h1>
+<p>Know your problem space before writing code. Understand data shapes, missing data patterns, field-specific libraries, and existing implementations that could serve as models. You don’t need to be an expert initially; use AI to help research domain standards, available datasets, common approaches, and implementation patterns before diving into coding. This reconnaissance phase prevents you from reinventing wheels or violating field conventions. Share your current understanding level with the AI and iteratively build context through targeted questions about tools, data structures, and best practices, asking for specific references and paper summaries. This upfront investment ensures that your code aligns with community standards and handles real-world data appropriately.</p>
+<section id="what-separates-positive-from-flawed-examples">
+<h2><span class="section-number">1.1.1. </span>What separates positive from flawed examples<a class="headerlink" href="#what-separates-positive-from-flawed-examples" title="Link to this heading">#</a></h2>
+<p>Flawed examples jump straight to implementation without understanding the domain. You end up with generic code that ignores field-specific conventions, misses critical preprocessing steps, and uses inappropriate methods. Worse, you can’t even tell if what you got back makes sense because you don’t know what the right approach looks like.</p>
+<p>Positive examples start by explicitly stating what you do and don’t know, and systematically build understanding through targeted questions. You ask for specific references, methodological papers, standard tools, and data formats. You iteratively refine your understanding before writing a single line of code. This way, when you finally ask for implementation, you can actually evaluate what the AI produces.</p>
+</section>
+<hr class="docutils" />
+<section id="example-1-insufficient-domain-research">
+<h2><span class="section-number">1.1.2. </span>Example 1: Insufficient Domain Research<a class="headerlink" href="#example-1-insufficient-domain-research" title="Link to this heading">#</a></h2>
+<p>Jumping to implementation without domain understanding leaves you with code you can’t evaluate. You don’t know if brain networks should be weighted or binary. Critical preprocessing steps like thresholding strategies and normalization approaches are completely missing. The code uses metrics without domain justification (average path length might be undefined for disconnected graphs, which are common in brain networks). Field-standard tools like Brain Connectivity Toolbox get ignored entirely. You have no way to verify if this approach aligns with neuroscience conventions, and you’re stuck with code you fundamentally can’t assess.</p>
+<div class="proof example dropdown admonition" id="rule1-bad-ex1">
+<p class="admonition-title"><span class="caption-number">Example 1.1 </span> (Vague request without domain context)</p>
+<section class="example-content" id="proof-content">
+<p><strong>User Prompt:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I need to implement graph theoretical analysis for brain networks. 
+Can you write me a function?
+</pre></div>
+</div>
+<p><strong>AI Response:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">analyze_brain_network</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Analyze a brain network using graph theory.&quot;&quot;&quot;</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_array</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate basic metrics</span>
+    <span class="n">degree</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">())</span>
+    <span class="n">clustering</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">clustering</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">path_length</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">average_shortest_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;degree&#39;</span><span class="p">:</span> <span class="n">degree</span><span class="p">,</span>
+        <span class="s1">&#39;clustering&#39;</span><span class="p">:</span> <span class="n">clustering</span><span class="p">,</span>
+        <span class="s1">&#39;path_length&#39;</span><span class="p">:</span> <span class="n">path_length</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+<hr class="docutils" />
+<section id="example-2-thorough-domain-exploration">
+<h2><span class="section-number">1.1.3. </span>Example 2: Thorough Domain Exploration<a class="headerlink" href="#example-2-thorough-domain-exploration" title="Link to this heading">#</a></h2>
+<p>Starting with explicit acknowledgment of your knowledge level (“understand basic graph theory but new to brain connectivity”) sets up productive learning. Asking for specific references before any coding gets you the foundational papers you need. Building understanding iteratively through targeted questions teaches you about standard tools (bctpy), typical data formats, and methodological considerations. Getting concrete papers lets you verify information independently. Most importantly, confirming understanding before moving to implementation means you’re now equipped to evaluate whether the AI’s eventual code actually makes sense.</p>
+<div class="proof example dropdown admonition" id="rule1-good-ex1">
+<p class="admonition-title"><span class="caption-number">Example 1.2 </span> (Iterative domain knowledge gathering)</p>
+<section class="example-content" id="proof-content">
+<p><strong>User Prompt (Initial):</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">need</span> <span class="n">to</span> <span class="n">implement</span> <span class="n">graph</span> <span class="n">theoretical</span> <span class="n">analysis</span> <span class="k">for</span> <span class="n">brain</span> <span class="n">networks</span> <span class="kn">from</span><span class="w"> </span><span class="nn">diffusion</span> <span class="n">MRI</span> <span class="n">tractography</span><span class="o">.</span> <span class="n">I</span> <span class="n">understand</span> <span class="n">basic</span> <span class="n">graph</span> <span class="n">theory</span> <span class="n">but</span> <span class="n">I</span><span class="s1">&#39;m new to applying it to brain connectivity. What should I know before implementing this? Please provide key references I should review.</span>
+</pre></div>
+</div>
+<p><strong>AI Response:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>For brain network analysis from tractography, you should understand:
+
+1. **Data representation**: 
+   - Nodes are brain regions (from parcellations)
+   - Edges are white matter connections (streamline counts or FA values)
+   - Networks are typically weighted and undirected
+
+2. **Key methodological papers**:
+   - Bullmore &amp; Sporns (2009) Nature Reviews Neuroscience - foundational review
+   - Rubinov &amp; Sporns (2010) NeuroImage - Brain Connectivity Toolbox paper
+   - Fornito et al. (2013) NeuroImage - interpretation of graph metrics
+
+3. **Standard Python libraries**:
+   - networkx: general graph analysis
+   - bctpy: Python port of Brain Connectivity Toolbox
+   - nilearn.connectome: neuroimaging-specific tools
+
+4. **Critical preprocessing considerations**:
+   - Threshold selection (Roberts et al. 2017 NeuroImage)
+   - Edge weight handling (Betzel et al. 2019 Network Neuroscience)
+   - Log-transformation for streamline counts (Civier et al. 2019)
+
+Would you like me to summarize specific papers or discuss data formats?
+</pre></div>
+</div>
+<p><strong>User Follow-up:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Can you summarize the main points from Rubinov &amp; Sporns 2010 about which metrics are most reliable? Also, what does typical tractography connectivity data look like?
+</pre></div>
+</div>
+<p><strong>AI Response:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>From Rubinov &amp; Sporns 2010, the most reliable metrics are:
+- Degree distribution, clustering coefficient, path length (robust)
+- Modularity (sensitive to resolution parameter - use carefully)
+- Small-worldness (requires proper null model selection)
+
+Typical tractography data structure:
+- NxN connectivity matrix where N = number of brain regions (68-1000 typical)
+- Edge weights = streamline counts or mean FA along tracts
+- Often sparse (60-80% of possible connections absent)
+- Symmetric for undirected tractography
+
+Standard formats:
+- .mat files with &#39;connectivity&#39;, &#39;region_labels&#39; variables
+- CSV files with region pairs and weights
+- Common parcellations: Schaefer (100-1000 ROIs), Desikan-Killiany (68 ROIs)
+
+Benchmark datasets:
+- Human Connectome Project (preprocessed matrices available)
+- MICCAI tractography challenges
+
+Ready to proceed with implementation?
+</pre></div>
+</div>
+<p><strong>User:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Yes</span><span class="p">,</span> <span class="n">I</span><span class="s1">&#39;ve reviewed the BCT documentation and Fornito et al. Now I&#39;</span><span class="n">m</span> <span class="n">ready</span> <span class="n">to</span> <span class="n">implement</span><span class="o">.</span> <span class="n">Here</span><span class="s1">&#39;s what I need...</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+<hr class="docutils" />
+<section id="example-3-learning-community-standards">
+<h2><span class="section-number">1.1.4. </span>Example 3: Learning Community Standards<a class="headerlink" href="#example-3-learning-community-standards" title="Link to this heading">#</a></h2>
+<p>Asking about standards and existing implementations before writing any code gets you oriented in what the field actually uses. You learn that MNE-Python is the neuroscience standard, not just a general-purpose tool. You understand preprocessing requirements specific to EEG (highpass filtering, artifact rejection, reference choice). You get reporting conventions needed for publications (frequency band definitions, dB scale, normalization approaches). Now you have concrete documentation to reference and can make informed decisions about using existing tools versus implementing custom solutions.</p>
+<div class="proof example dropdown admonition" id="rule1-good-ex2">
+<p class="admonition-title"><span class="caption-number">Example 1.3 </span> (Discovering field conventions before implementation)</p>
+<section class="example-content" id="proof-content">
+<p><strong>User Prompt:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span><span class="s1">&#39;m analyzing EEG data and need to compute power spectral density. What are the standard approaches in neuroscience? Are there existing implementations I should look at before writing my own?</span>
+</pre></div>
+</div>
+<p><strong>AI Response:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Standard approaches for EEG power spectral density:
+
+1. **Methods** (from Cohen 2014, &quot;Analyzing Neural Time Series Data&quot;):
+   - Welch&#39;s method (most common - reduces variance via averaging)
+   - Multitaper method (better for short segments)
+   - Wavelet transform (for time-frequency analysis)
+
+2. **Standard Python implementations**:
+   - MNE-Python: mne.time_frequency.psd_welch() - neuroscience standard
+   - SciPy: scipy.signal.welch() - general purpose
+   - FOOOF: parameterizes 1/f and oscillatory components
+
+3. **Key preprocessing steps** (Jas et al. 2018 MNE paper):
+   - Highpass filter ≥0.1 Hz to remove drift
+   - Artifact rejection (ICA or rejection by amplitude)
+   - Reference choice matters (average, mastoid, REST)
+
+4. **Reporting conventions**:
+   - Frequency bands: delta 1-4Hz, theta 4-8Hz, alpha 8-13Hz, etc.
+   - Use dB scale (10*log10(power)) for visualization
+   - Normalize by total power or baseline period
+
+Example implementations: MNE tutorials at https://mne.tools/stable/auto_tutorials
+
+Would you like code following MNE conventions?
+</pre></div>
+</div>
+</section>
+</div><hr class="docutils" />
+<p><strong>Key Takeaways:</strong></p>
+<ul class="simple">
+<li><p>Always research domain conventions before writing code</p></li>
+<li><p>Use AI to identify relevant papers, standard tools, best practices</p></li>
+<li><p>Build understanding iteratively through targeted questions</p></li>
+<li><p>Verify information against primary sources before implementation</p></li>
+<li><p>Learn from existing implementations rather than reinventing solutions</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./rules/prep"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="prep.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Preparation &amp; Understanding</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="rule2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.2. </span>Rule 2: Distinguish Programming from Coding</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">1.1.1. What separates positive from flawed examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-insufficient-domain-research">1.1.2. Example 1: Insufficient Domain Research</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-thorough-domain-exploration">1.1.3. Example 2: Thorough Domain Exploration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-learning-community-standards">1.1.4. Example 3: Learning Community Standards</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eric W. Bridgeford, et al., Russell Poldrack
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
