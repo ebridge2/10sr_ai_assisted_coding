@@ -169,12 +169,3 @@ Example implementations: MNE tutorials at https://mne.tools/stable/auto_tutorial
 Would you like code following MNE conventions?
 ```
 ````
-
----
-
-**Key Takeaways:**
-- Always research domain conventions before writing code
-- Use AI to identify relevant papers, standard tools, best practices
-- Build understanding iteratively through targeted questions
-- Verify information against primary sources before implementation
-- Learn from existing implementations rather than reinventing solutions

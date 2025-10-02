@@ -320,14 +320,3 @@ def test_unit_variance():
     assert np.abs(np.var(normalized) - 1.0) < 1e-10  # Original spec
 ```
 ````
-
----
-
-**Key Takeaways:**
-- Write tests before implementation to specify expected behavior
-- Tests should cover happy path, edge cases, and error conditions
-- When bugs appear, write a test that catches the bug first, then fix
-- Watch carefully that AI doesn't modify tests to make them pass
-- Use AI to help generate comprehensive test specifications
-- Tests are specifications, not just validation tools
-- Build a regression test suite that grows with discovered bugs

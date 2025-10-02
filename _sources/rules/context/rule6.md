@@ -286,15 +286,3 @@ the entire algorithm. Instead, let's just parallelize across timepoints.
 [Fresh conversation with better optimization strategy]
 ```
 ````
-
----
-
-**Key Takeaways:**
-- Actively monitor AI's work rather than walking away
-- Stop the AI immediately when it goes off track
-- Recognize when conversations become too polluted to continue
-- Review what went wrong before restarting
-- Update memory files with lessons learned
-- Use version control to make restarts cheap and safe
-- Commit before major changes so you can easily revert
-- A fresh start with better context beats debugging in polluted conversations

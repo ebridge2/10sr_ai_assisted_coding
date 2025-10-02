@@ -375,14 +375,3 @@ Test both cases to ensure correct results:
 - Weighted networks should use edge weights in distance calculation
 ```
 ````
-
----
-
-**Key Takeaways:**
-- Always read generated code, don't just trust that it runs
-- Verify the approach is scientifically appropriate for your domain
-- Check that implementation matches your prior expectations
-- Test against cases where you know the correct answer
-- Be skeptical of AI claims of success
-- Scientific appropriateness requires human judgment
-- Code that works isn't necessarily code that's correct for your use case

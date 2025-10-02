@@ -248,13 +248,3 @@ Distribution appears bimodal - suggests two different connectivity regimes
 
 **AI:** "Likely those brain regions were excluded during preprocessing (e.g., due to artifacts)..."
 ````
-
----
-
-**Key Takeaways:**
-- Match interaction model to task complexity and integration needs
-- IDE assistants for modifying existing code in context
-- Autonomous agents for well-specified, isolated features
-- Conversational interfaces for exploration and quick analysis
-- Maintain appropriate oversight regardless of tool choice
-- Stay in touch with your code rather than generating it externally
