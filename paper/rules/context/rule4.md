@@ -284,13 +284,3 @@ def test_fisher_transform():
     assert np.allclose(result['z_scores'][0, 1], z_expected)
 ```
 ````
-
----
-
-**Key Takeaways:**
-- Think through the problem structure before asking AI to implement
-- Specify architectural context so code integrates naturally
-- Define clear inputs, outputs, data flow, and component interactions
-- Break complex problems into well-defined iterations
-- Provide enough detail that you can verify the solution makes sense
-- Use AI to help with planning tools (memory files, checklists) not just code

@@ -236,13 +236,3 @@ def louvain_communities(adjacency, resolution=1.0, max_iter=100, tol=1e-4):
     # Returns communities, final_Q
 ```
 ````
-
----
-
-**Key Takeaways:**
-- Understand your problem conceptually before asking AI to code it
-- Specify inputs, outputs, constraints, and expected behavior explicitly
-- Establish fluency in at least one language so you can evaluate solutions
-- Think through the algorithm or approach at a pseudocode level first
-- Provide enough detail that you could verify the solution's correctness
-- Remember: you're the programmer, the AI is just the coder
