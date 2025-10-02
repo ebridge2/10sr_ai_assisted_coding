@@ -5,6 +5,7 @@ parts:
     - caption: Introduction
       chapters:
         - file: intro/intro
+        - file: intro/background
     - caption: The Rules
       numbered: True
       chapters:
