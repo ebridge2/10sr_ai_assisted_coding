@@ -402,7 +402,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -418,6 +420,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -429,12 +439,104 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<p>The integration of artificial intelligence into scientific computing represents one of the most significant shifts in research methodology since the advent of personal computers. Large language models (LLMs) trained on vast corpora of code can now generate syntactically correct, functionally appropriate programs from natural language descriptions, a capability that was inconceivable just a few years ago <span id="id1">[]</span>. Tools like GitHub Copilot, ChatGPT, and Claude have democratized access to sophisticated programming assistance, enabling researchers with limited coding experience to implement complex analyses and build robust scientific software <span id="id2">[]</span>. Agentic coding tools like Claude Code and Cursor have further enabled entire coding workflows by invoking tools outside the language model.</p>
-<p>AI-assisted coding tools have demonstrated measurable productivity gains in some controlled studies, with benefits spanning development speed, code quality, and maintainability <span id="id3">[]</span>. Yet the evidence for these benefits remains contested and situation-dependent. While some enterprise studies and developer surveys report significant productivity increases and improved code quality <span id="id4">[]</span>, recent randomized controlled trials with experienced developers found that AI tools actually slowed completion times, despite developers believing they were working faster <span id="id5">[]</span>. Additional concerns about code quality have emerged, with research analyzing over 200 million lines of code showing substantial increases in copy-pasted code and decreases in refactoring as AI use has become more prominentwhen using AI assistants <span id="id6">[]</span>. These contradictory findings suggest that productivity effects are far from well-understood, and may vary based on developer experience, task complexity, and codebase characteristics. These questions become particularly acute in scientific computing, where code is not merely a means to an end but often embodies scientific reasoning, methodological decisions, and domain expertise. The validity, reproducibility, and interpretability of scientific software directly impact research integrity and the reliability of scientific findings <span id="id7">[]</span>.</p>
-<p>The implications for scientific computing are profound. Programming involves complex problem decomposition, algorithmic thinking, and domain-specific reasoning. These are cognitive skills that may atrophy with excessive AI dependence. Furthermore, scientific code often requires deep understanding of mathematical models, statistical methods, and domain-specific conventions that cannot be adequately captured by AI tools trained on general programming corpora. These challenges are compounded by the technical limitations inherent to current AI systems: their context windows constrain how much code they can process simultaneously, their stateless nature means they forget previous interactions, and their tendency toward “context rot” <span id="id8">[]</span> can cause them to lose track of important details even within their processing limits.</p>
+<p>The integration of artificial intelligence into scientific computing represents one of the most significant shifts in research methodology since the advent of personal computers. Large language models (LLMs) trained on vast corpora of code can now generate syntactically correct, functionally appropriate programs from natural language descriptions, a capability that was inconceivable just a few years ago <span id="id1">[<a class="reference internal" href="#id10" title="Mark Chen, Jerry Tworek, Heewoo Jun, Qiming Yuan, Henrique Pondé de Oliveira Pinto, Jared Kaplan, Harri Edwards, Yura Burda, Nicholas Joseph, Greg Brockman, and others. Evaluating large language models trained on code. arXiv preprint arXiv:2107.03374, 2021.">CTJ+21</a>]</span>. Tools like GitHub Copilot, ChatGPT, and Claude have democratized access to sophisticated programming assistance, enabling researchers with limited coding experience to implement complex analyses and build robust scientific software <span id="id2">[<a class="reference internal" href="#id17" title="Sida Peng, Eirini Kalliamvakou, Peter Cihon, and Mert Demirer. The impact of ai on developer productivity: evidence from github copilot. arXiv preprint arXiv:2302.06590, 2023.">PKCD23</a>]</span>. Agentic coding tools like Claude Code and Cursor have further enabled entire coding workflows by invoking tools outside the language model.</p>
+<p>AI-assisted coding tools have demonstrated measurable productivity gains in some controlled studies, with benefits spanning development speed, code quality, and maintainability <span id="id3">[<a class="reference internal" href="#id17" title="Sida Peng, Eirini Kalliamvakou, Peter Cihon, and Mert Demirer. The impact of ai on developer productivity: evidence from github copilot. arXiv preprint arXiv:2302.06590, 2023.">PKCD23</a>]</span>. Yet the evidence for these benefits remains contested and situation-dependent. While some enterprise studies and developer surveys report significant productivity increases and improved code quality <span id="id4">[<a class="reference internal" href="#id15" title="Eirini Kalliamvakou, Albert Ziegler, X Alice Li, Andrew Rice, Devon Rifkin, Shawn Simister, Ganesh Sittampalam, and Edward Aftandilian. Measuring github copilot's impact on productivity. Communications of the ACM, 67(6):74–82, 2024.">KZL+24</a>]</span>, recent randomized controlled trials with experienced developers found that AI tools actually slowed completion times, despite developers believing they were working faster <span id="id5">[<a class="reference internal" href="#id13" title="Joel Becker and Nate Rush. Measuring the impact of early-2025 ai on experienced open-source developer productivity. arXiv preprint arXiv:2507.09089, 2025.">BR25</a>]</span>. Additional concerns about code quality have emerged, with research analyzing over 200 million lines of code showing substantial increases in copy-pasted code and decreases in refactoring as AI use has become more prominentwhen using AI assistants <span id="id6">[<a class="reference internal" href="#id26" title="Bill Harding and GitClear. Ai copilot code quality: 2025 data suggests downward pressure on code quality. GitClear Research Report, 2025. URL: https://www.gitclear.com/ai_assistant_code_quality_2025_research.">HGitClear25</a>]</span>. These contradictory findings suggest that productivity effects are far from well-understood, and may vary based on developer experience, task complexity, and codebase characteristics. These questions become particularly acute in scientific computing, where code is not merely a means to an end but often embodies scientific reasoning, methodological decisions, and domain expertise. The validity, reproducibility, and interpretability of scientific software directly impact research integrity and the reliability of scientific findings <span id="id7">[<a class="reference internal" href="#id21" title="Russell A. Poldrack. Better code, better science. https://poldrack.github.io/BetterCodeBetterScience/, 2024. Accessed: 2025-09-10.">Pol24</a>]</span>.</p>
+<p>The implications for scientific computing are profound. Programming involves complex problem decomposition, algorithmic thinking, and domain-specific reasoning. These are cognitive skills that may atrophy with excessive AI dependence. Furthermore, scientific code often requires deep understanding of mathematical models, statistical methods, and domain-specific conventions that cannot be adequately captured by AI tools trained on general programming corpora. These challenges are compounded by the technical limitations inherent to current AI systems: their context windows constrain how much code they can process simultaneously, their stateless nature means they forget previous interactions, and their tendency toward “context rot” <span id="id8">[<a class="reference internal" href="#id25" title="Chroma. Context rot: understanding ai memory degradation. Technical Report, Chroma, 2024. URL: https://research.trychroma.com/context-rot.">Chroma24</a>]</span> can cause them to lose track of important details even within their processing limits.</p>
 <p>Effective use of AI coding tools requires understanding how to work within and around these constraints. Techniques like strategic prompting, test-driven development, and externally-managed context files (such as memory files and constitution files) can help maintain consistency across AI interactions. Different tools (from conversational interfaces to interactive coding assistants to autonomous coding agents) each offer distinct capabilities and limitations that must be matched to specific development tasks. (For readers unfamiliar with these concepts, we provide detailed definitions in <span class="xref std std-ref">intro:background</span>.)</p>
 <p>The rules presented in this paper emerge from our collective experience using AI-assisted coding tools, and highlight both the substantial promise and documented risks of AI-assisted coding in scientific settings. We hope they provide a framework for harnessing AI’s transformative potential while preserving the methodological rigor and domain expertise essential for high-quality scientific computing. These guidelines emphasize the importance of maintaining human agency in the coding process, establishing robust testing and validation procedures, and strategically managing the interaction between human expertise and AI assistance.
 Who is this paper for? These guidelines are intended for anyone who develops scientific software that will be used more than once, whether by themselves, their collaborators, or the broader research community. This includes both scientists who primarily use code to generate research outputs and developers who build reusable tools and packages. Our focus is on creating maintainable, reliable software rather than one-off scripts. If you write code that needs to work reliably and repeatably, be understood by others, or be built upon in the future, we believe these rules are for you.</p>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id9">
+<div role="list" class="citation-list">
+<div class="citation" id="id23" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Bec03<span class="fn-bracket">]</span></span>
+<p>Kent Beck. <em>Test-Driven Development: By Example</em>. Addison-Wesley, Boston, MA, 2003.</p>
+</div>
+<div class="citation" id="id13" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">BR25</a><span class="fn-bracket">]</span></span>
+<p>Joel Becker and Nate Rush. Measuring the impact of early-2025 ai on experienced open-source developer productivity. <em>arXiv preprint arXiv:2507.09089</em>, 2025.</p>
+</div>
+<div class="citation" id="id37" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>BMS24<span class="fn-bracket">]</span></span>
+<p>Matt Blaszczyk, Geoffrey McGovern, and Karlyn D. Stanley. Artificial intelligence impacts on copyright law. Perspective PEA3243-1, RAND Corporation, Santa Monica, CA, 2024.</p>
+</div>
+<div class="citation" id="id27" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>BMR+20<span class="fn-bracket">]</span></span>
+<p>Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, and others. Language models are few-shot learners. In <em>Advances in Neural Information Processing Systems</em>, volume 33, 1877–1901. 2020.</p>
+</div>
+<div class="citation" id="id10" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">CTJ+21</a><span class="fn-bracket">]</span></span>
+<p>Mark Chen, Jerry Tworek, Heewoo Jun, Qiming Yuan, Henrique Pondé de Oliveira Pinto, Jared Kaplan, Harri Edwards, Yura Burda, Nicholas Joseph, Greg Brockman, and others. Evaluating large language models trained on code. <em>arXiv preprint arXiv:2107.03374</em>, 2021.</p>
+</div>
+<div class="citation" id="id32" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>FKW+24<span class="fn-bracket">]</span></span>
+<p>Ahmad Faiz, Sotaro Kaneda, Rui Wang, Rita Osi, Prateek Sharma, Fan Chen, and Lei Jiang. LLMCarbon: modeling the end-to-end carbon footprint of large language models. <em>arXiv preprint arXiv:2309.14393</em>, 2024.</p>
+</div>
+<div class="citation" id="id22" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>FFFK18<span class="fn-bracket">]</span></span>
+<p>Matthias Felleisen, Robert Bruce Findler, Matthew Flatt, and Shriram Krishnamurthi. <em>How to Design Programs: An Introduction to Programming and Computing</em>. MIT Press, 2 edition, 2018. URL: <a class="reference external" href="https://htdp.org">https://htdp.org</a>.</p>
+</div>
+<div class="citation" id="id26" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">HGitClear25</a><span class="fn-bracket">]</span></span>
+<p>Bill Harding and GitClear. Ai copilot code quality: 2025 data suggests downward pressure on code quality. GitClear Research Report, 2025. URL: <a class="reference external" href="https://www.gitclear.com/ai_assistant_code_quality_2025_research">https://www.gitclear.com/ai_assistant_code_quality_2025_research</a>.</p>
+</div>
+<div class="citation" id="id15" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">KZL+24</a><span class="fn-bracket">]</span></span>
+<p>Eirini Kalliamvakou, Albert Ziegler, X Alice Li, Andrew Rice, Devon Rifkin, Shawn Simister, Ganesh Sittampalam, and Edward Aftandilian. Measuring github copilot's impact on productivity. <em>Communications of the ACM</em>, 67(6):74–82, 2024.</p>
+</div>
+<div class="citation" id="id38" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KMOrucc24<span class="fn-bracket">]</span></span>
+<p>Martin Kretschmer, Thomas Margoni, and Pinar Oruç. Copyright law and the lifecycle of machine learning models. <em>IIC - International Review of Intellectual Property and Competition Law</em>, 55:110–138, 2024. <a class="reference external" href="https://doi.org/10.1007/s40319-023-01419-3">doi:10.1007/s40319-023-01419-3</a>.</p>
+</div>
+<div class="citation" id="id19" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>LMS12<span class="fn-bracket">]</span></span>
+<p>Randall J LeVeque, Ian M Mitchell, and Victoria Stodden. Reproducible research for scientific computing: tools and strategies for changing the culture. <em>Computing in Science &amp; Engineering</em>, 14(4):13–17, 2012. <a class="reference external" href="https://doi.org/10.1109/MCSE.2012.38">doi:10.1109/MCSE.2012.38</a>.</p>
+</div>
+<div class="citation" id="id33" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>LAB+24<span class="fn-bracket">]</span></span>
+<p>Alexandra Sasha Luccioni, Seyi Akiwowo, Federico Bianchi, Manuja Peiris, and Sasha Kumar. Reconciling the contrasting narratives on the environmental impact of large language models. <em>Scientific Reports</em>, 14(1):26310, 2024. <a class="reference external" href="https://doi.org/10.1038/s41598-024-76682-6">doi:10.1038/s41598-024-76682-6</a>.</p>
+</div>
+<div class="citation" id="id35" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>NP22<span class="fn-bracket">]</span></span>
+<p>Jan Bernd Nordemann and Jonathan Pukas. Copyright exceptions for AI training data—will there be an international level playing field? <em>Journal of Intellectual Property Law &amp; Practice</em>, 17(12):973–974, 2022. <a class="reference external" href="https://doi.org/10.1093/jiplp/jpac106">doi:10.1093/jiplp/jpac106</a>.</p>
+</div>
+<div class="citation" id="id20" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Ous21<span class="fn-bracket">]</span></span>
+<p>John Ousterhout. <em>A Philosophy of Software Design</em>. Yaknyam Press, 2 edition, 2021.</p>
+</div>
+<div class="citation" id="id17" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PKCD23<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
+<p>Sida Peng, Eirini Kalliamvakou, Peter Cihon, and Mert Demirer. The impact of ai on developer productivity: evidence from github copilot. <em>arXiv preprint arXiv:2302.06590</em>, 2023.</p>
+</div>
+<div class="citation" id="id21" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">Pol24</a><span class="fn-bracket">]</span></span>
+<p>Russell A. Poldrack. Better code, better science. <a class="reference external" href="https://poldrack.github.io/BetterCodeBetterScience/">https://poldrack.github.io/BetterCodeBetterScience/</a>, 2024. Accessed: 2025-09-10.</p>
+</div>
+<div class="citation" id="id36" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Sag25<span class="fn-bracket">]</span></span>
+<p>Matthew Sag. Copyright and AI training data—transparency to the rescue? <em>Journal of Intellectual Property Law &amp; Practice</em>, 20(3):182–191, 2025. <a class="reference external" href="https://doi.org/10.1093/jiplp/jpae010">doi:10.1093/jiplp/jpae010</a>.</p>
+</div>
+<div class="citation" id="id24" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>WM21<span class="fn-bracket">]</span></span>
+<p>Kristina Wiebels and David Moreau. Leveraging containers for reproducible psychological research. <em>Advances in Methods and Practices in Psychological Science</em>, 2021. <a class="reference external" href="https://doi.org/10.1177/25152459211017853">doi:10.1177/25152459211017853</a>.</p>
+</div>
+<div class="citation" id="id25" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">Chroma24</a><span class="fn-bracket">]</span></span>
+<p>Chroma. Context rot: understanding ai memory degradation. Technical Report, Chroma, 2024. URL: <a class="reference external" href="https://research.trychroma.com/context-rot">https://research.trychroma.com/context-rot</a>.</p>
+</div>
+<div class="citation" id="id31" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>GoogleDeepMind24<span class="fn-bracket">]</span></span>
+<p>Google DeepMind. Gemini 2.0: our most capable ai model yet. Google Blog, 2024. URL: <a class="reference external" href="https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/">https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/</a>.</p>
+</div>
+<div class="citation" id="id28" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>OpenAI23<span class="fn-bracket">]</span></span>
+<p>OpenAI. GPT-4 technical report. Technical Report, OpenAI, 2023. arXiv:2303.08774.</p>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -491,6 +593,21 @@ Who is this paper for? These guidelines are intended for anyone who develops sci
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
