@@ -1,4 +1,3 @@
-(rules:rule_9)=
 # Rule 9: Use AI to Refine and Validate Tests
 
 AI is exceptionally good at identifying edge cases you might miss and suggesting comprehensive test scenarios. Feed it your function and ask it to generate tests for boundary conditions, type validation, error handling, and numerical stability. Ask it what sorts of problems your code might experience issues with, within your specified API bounds, and why those might (or might not) be relevant to address. AI can help you move beyond happy-path testing to robust validation that includes malformed inputs, extreme values, and race conditions. Use AI to review your existing tests and identify gaps in coverage or scenarios you haven't considered.

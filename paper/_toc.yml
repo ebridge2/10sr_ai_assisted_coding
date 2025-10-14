@@ -18,14 +18,14 @@ parts:
           sections:
             - file: rules/context/rule4
             - file: rules/context/rule5
-            - file: rules/context/rule6
         - file: rules/testing/testing
           sections:
+            - file: rules/testing/rule6
             - file: rules/testing/rule7
-            - file: rules/testing/rule8
-            - file: rules/testing/rule9
         - file: rules/quality/quality
           sections:
+            - file: rules/quality/rule8
+            - file: rules/quality/rule9
             - file: rules/quality/rule10
     - caption: Conclusion
       chapters:

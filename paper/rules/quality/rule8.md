@@ -1,5 +1,5 @@
-(rules:rule_6)=
-# Rule 6: Monitor Progress and Know When to Restart
+(rules:rule_8)=
+# Rule 8: Monitor Progress and Know When to Restart
 
 It's tempting to just walk away and let the model work for a long time, but often the model will end up going down the wrong path, wasting time and tokens. You need to actively monitor what the AI is doing: Is it changing things you didn't want changed? Is it ignoring the changes you actually requested? Is it introducing new problems while trying to fix old ones? When you notice the AI heading in the wrong direction, stop it immediately rather than letting it continue down an unproductive path.
 

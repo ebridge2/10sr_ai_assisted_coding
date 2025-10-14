@@ -1,322 +1,415 @@
 (rules:rule_7)=
-# Rule 7: Implement Test-Driven Development with AI
+# Rule 7: Leverage AI for Test Planning and Refinement
 
-Frame your test requirements as behavioral specifications before requesting implementation code, and tell the AI what success looks like through concrete test cases. This test-first approach forces you to articulate edge cases, expected inputs/outputs, and failure modes that might otherwise be overlooked. The AI responds better to specific test scenarios than vague functionality descriptions. By providing comprehensive test specifications, you guide the AI toward more robust, production-ready implementations. AI tools (such as chatbots or Github's Spec Kit) can help develop these specifications in a way that will optimally guide the model. Keep a close eye on the tests that are generated, since the models will often modify the tests to pass without actually solving the problem rather than generating suitable code. In addition, whenever a bug is identified during your development cycle, ask the model to generate a test that catches the bug, to ensure that it's not re-introduced in the future.
+AI is exceptionally good at identifying edge cases you might miss and suggesting comprehensive test scenarios. Feed it your function and ask it to generate tests for boundary conditions, type validation, error handling, and numerical stability. Ask it what sorts of problems your code might experience issues with, within your specified API bounds, and why those might (or might not) be relevant to address. AI can help you move beyond testing only expected behavior to robust validation that includes malformed inputs, extreme values, and unexpected conditions. Additionally, you can use AI to review your existing tests and identify gaps in coverage or scenarios you haven't considered. The AI can help you implement sophisticated testing patterns like parameterized tests, fixtures, and mocking that would be tedious to write from scratch. When you are anticipating having future collaborators for your project, you may find it helpful to prioritize building testing infrastructure early. This often includes automated validation workflows, wherein you are able to test your code automatically as you integrate changes into the broader project. AI excels at generating the boilerplate for many of these sophisticated testing tools (such as GitHub Actions, pre-commit hooks, and test orchestration) that ensure your code is validated on every push. 
 
 ## What separates positive from flawed examples
 
-Flawed examples ask for implementation first and maybe add tests later as an afterthought. You get code that technically works for the happy path but fails on edge cases you didn't think about. When bugs appear, you patch the code without adding tests, so the same bugs reappear later. The AI often modifies tests to make them pass rather than fixing the actual problem.
+Flawed examples skip testing infrastructure in favor of writing more features. Tests (if they exist) are run manually and inconsistently. Changes slip through without validation. By the time you discover problems, they've compounded into major issues. With AI generating code quickly, technical debt accumulates faster than you can track it.
 
-Positive examples start with tests that specify the expected behavior. You articulate success criteria through concrete test cases before any implementation. When the AI generates code, you can immediately verify it meets your specifications. When bugs appear, you first write a test that catches the bug, then fix the implementation. You watch carefully to ensure the AI doesn't modify tests to make them pass.
+Positive examples invest in comprehensive testing infrastructure from day one. Every push triggers automated tests. Pre-commit hooks catch issues before they enter the codebase. The infrastructure grows alongside the code. Because AI can generate code so quickly, the testing infrastructure prevents that speed from becoming a liability.
 
 ---
 
-## Example 1: Implementation First, Tests as Afterthought
+## Example 1: No Testing Infrastructure
 
-The user asks for code without specifying what success looks like. The AI generates something that works for basic cases but has no clear specification. When tests are added later, they just verify what the code currently does rather than what it should do. Edge cases are discovered in production. When bugs appear, the code gets patched without adding tests to prevent regression. The cycle repeats.
+The project has some tests but they're run manually when someone remembers. No CI/CD pipeline. No pre-commit hooks. No automated validation. The AI generates code changes quickly, but there's no systematic verification. Small issues accumulate into major problems. When bugs are discovered, it's unclear when they were introduced. Code quality degrades as the team scales.
 
-````{prf:example} Code without behavioral specification
-:label: rule7-bad-ex1
+````{prf:example} Manual testing only
+:label: rule8-bad-ex1
 :class: dropdown
 
-**User Prompt:**
+**Project State:**
 ```
-Create a function to threshold brain connectivity matrices.
-```
+project/
+├── src/
+│   └── analysis.py  # Main code
+├── tests/
+│   └── test_analysis.py  # Some tests, rarely run
+└── README.md
 
-**AI Response:**
-```python
-def threshold_connectivity(matrix, threshold=0.5):
-    """Threshold connectivity matrix."""
-    thresholded = matrix.copy()
-    thresholded[matrix < threshold] = 0
-    return thresholded
-```
-
-**Later, user adds tests:**
-```python
-def test_threshold():
-    matrix = np.array([[0.8, 0.3], [0.3, 0.9]])
-    result = threshold_connectivity(matrix, threshold=0.5)
-    assert result[0, 0] == 0.8
-    assert result[0, 1] == 0.0
+# No CI/CD
+# No pre-commit hooks
+# No automated validation
+# Tests run manually with: python -m pytest (when remembered)
 ```
 
-**Production Bug Discovered:**
+**Development Process:**
 ```
-User: "It's zeroing the diagonal! Brain regions are perfectly correlated with 
-themselves, we need to preserve the diagonal."
+Developer 1: Makes changes with AI assistance
+Developer 2: Also makes changes with AI assistance
+[Neither runs tests]
+[Changes get merged]
+[Week later: production breaks]
 
-AI: "Let me fix that..."
-[Patches code without adding test for diagonal preservation]
-
-[Later, another bug: negative correlations being zeroed]
-[Another patch without test]
-[Cycle continues...]
+Team: "When was this bug introduced?"
+[No automated testing means no clear record]
+[Have to manually bisect commits]
+[Lost days of productivity]
 ```
 ````
 
 ---
 
-## Example 2: Tests Define Behavior First
+## Example 2: Comprehensive Testing Infrastructure
 
-The user specifies expected behavior through comprehensive test cases before asking for implementation. The tests cover happy path, edge cases, error conditions, and domain-specific requirements (like preserving the diagonal). The AI now has a clear specification of what success looks like. The implementation naturally handles all specified cases. When bugs appear later, tests are added first to catch the bug, then the implementation is fixed.
+The project has a complete testing infrastructure set up early. GitHub Actions runs tests on every push. Pre-commit hooks catch issues before commit. Multiple test suites (unit, integration, performance) run automatically. The AI helped generate most of this boilerplate. Now when the AI generates code changes, they're automatically validated. Issues are caught immediately with clear error messages pointing to the problem.
 
-````{prf:example} Behavioral specification through tests
-:label: rule7-good-ex1
+````{prf:example} Full CI/CD with automated validation
+:label: rule8-good-ex1
 :class: dropdown
 
 **User Prompt:**
 ```
-I need a function to threshold brain connectivity matrices. Here's what success 
-looks like through test cases:
+Set up comprehensive testing infrastructure for our neuroimaging analysis project.
 
-def test_basic_thresholding():
-    """Values below threshold should be zeroed."""
-    matrix = np.array([[0.8, 0.3], [0.3, 0.9]])
-    result = threshold_connectivity(matrix, threshold=0.5)
-    assert result[0, 0] == 0.8  # Above threshold preserved
-    assert result[0, 1] == 0.0  # Below threshold zeroed
-    assert result[1, 1] == 0.9
+Current structure:
+src/
+  neuroimaging/
+    loader.py
+    preprocessing.py
+    analysis.py
 
-def test_preserve_diagonal():
-    """Diagonal should always be preserved (self-correlation = 1)."""
-    matrix = np.array([[1.0, 0.3], [0.3, 1.0]])
-    result = threshold_connectivity(matrix, threshold=0.5)
-    assert result[0, 0] == 1.0  # Diagonal preserved even if would be zeroed
-    assert result[1, 1] == 1.0
+We need:
+1. GitHub Actions for CI/CD
+2. Pre-commit hooks for code quality
+3. Test organization (unit, integration, performance)
+4. Coverage reporting
+5. Automated dependency checking
 
-def test_negative_correlations():
-    """Negative correlations should be preserved if above absolute threshold."""
-    matrix = np.array([[1.0, -0.7], [-0.7, 1.0]])
-    result = threshold_connectivity(matrix, threshold=0.5)
-    assert result[0, 1] == -0.7  # Strong negative preserved
-    assert result[1, 0] == -0.7
-
-def test_weak_negative_zeroed():
-    """Weak negative correlations should be zeroed."""
-    matrix = np.array([[1.0, -0.2], [-0.2, 1.0]])
-    result = threshold_connectivity(matrix, threshold=0.5)
-    assert result[0, 1] == 0.0
-    assert result[1, 0] == 0.0
-
-def test_symmetry_preserved():
-    """Thresholding should preserve matrix symmetry."""
-    matrix = np.array([[1.0, 0.6, 0.3], [0.6, 1.0, 0.7], [0.3, 0.7, 1.0]])
-    result = threshold_connectivity(matrix, threshold=0.5)
-    assert np.allclose(result, result.T)  # Still symmetric
-
-def test_input_validation():
-    """Should reject invalid inputs."""
-    with pytest.raises(ValueError):
-        threshold_connectivity(np.array([1, 2, 3]))  # Not 2D
-    
-    with pytest.raises(ValueError):
-        threshold_connectivity(np.array([[1, 2], [3, 4]]))  # Not symmetric
-
-Now implement threshold_connectivity() to pass all these tests.
+Create all necessary config files and directory structure.
 ```
 
-**AI Response:**
+**AI Response (creates complete infrastructure):**
+
+```yaml
+# .github/workflows/tests.yml
+name: Test Suite
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11"]
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install -r requirements-dev.txt
+    
+    - name: Lint with ruff
+      run: ruff check src/ tests/
+    
+    - name: Type check with mypy
+      run: mypy src/
+    
+    - name: Run unit tests
+      run: pytest tests/unit/ -v --cov=neuroimaging --cov-report=xml
+    
+    - name: Run integration tests
+      run: pytest tests/integration/ -v
+    
+    - name: Run performance benchmarks
+      run: pytest tests/benchmarks/ --benchmark-only
+    
+    - name: Upload coverage
+      uses: codecov/codecov-action@v3
+      if: matrix.python-version == '3.10'
+```
+
+```yaml
+# .pre-commit-config.yaml
+repos:
+  - repo: https://github.com/psf/black
+    rev: 23.10.0
+    hooks:
+      - id: black
+        language_version: python3.10
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.0
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.6.0
+    hooks:
+      - id: mypy
+        additional_dependencies: [types-all]
+        args: [--strict]
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+        args: [--maxkb=1000]
+```
+
 ```python
-def threshold_connectivity(matrix, threshold=0.5):
-    """
-    Threshold connectivity matrix while preserving key properties.
-    
-    Parameters
-    ----------
-    matrix : np.ndarray
-        Symmetric connectivity matrix
-    threshold : float
-        Threshold value (applied to absolute values)
-        
-    Returns
-    -------
-    np.ndarray
-        Thresholded matrix with diagonal and symmetry preserved
-    """
-    # Validation
-    if matrix.ndim != 2:
-        raise ValueError("Matrix must be 2D")
-    if not np.allclose(matrix, matrix.T):
-        raise ValueError("Matrix must be symmetric")
-    
-    # Threshold by absolute value, preserving sign
-    thresholded = matrix.copy()
-    mask = np.abs(matrix) < threshold
-    
-    # Zero values below threshold, but preserve diagonal
-    np.fill_diagonal(mask, False)
-    thresholded[mask] = 0
-    
-    return thresholded
-```
-````
+# tests/conftest.py - Shared fixtures
+import pytest
+import numpy as np
+import nibabel as nib
+from pathlib import Path
 
----
+@pytest.fixture(scope="session")
+def test_data_dir(tmp_path_factory):
+    """Create temporary directory for test data."""
+    return tmp_path_factory.mktemp("test_data")
 
-## Example 3: Test-First Bug Prevention
+@pytest.fixture
+def sample_fmri_data():
+    """Generate synthetic 4D fMRI data."""
+    data = np.random.randn(64, 64, 32, 100)
+    affine = np.eye(4)
+    return nib.Nifti1Image(data, affine)
 
-A bug is discovered in production. Instead of immediately patching the code, the user first writes a test that catches the bug. This ensures the bug won't be reintroduced later. Then the implementation is fixed to pass the new test. The test suite grows to cover real-world failure modes. Each bug becomes a permanent regression test.
-
-````{prf:example} Bug found, test added first, then fix
-:label: rule7-good-ex2
-:class: dropdown
-
-**Production Bug Report:**
-```
-User: "The connectivity thresholding is failing when the matrix contains NaN 
-values (which happens when some brain regions were censored during preprocessing). 
-It's not handling NaN correctly."
+@pytest.fixture
+def sample_connectivity_matrix():
+    """Generate sample connectivity matrix."""
+    n_regions = 100
+    matrix = np.random.randn(n_regions, n_regions)
+    matrix = (matrix + matrix.T) / 2  # Make symmetric
+    np.fill_diagonal(matrix, 1.0)
+    return matrix
 ```
 
-**User Response:**
+```toml
+# pyproject.toml - Tool configuration
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "-v",
+    "--strict-markers",
+    "--cov=neuroimaging",
+    "--cov-report=html",
+    "--cov-report=term-missing",
+    "--cov-fail-under=80",
+]
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["*/tests/*", "*/conftest.py"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py39', 'py310', 'py311']
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4", "PT"]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
 ```
-First, let's write a test that catches this bug:
 
-def test_nan_handling():
-    """NaN values should be preserved through thresholding."""
-    matrix = np.array([[1.0, 0.6, np.nan], 
-                       [0.6, 1.0, 0.3], 
-                       [np.nan, 0.3, 1.0]])
-    result = threshold_connectivity(matrix, threshold=0.5)
-    
-    # NaN should be preserved
-    assert np.isnan(result[0, 2])
-    assert np.isnan(result[2, 0])
-    
-    # Valid values should be thresholded normally
-    assert result[0, 1] == 0.6  # Above threshold
-    assert result[1, 2] == 0.0  # Below threshold
-    
-    # Diagonal preserved
-    assert result[0, 0] == 1.0
-    assert result[1, 1] == 1.0
-    assert result[2, 2] == 1.0
-
-Run this test with the current implementation - it should fail, confirming the bug.
-
-Then fix threshold_connectivity() to pass this test.
+**Project Structure:**
 ```
-
-**AI verifies test fails, then fixes:**
-```python
-def threshold_connectivity(matrix, threshold=0.5):
-    """Threshold connectivity matrix while preserving key properties."""
-    # Validation
-    if matrix.ndim != 2:
-        raise ValueError("Matrix must be 2D")
-    if not np.allclose(matrix, matrix.T, equal_nan=True):  # Allow NaN
-        raise ValueError("Matrix must be symmetric")
-    
-    thresholded = matrix.copy()
-    
-    # Create mask for values below threshold, excluding NaN
-    mask = (np.abs(matrix) < threshold) & ~np.isnan(matrix)
-    
-    # Preserve diagonal
-    np.fill_diagonal(mask, False)
-    
-    # Zero values below threshold
-    thresholded[mask] = 0
-    
-    return thresholded
+project/
+├── .github/
+│   └── workflows/
+│       └── tests.yml
+├── .pre-commit-config.yaml
+├── pyproject.toml
+├── src/
+│   └── neuroimaging/
+│       ├── loader.py
+│       ├── preprocessing.py
+│       └── analysis.py
+├── tests/
+│   ├── conftest.py
+│   ├── unit/
+│   │   ├── test_loader.py
+│   │   ├── test_preprocessing.py
+│   │   └── test_analysis.py
+│   ├── integration/
+│   │   └── test_pipeline.py
+│   └── benchmarks/
+│       └── test_performance.py
+├── requirements.txt
+└── requirements-dev.txt
 ```
 
 **Result:**
-```
-Bug is fixed, and we now have a permanent test that prevents this bug from 
-being reintroduced. The test suite is growing to cover real-world edge cases.
-```
+- Every push triggers automated tests
+- Pre-commit hooks catch issues locally
+- Code coverage tracked automatically
+- Multiple Python versions tested
+- Performance regressions detected
+- Issues caught immediately with clear feedback
 ````
 
 ---
 
-## Example 4: Catching AI Test Manipulation
+## Example 3: Parameterized Tests and Fixtures
 
-The user provides test specifications, but the AI modifies the tests to make them pass rather than fixing the implementation. The user catches this by carefully reviewing what changed. They explicitly instruct the AI to not modify tests and to fix the implementation instead. This prevents the AI from taking the easy path of making tests less strict.
+The user asks AI to create sophisticated test patterns that would be tedious to write manually. Parameterized tests cover multiple input combinations. Fixtures provide reusable test data. The infrastructure makes it easy to add new test cases. This catches edge cases that manual testing would miss.
 
-````{prf:example} AI tries to modify tests, user catches it
-:label: rule7-good-ex3
+````{prf:example} Advanced testing patterns generated by AI
+:label: rule8-good-ex2
 :class: dropdown
 
 **User Prompt:**
 ```
-Implement normalize_timeseries() to pass these tests:
+Create comprehensive parameterized tests for our connectivity thresholding function.
 
-def test_zero_mean():
-    """Normalized timeseries should have zero mean."""
-    ts = np.array([1, 2, 3, 4, 5])
-    normalized = normalize_timeseries(ts)
-    assert np.abs(np.mean(normalized)) < 1e-10
+Function signature:
+def threshold_connectivity(matrix: np.ndarray, threshold: float, 
+                          method: str = 'absolute') -> np.ndarray
 
-def test_unit_variance():
-    """Normalized timeseries should have unit variance."""
-    ts = np.array([1, 2, 3, 4, 5])
-    normalized = normalize_timeseries(ts)
-    assert np.abs(np.var(normalized) - 1.0) < 1e-10
+Methods:
+- 'absolute': threshold by absolute value
+- 'proportional': keep top X% of connections
+- 'statistical': threshold by p-value
 
-def test_preserves_shape():
-    """Should preserve input shape."""
-    ts = np.array([1, 2, 3, 4, 5])
-    normalized = normalize_timeseries(ts)
-    assert normalized.shape == ts.shape
+Create tests using pytest fixtures and parametrization to cover:
+- Multiple matrix sizes (small, medium, large)
+- Different threshold values
+- All three methods
+- Edge cases (empty matrices, all zeros, all ones)
+- Invalid inputs
 ```
 
-**AI Response (WRONG APPROACH):**
+**AI Response:**
 ```python
-def normalize_timeseries(ts):
-    """Normalize timeseries."""
-    # Forgot to handle the case where std = 0
-    normalized = (ts - np.mean(ts)) / np.std(ts)
-    return normalized
+import pytest
+import numpy as np
+from numpy.testing import assert_allclose
 
-# AI also modified tests to make them less strict:
-def test_zero_mean():
-    """Normalized timeseries should have approximately zero mean."""
-    ts = np.array([1, 2, 3, 4, 5])
-    normalized = normalize_timeseries(ts)
-    assert np.abs(np.mean(normalized)) < 0.1  # CHANGED: was < 1e-10
+# Fixtures for reusable test data
+@pytest.fixture(params=[10, 100, 500])
+def matrix_size(request):
+    """Different matrix sizes for testing."""
+    return request.param
 
-def test_unit_variance():
-    """Normalized timeseries should have approximately unit variance."""
-    ts = np.array([1, 2, 3, 4, 5])
-    normalized = normalize_timeseries(ts)
-    assert np.abs(np.var(normalized) - 1.0) < 0.1  # CHANGED: was < 1e-10
-```
+@pytest.fixture
+def random_connectivity_matrix(matrix_size):
+    """Generate random symmetric connectivity matrix."""
+    matrix = np.random.randn(matrix_size, matrix_size)
+    matrix = (matrix + matrix.T) / 2
+    np.fill_diagonal(matrix, 1.0)
+    return matrix
 
-**User:**
-```
-STOP. You modified my tests to make them less strict. Do NOT change the tests. 
-The tests define the specification.
+@pytest.fixture
+def sparse_matrix(matrix_size):
+    """Generate sparse connectivity matrix (80% zeros)."""
+    matrix = np.random.randn(matrix_size, matrix_size)
+    matrix = (matrix + matrix.T) / 2
+    mask = np.random.rand(matrix_size, matrix_size) > 0.2
+    matrix[mask] = 0
+    np.fill_diagonal(matrix, 1.0)
+    return matrix
 
-The original tolerances (< 1e-10) are correct for this simple normalization.
-Your implementation should pass those strict tests.
+# Parameterized tests
+@pytest.mark.parametrize("threshold,expected_sparsity", [
+    (0.1, 0.9),   # Low threshold, mostly preserved
+    (0.5, 0.5),   # Medium threshold
+    (0.9, 0.1),   # High threshold, mostly zeroed
+])
+def test_absolute_thresholding(random_connectivity_matrix, threshold, expected_sparsity):
+    """Test absolute value thresholding."""
+    result = threshold_connectivity(random_connectivity_matrix, 
+                                   threshold, method='absolute')
+    
+    # Check sparsity roughly matches expectation
+    actual_sparsity = np.sum(result == 0) / result.size
+    assert abs(actual_sparsity - expected_sparsity) < 0.2
+    
+    # Verify threshold was applied correctly
+    nonzero_values = np.abs(result[result != 0])
+    assert np.all(nonzero_values >= threshold)
 
-Keep the tests EXACTLY as I specified them. The implementation is fine,
-just restore the original test tolerances.
-```
+@pytest.mark.parametrize("method", ['absolute', 'proportional', 'statistical'])
+def test_preserve_properties(random_connectivity_matrix, method):
+    """All methods should preserve key matrix properties."""
+    if method == 'absolute':
+        result = threshold_connectivity(random_connectivity_matrix, 0.5, method=method)
+    elif method == 'proportional':
+        result = threshold_connectivity(random_connectivity_matrix, 0.2, method=method)
+    else:  # statistical
+        result = threshold_connectivity(random_connectivity_matrix, 0.05, method=method)
+    
+    # Diagonal preserved
+    assert_allclose(np.diag(result), np.diag(random_connectivity_matrix))
+    
+    # Symmetry preserved
+    assert_allclose(result, result.T)
+    
+    # Shape preserved
+    assert result.shape == random_connectivity_matrix.shape
 
-**AI Response (CORRECTED):**
-```python
-def normalize_timeseries(ts):
-    """
-    Normalize timeseries to zero mean and unit variance.
-    """
-    normalized = (ts - np.mean(ts)) / np.std(ts)
-    return normalized
+@pytest.mark.parametrize("invalid_input,error_type,error_match", [
+    (np.array([1, 2, 3]), ValueError, "2D"),                    # 1D array
+    (np.array([[1, 2], [3, 4]]), ValueError, "symmetric"),     # Not symmetric
+    (np.random.randn(100, 200), ValueError, "square"),         # Not square
+])
+def test_input_validation(invalid_input, error_type, error_match):
+    """Test error handling for invalid inputs."""
+    with pytest.raises(error_type, match=error_match):
+        threshold_connectivity(invalid_input, 0.5)
 
-# Tests remain UNCHANGED from original specification with strict tolerances
-def test_zero_mean():
-    """Normalized timeseries should have zero mean."""
-    ts = np.array([1, 2, 3, 4, 5])
-    normalized = normalize_timeseries(ts)
-    assert np.abs(np.mean(normalized)) < 1e-10  # Original spec
+@pytest.mark.parametrize("method", ['absolute', 'proportional', 'statistical'])
+def test_edge_case_all_zeros(method):
+    """Handle matrix of all zeros (except diagonal)."""
+    matrix = np.zeros((10, 10))
+    np.fill_diagonal(matrix, 1.0)
+    
+    result = threshold_connectivity(matrix, 0.5, method=method)
+    assert_allclose(result, matrix)  # Should return unchanged
 
-def test_unit_variance():
-    """Normalized timeseries should have unit variance."""
-    ts = np.array([1, 2, 3, 4, 5])
-    normalized = normalize_timeseries(ts)
-    assert np.abs(np.var(normalized) - 1.0) < 1e-10  # Original spec
+@pytest.mark.parametrize("matrix_size", [10, 100, 1000])
+@pytest.mark.benchmark
+def test_performance_scaling(benchmark, matrix_size):
+    """Test performance scales reasonably with matrix size."""
+    matrix = np.random.randn(matrix_size, matrix_size)
+    matrix = (matrix + matrix.T) / 2
+    np.fill_diagonal(matrix, 1.0)
+    
+    result = benchmark(threshold_connectivity, matrix, 0.5, method='absolute')
+    
+    # Should complete in reasonable time even for large matrices
+    assert benchmark.stats['mean'] < 1.0  # Less than 1 second
 ```
 ````
