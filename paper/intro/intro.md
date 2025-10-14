@@ -14,4 +14,5 @@ Who is this paper for? These guidelines are intended for anyone who develops sci
 ## References
 
 ```{bibliography}
+:filter: docname in docnames
 ```

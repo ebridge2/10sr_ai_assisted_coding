@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: Ten Simple Rules for AI-assisted Coding in Open Science
-author: Eric W. Bridgeford, et al., Russell Poldrack
+author: Eric W. Bridgeford, Iain Campbell, Zijiao Chen, Harrison Ritz, Joachim Vandekerckhove, Russell A. Poldrack
 copyright: "2025"
 logo: logo.png
 parse:
@@ -29,6 +29,7 @@ sphinx:
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     bibtex_bibfiles:
       - references.bib
+    bibtex_reference_style: label
   extra_extensions:
     - sphinx_proof
     - sphinx_togglebutton
