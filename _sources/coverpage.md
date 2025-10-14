@@ -1,3 +1,7 @@
-# 10 Simple Rules for AI-assisted Coding in Open Science
+# Ten Simple Rules for AI-assisted Coding in Science
 
-Eric W. Bridgeford, others, Russell Poldrack
+Eric W. Bridgeford, Iain Campbell, Zijiao Chen, Harrison Ritz, Joachim Vandekerckhove, Russell Poldrack
+
+## Abstract
+
+While AI coding tools have demonstrated potential to accelerate development, their use in scientific computing raises critical questions about code quality, domain appropriateness, and scientific validity. These challenges are compounded by AI systems' inherent limitations: constrained context windows, stateless interactions that lose track of previous exchanges, and pattern-matching behavior that cannot substitute for domain reasoning. This paper provides ten practical rules for AI-assisted coding that balance leveraging capabilities of AI with maintaining scientific and methodological rigor. We address how AI can be leveraged strategically throughout the development cycle with four key themes: problem preparation and understanding, managing context and interaction, testing and validation, and code quality assurance and iterative improvement. Our focal principles emphasize maintaining human agency in coding decisions, establishing robust validation procedures, and preserving the domain expertise essential for methodologically sound research. Together, we help researchers harness AI's transformative potential for faster development while ensuring their code meets the standards of reliability, reproducibility, and scientific appropriateness that research integrity demands.
