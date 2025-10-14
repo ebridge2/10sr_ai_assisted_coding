@@ -10,3 +10,8 @@ Effective use of AI coding tools requires understanding how to work within and a
 
 The rules presented in this paper emerge from our collective experience using AI-assisted coding tools, and highlight both the substantial promise and documented risks of AI-assisted coding in scientific settings. We hope they provide a framework for harnessing AI's transformative potential while preserving the methodological rigor and domain expertise essential for high-quality scientific computing. These guidelines emphasize the importance of maintaining human agency in the coding process, establishing robust testing and validation procedures, and strategically managing the interaction between human expertise and AI assistance.
 Who is this paper for? These guidelines are intended for anyone who develops scientific software that will be used more than once, whether by themselves, their collaborators, or the broader research community. This includes both scientists who primarily use code to generate research outputs and developers who build reusable tools and packages. Our focus is on creating maintainable, reliable software rather than one-off scripts. If you write code that needs to work reliably and repeatably, be understood by others, or be built upon in the future, we believe these rules are for you.
+
+## References
+
+```{bibliography}
+```

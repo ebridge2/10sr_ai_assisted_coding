@@ -33,4 +33,5 @@ An initial framework of 20 rules was developed by EWB and RAP (10 rules each). T
 
 ## References
 
-{bibliography}
+```{bibliography}
+```
