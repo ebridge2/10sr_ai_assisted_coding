@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -U pip
-        pip install jupyter-book sphinx-proof sphinx-togglebutton
+        pip install jupyter-book sphinx-proof sphinx-togglebutton sphinxcontrib-bibtex
 
     # Build the book
     - name: Build the book
