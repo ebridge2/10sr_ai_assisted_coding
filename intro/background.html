@@ -189,24 +189,24 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rules/prep/prep.html">1. Preparation &amp; Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../rules/prep/rule1.html">1.1. Rule 1: Gather Domain Knowledge Before Implementation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rules/prep/rule2.html">1.2. Rule 2: Distinguish Programming from Coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules/prep/rule2.html">1.2. Rule 2: Distinguish Problem Framing from Coding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rules/prep/rule3.html">1.3. Rule 3: Choose Appropriate AI Interaction Models</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rules/context/context.html">2. Context Engineering &amp; Interaction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../rules/context/rule4.html">2.1. Rule 4: Start by Thinking Through a Potential Solution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rules/context/rule5.html">2.2. Rule 5: Manage Context Strategically</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rules/context/rule6.html">2.3. Rule 6: Monitor Progress and Know When to Restart</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rules/testing/testing.html">3. Testing &amp; Validation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../rules/testing/rule7.html">3.1. Rule 7: Implement Test-Driven Development with AI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rules/testing/rule8.html">3.2. Rule 8: Build Comprehensive Testing Infrastructure Early</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rules/testing/rule9.html">3.3. Rule 9: Use AI to Refine and Validate Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules/testing/rule6.html">3.1. Rule 6: Implement Test-Driven Development with AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules/testing/rule7.html">3.2. Rule 7: Leverage AI for Test Planning and Refinement</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rules/quality/quality.html">4. Code Quality</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../rules/quality/rule10.html">4.1. Rule 10: Critically Review Generated Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules/quality/rule8.html">4.1. Rule 8: Monitor Progress and Know When to Restart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules/quality/rule9.html">4.2. Rule 10: Critically Review Generated Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules/quality/rule10.html">4.3. Rule 10: Refine Code Incrementally with Focused Objectives</a></li>
 </ul>
 </details></li>
 </ul>
@@ -438,23 +438,24 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="background-concepts-and-vocabulary">
-<h1>Background concepts and vocabulary<a class="headerlink" href="#background-concepts-and-vocabulary" title="Link to this heading">#</a></h1>
-<p>To navigate these challenges effectively, researchers must understand several key concepts that underpin AI-assisted coding:</p>
+<span id="intro-background"></span><h1>Background concepts and vocabulary<a class="headerlink" href="#background-concepts-and-vocabulary" title="Link to this heading">#</a></h1>
+<p>To navigate the challenges of AI-assisted coding effectively, researchers should be familiar with several key concepts that underpin these tools:</p>
 <ul class="simple">
-<li><p><strong>Large Language Models (LLMs)</strong>  are neural networks trained on vast text corpora that generate text by predicting sequences of tokens, basic units of text processing that typically represent words, parts of words, or individual characters \cite{vaswani2017attention}. For instance, the word <code class="docutils literal notranslate"><span class="pre">cat''</span> <span class="pre">might</span> <span class="pre">be</span> <span class="pre">tokenized</span> <span class="pre">as</span> </code>ca’’-``t’’.</p></li>
-<li><p><strong>Context windows</strong> define the maximum amount of text an LLM can consider when generating responses. State-of-the-art models typically handle hundreds of thousands tokens, constraining how much code and documentation they can simultaneously process. When context limits are exceeded, models lose track of earlier information. Even when information is contained within the context window, it can get lost, especially for models with very large context windows; this phenomenon is known as ``context rot.’’</p></li>
+<li><p><strong>Large Language Models (LLMs)</strong> are neural networks trained on vast text corpora that generate text by predicting sequences of tokens, basic units of text processing that typically represent words, parts of words, or individual characters \cite{vaswani2017attention}. For instance, the word “unhappily” might be tokenized as “un”, “##happi”, “##ly”, where ## marks tokens that are not the start of a word.</p></li>
+<li><p><strong>Context windows</strong> define the maximum number of tokens an LLM can consider when generating responses. State-of-the-art models typically handle hundreds of thousands to millions of tokens, constraining how much code and documentation they can simultaneously process. When context limits are exceeded, models lose track of earlier information. Even when information is contained within the context window, attention to mid-document details can degrade (“lost in the middle”), especially for models with very large context windows; this phenomenon is known as <strong>context rot.</strong></p></li>
 <li><p><strong>In-context learning</strong> allows models to adapt their behavior based on examples and instructions provided within the current conversation, without permanent changes to the underlying model. This enables direction of model behavior through strategic provision of examples and formatting of instructions.</p></li>
 <li><p><strong>Prompting</strong> encompasses techniques for structuring inputs to elicit desired outputs, including clear requirement specification, strategic provision of examples, and structured formatting. Effective prompting can dramatically improve code quality and relevance.</p></li>
 <li><p><strong>Test-driven development (TDD)</strong> involves writing tests before implementation to specify expected behavior and validate correctness, a practice that becomes even more critical when AI generates the implementation code.</p></li>
 </ul>
 <section id="sharing-context">
 <h2>Sharing context<a class="headerlink" href="#sharing-context" title="Link to this heading">#</a></h2>
-<p>AI coding tools range from conversational interfaces like ChatGPT to IDE assistants like GitHub Copilot to autonomous coding agents like Cursor. Each presents unique challenges for maintaining project context across sessions. Most AI systems are stateless, meaning they forget previous interactions, while others have limited understanding of broader project requirements. This creates two critical problems: context fragmentation, where important project details are lost between sessions, and iteration drift, where AI assistance gradually diverges from intended goals without proper oversight.</p>
+<p>AI coding tools range from conversational interfaces like ChatGPT to interactive assistants like GitHub Copilot to autonomous coding agents like Cursor. Each presents unique challenges for maintaining project context across sessions. Most AI systems are stateless, meaning they forget previous interactions, while others have limited understanding of broader project requirements. This creates two critical problems: context fragmentation, where important project details are lost between sessions, and iteration drift, where AI assistance gradually diverges from intended goals without proper oversight.</p>
+<p><strong>Externally-managed context files</strong> help address these limitations by providing persistent information across AI interactions. These include:</p>
 <ul class="simple">
 <li><p><strong>Memory files</strong> contain project-specific information like architectural decisions, software development standards and practices, and lessons learned that persist between interactions. They prevent repetition of past mistakes and ensure each new AI session starts with relevant context.</p></li>
-<li><p><strong>Constitution files</strong> establish non-negotiable principles that should govern AI behavior throughout development, such as security requirements or methodological constraints.</p></li>
+<li><p><strong>Constitution files</strong> establish non-negotiable principles governing AI behavior throughout development, such as security requirements or methodological constraints.</p></li>
 </ul>
-<p>Together, these tools can help to improve AI interactions into consistent, goal-directed collaboration by providing the persistent context and boundaries that AI systems lack natively.</p>
+<p>Together, these tools can help transform AI interactions into consistent, goal-directed collaboration by providing the persistent context and boundaries that AI systems lack natively.</p>
 </section>
 </section>
 

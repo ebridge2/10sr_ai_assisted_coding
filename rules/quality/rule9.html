@@ -1,0 +1,918 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4.2. Rule 10: Critically Review Generated Code &#8212; Ten Simple Rules for AI-assisted Coding in Open Science</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'rules/quality/rule9';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.3. Rule 10: Refine Code Incrementally with Focused Objectives" href="rule10.html" />
+    <link rel="prev" title="4.1. Rule 8: Monitor Progress and Know When to Restart" href="rule8.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../coverpage.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Ten Simple Rules for AI-assisted Coding in Open Science - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Ten Simple Rules for AI-assisted Coding in Open Science - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../coverpage.html">
+                    10 Simple Rules for AI-assisted Coding in Open Science
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/background.html">Background concepts and vocabulary</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Rules</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../prep/prep.html">1. Preparation &amp; Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../prep/rule1.html">1.1. Rule 1: Gather Domain Knowledge Before Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../prep/rule2.html">1.2. Rule 2: Distinguish Problem Framing from Coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../prep/rule3.html">1.3. Rule 3: Choose Appropriate AI Interaction Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../context/context.html">2. Context Engineering &amp; Interaction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../context/rule4.html">2.1. Rule 4: Start by Thinking Through a Potential Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../context/rule5.html">2.2. Rule 5: Manage Context Strategically</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../testing/testing.html">3. Testing &amp; Validation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../testing/rule6.html">3.1. Rule 6: Implement Test-Driven Development with AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/rule7.html">3.2. Rule 7: Leverage AI for Test Planning and Refinement</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="quality.html">4. Code Quality</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rule8.html">4.1. Rule 8: Monitor Progress and Know When to Restart</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.2. Rule 10: Critically Review Generated Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rule10.html">4.3. Rule 10: Refine Code Incrementally with Focused Objectives</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Conclusion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../conclusion/conclusion.html">Conclusion</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ebridge2/10sr_ai_assisted_coding" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ebridge2/10sr_ai_assisted_coding/edit/master/paper/rules/quality/rule9.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ebridge2/10sr_ai_assisted_coding/issues/new?title=Issue%20on%20page%20%2Frules/quality/rule9.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/rules/quality/rule9.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Rule 10: Critically Review Generated Code</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">4.2.1. What separates positive from flawed examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-accepting-code-without-review">4.2.2. Example 1: Accepting Code Without Review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-critical-review-catches-methodological-issues">4.2.3. Example 2: Critical Review Catches Methodological Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-verifying-implementation-matches-expectations">4.2.4. Example 3: Verifying Implementation Matches Expectations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-testing-against-known-results">4.2.5. Example 4: Testing Against Known Results</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="rule-10-critically-review-generated-code">
+<span id="rules-rule-10"></span><h1><span class="section-number">4.2. </span>Rule 10: Critically Review Generated Code<a class="headerlink" href="#rule-10-critically-review-generated-code" title="Link to this heading">#</a></h1>
+<p>Be skeptical about AI’s claims of success; the models tend to claim success even when they haven’t really solved the problem. You always need to test the solution independently. Read and understand the code to ensure it solves problems in ways that make sense for your domain and match your prior expectation of how the problem should be solved (e.g., how you anticipated a solution looking based on your pseudocode or architecture schematics you developed in Rule 4). AI-generated code requires careful human review to ensure scientific appropriateness, methodological soundness, and alignment with domain standards.</p>
+<section id="what-separates-positive-from-flawed-examples">
+<h2><span class="section-number">4.2.1. </span>What separates positive from flawed examples<a class="headerlink" href="#what-separates-positive-from-flawed-examples" title="Link to this heading">#</a></h2>
+<p>Flawed examples accept AI-generated code at face value because it runs without errors and the AI claims it’s correct. You don’t actually read through the implementation to verify it does what you think. The code might be using inappropriate algorithms, violating domain conventions, or producing subtly wrong results. You discover the problems later, possibly after publishing analyses based on the flawed code.</p>
+<p>Positive examples involve thorough critical review of generated code. You read the implementation and verify it matches your conceptual understanding of the solution. You check that algorithms are scientifically appropriate for your domain. You verify outputs make sense and align with established methods. You catch issues before the code gets used for real analyses.</p>
+</section>
+<hr class="docutils" />
+<section id="example-1-accepting-code-without-review">
+<h2><span class="section-number">4.2.2. </span>Example 1: Accepting Code Without Review<a class="headerlink" href="#example-1-accepting-code-without-review" title="Link to this heading">#</a></h2>
+<p>The user asks for an implementation, the AI provides code that runs without errors, and the user accepts it because the AI says it’s correct. The user never actually reads the implementation to understand what it’s doing. Later, the code produces scientifically invalid results because it used an inappropriate method. The problem could have been caught with basic code review.</p>
+<div class="proof example dropdown admonition" id="rule10-bad-ex1">
+<p class="admonition-title"><span class="caption-number">Example 4.5 </span> (Trusting AI claims without verification)</p>
+<section class="example-content" id="proof-content">
+<p><strong>User Prompt:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Implement</span> <span class="n">false</span> <span class="n">discovery</span> <span class="n">rate</span> <span class="n">correction</span> <span class="k">for</span> <span class="n">multiple</span> <span class="n">comparisons</span> <span class="ow">in</span> 
+<span class="n">neuroimaging</span> <span class="n">analysis</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>AI Response:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fdr_correction</span><span class="p">(</span><span class="n">p_values</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply FDR correction to p-values.&quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">false_discovery_control</span>
+    <span class="k">return</span> <span class="n">false_discovery_control</span><span class="p">(</span><span class="n">p_values</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
+
+<span class="c1"># This implementation is correct and follows the Benjamini-Hochberg procedure.</span>
+<span class="c1"># It will properly control the false discovery rate at your specified alpha level.</span>
+</pre></div>
+</div>
+<p><strong>User:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Great, thanks! [Uses code in analysis without further review]
+</pre></div>
+</div>
+<p><strong>Problem (discovered months later):</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Reviewer</span><span class="p">:</span> <span class="s2">&quot;Your FDR correction doesn&#39;t account for spatial dependencies </span>
+<span class="ow">in</span> <span class="n">neuroimaging</span> <span class="n">data</span><span class="o">.</span> <span class="n">You</span> <span class="n">should</span> <span class="n">be</span> <span class="n">using</span> <span class="n">FWE</span> <span class="n">correction</span> <span class="ow">or</span> <span class="n">cluster</span><span class="o">-</span><span class="n">based</span> 
+<span class="n">thresholding</span><span class="p">,</span> <span class="ow">not</span> <span class="n">standard</span> <span class="n">FDR</span><span class="o">.</span> <span class="n">The</span> <span class="n">Benjamini</span><span class="o">-</span><span class="n">Hochberg</span> <span class="n">procedure</span> <span class="n">assumes</span> 
+<span class="n">independence</span><span class="p">,</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">violated</span> <span class="ow">in</span> <span class="n">brain</span> <span class="n">imaging</span><span class="o">.</span><span class="s2">&quot;</span>
+
+<span class="n">The</span> <span class="n">AI</span> <span class="n">gave</span> <span class="n">you</span> <span class="n">working</span> <span class="n">code</span> <span class="k">for</span> <span class="n">FDR</span> <span class="n">correction</span><span class="p">,</span> <span class="n">but</span> <span class="n">it</span> <span class="n">wasn</span><span class="s1">&#39;t the right </span>
+<span class="n">method</span> <span class="k">for</span> <span class="n">neuroimaging</span><span class="o">.</span> <span class="n">A</span> <span class="n">domain</span> <span class="n">expert</span> <span class="n">would</span> <span class="n">have</span> <span class="n">caught</span> <span class="n">this</span> <span class="n">immediately</span> 
+<span class="n">upon</span> <span class="n">reading</span> <span class="n">the</span> <span class="n">code</span><span class="p">,</span> <span class="n">but</span> <span class="n">you</span> <span class="n">never</span> <span class="n">reviewed</span> <span class="n">whether</span> <span class="n">the</span> <span class="n">approach</span> <span class="n">was</span> 
+<span class="n">scientifically</span> <span class="n">appropriate</span> <span class="k">for</span> <span class="n">your</span> <span class="n">use</span> <span class="n">case</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+<hr class="docutils" />
+<section id="example-2-critical-review-catches-methodological-issues">
+<h2><span class="section-number">4.2.3. </span>Example 2: Critical Review Catches Methodological Issues<a class="headerlink" href="#example-2-critical-review-catches-methodological-issues" title="Link to this heading">#</a></h2>
+<p>The user receives code from AI and immediately reviews it critically. They notice the implementation doesn’t match standard practice in their field. They ask clarifying questions and verify the approach is scientifically appropriate. They catch a methodological issue before using the code for real analysis.</p>
+<div class="proof example dropdown admonition" id="rule10-good-ex1">
+<p class="admonition-title"><span class="caption-number">Example 4.6 </span> (Reading code to verify scientific appropriateness)</p>
+<section class="example-content" id="proof-content">
+<p><strong>User Prompt:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Implement</span> <span class="n">statistical</span> <span class="n">comparison</span> <span class="n">of</span> <span class="n">connectivity</span> <span class="n">matrices</span> <span class="n">between</span> <span class="n">two</span> <span class="n">groups</span> 
+<span class="p">(</span><span class="n">patients</span> <span class="n">vs</span> <span class="n">controls</span><span class="p">)</span> <span class="k">for</span> <span class="n">neuroimaging</span> <span class="n">analysis</span><span class="o">.</span> <span class="n">We</span> <span class="n">have</span> <span class="n">connectivity</span> 
+<span class="n">matrices</span> <span class="kn">from</span><span class="w"> </span><span class="mi">30</span> <span class="n">patients</span> <span class="ow">and</span> <span class="mi">30</span> <span class="n">controls</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>AI Response:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compare_connectivity</span><span class="p">(</span><span class="n">group1_matrices</span><span class="p">,</span> <span class="n">group2_matrices</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compare connectivity between two groups using t-tests.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    group1_matrices : list of np.ndarray</span>
+<span class="sd">        Connectivity matrices for group 1 (n_subjects, n_regions, n_regions)</span>
+<span class="sd">    group2_matrices : list of np.ndarray</span>
+<span class="sd">        Connectivity matrices for group 2</span>
+<span class="sd">        </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    t_stats : np.ndarray</span>
+<span class="sd">        T-statistics for each connection</span>
+<span class="sd">    p_values : np.ndarray</span>
+<span class="sd">        P-values for each connection</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">ttest_ind</span>
+    
+    <span class="c1"># Stack matrices</span>
+    <span class="n">g1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">group1_matrices</span><span class="p">)</span>  <span class="c1"># (n_subj, n_reg, n_reg)</span>
+    <span class="n">g2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">group2_matrices</span><span class="p">)</span>
+    
+    <span class="c1"># T-test for each connection</span>
+    <span class="n">n_regions</span> <span class="o">=</span> <span class="n">g1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">t_stats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_regions</span><span class="p">,</span> <span class="n">n_regions</span><span class="p">))</span>
+    <span class="n">p_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_regions</span><span class="p">,</span> <span class="n">n_regions</span><span class="p">))</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_regions</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_regions</span><span class="p">):</span>
+            <span class="n">t_stats</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">p_values</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">ttest_ind</span><span class="p">(</span><span class="n">g1</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">g2</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+    
+    <span class="k">return</span> <span class="n">t_stats</span><span class="p">,</span> <span class="n">p_values</span>
+
+<span class="c1"># This performs element-wise t-tests comparing each connection between groups.</span>
+</pre></div>
+</div>
+<p><strong>User Review:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Wait, let me read through this...
+
+ISSUES I SEE:
+1. This does element-wise t-tests on every connection. With 100 regions, 
+   that&#39;s 10,000 comparisons. No multiple comparison correction mentioned.
+
+2. It includes the diagonal (self-connections = 1.0 for everyone). These 
+   don&#39;t vary and shouldn&#39;t be tested.
+
+3. It tests both i,j and j,i separately, but connectivity matrices are 
+   symmetric. This doubles the comparisons unnecessarily.
+
+4. More fundamentally: is element-wise testing even appropriate? In 
+   neuroimaging, we often use permutation testing or network-based 
+   statistics to account for dependencies.
+
+Let me ask for clarification...
+</pre></div>
+</div>
+<p><strong>User to AI:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">see</span> <span class="n">several</span> <span class="n">issues</span> <span class="k">with</span> <span class="n">this</span> <span class="n">approach</span><span class="p">:</span>
+
+<span class="mf">1.</span> <span class="n">You</span><span class="s1">&#39;re doing 10,000 t-tests (100x100 matrix) with no multiple comparison </span>
+   <span class="n">correction</span><span class="o">.</span> <span class="n">That</span><span class="s1">&#39;s guaranteed to give false positives.</span>
+
+<span class="mf">2.</span> <span class="n">You</span><span class="s1">&#39;re testing the diagonal, which is always 1.0 for everyone.</span>
+
+<span class="mf">3.</span> <span class="n">You</span><span class="s1">&#39;re testing both (i,j) and (j,i) separately when matrices are symmetric.</span>
+
+<span class="mf">4.</span> <span class="n">Most</span> <span class="n">importantly</span><span class="p">:</span> <span class="n">element</span><span class="o">-</span><span class="n">wise</span> <span class="n">testing</span> <span class="n">ignores</span> <span class="n">the</span> <span class="n">network</span> <span class="n">structure</span><span class="o">.</span> 
+   <span class="n">Standard</span> <span class="n">practice</span> <span class="ow">in</span> <span class="n">neuroimaging</span> <span class="ow">is</span> <span class="n">either</span><span class="p">:</span>
+   <span class="o">-</span> <span class="n">Network</span><span class="o">-</span><span class="n">based</span> <span class="n">statistics</span> <span class="p">(</span><span class="n">Zalesky</span> <span class="n">et</span> <span class="n">al</span><span class="o">.</span> <span class="mi">2010</span><span class="p">)</span>
+   <span class="o">-</span> <span class="n">Permutation</span> <span class="n">testing</span> <span class="k">with</span> <span class="nb">max</span><span class="o">-</span><span class="n">statistic</span>
+   <span class="o">-</span> <span class="n">Graph</span><span class="o">-</span><span class="n">level</span> <span class="n">metrics</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">edge</span><span class="o">-</span><span class="n">level</span>
+
+<span class="n">Revise</span> <span class="n">the</span> <span class="n">approach</span> <span class="n">to</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">Use</span> <span class="n">only</span> <span class="n">upper</span> <span class="n">triangle</span> <span class="p">(</span><span class="n">exclude</span> <span class="n">diagonal</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">Apply</span> <span class="n">FWE</span> <span class="n">correction</span> <span class="n">via</span> <span class="n">permutation</span> <span class="n">testing</span>
+<span class="o">-</span> <span class="n">Or</span> <span class="n">better</span><span class="p">:</span> <span class="n">compare</span> <span class="n">graph</span> <span class="n">metrics</span> <span class="p">(</span><span class="n">clustering</span><span class="p">,</span> <span class="n">efficiency</span><span class="p">)</span> <span class="n">between</span> <span class="n">groups</span>
+
+<span class="n">Which</span> <span class="n">approach</span> <span class="ow">is</span> <span class="n">most</span> <span class="n">appropriate</span> <span class="n">depends</span> <span class="n">on</span> <span class="n">our</span> <span class="n">hypothesis</span><span class="o">.</span> <span class="n">We</span><span class="s1">&#39;re looking </span>
+<span class="k">for</span> <span class="n">overall</span> <span class="n">network</span> <span class="n">differences</span><span class="p">,</span> <span class="ow">not</span> <span class="n">specific</span> <span class="n">connections</span><span class="p">,</span> <span class="n">so</span> <span class="n">graph</span> <span class="n">metrics</span> 
+<span class="n">make</span> <span class="n">more</span> <span class="n">sense</span><span class="o">.</span>
+
+<span class="n">Implement</span> <span class="n">comparison</span> <span class="n">of</span> <span class="n">graph</span><span class="o">-</span><span class="n">level</span> <span class="n">metrics</span> <span class="p">(</span><span class="k">global</span> <span class="n">efficiency</span><span class="p">,</span> <span class="n">clustering</span> 
+<span class="n">coefficient</span><span class="p">,</span> <span class="n">modularity</span><span class="p">)</span> <span class="k">with</span> <span class="n">permutation</span> <span class="n">testing</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+<hr class="docutils" />
+<section id="example-3-verifying-implementation-matches-expectations">
+<h2><span class="section-number">4.2.4. </span>Example 3: Verifying Implementation Matches Expectations<a class="headerlink" href="#example-3-verifying-implementation-matches-expectations" title="Link to this heading">#</a></h2>
+<p>The user has a clear expectation of how the algorithm should work (from Rule 4). When reviewing the generated code, they notice the implementation doesn’t match their understanding. They identify the discrepancy and get it corrected before using the code.</p>
+<div class="proof example dropdown admonition" id="rule10-good-ex2">
+<p class="admonition-title"><span class="caption-number">Example 4.7 </span> (Checking implementation matches prior expectations)</p>
+<section class="example-content" id="proof-content">
+<p><strong>User Context (from Rule 4 planning):</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">need</span> <span class="n">hierarchical</span> <span class="n">clustering</span> <span class="n">of</span> <span class="n">brain</span> <span class="n">connectivity</span> <span class="n">patterns</span><span class="o">.</span>
+
+<span class="n">Expected</span> <span class="n">approach</span><span class="p">:</span>
+<span class="mf">1.</span> <span class="n">Compute</span> <span class="n">distance</span> <span class="n">matrix</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">correlation</span><span class="p">)</span>
+<span class="mf">2.</span> <span class="n">Apply</span> <span class="n">agglomerative</span> <span class="n">clustering</span> <span class="k">with</span> <span class="n">Ward</span> <span class="n">linkage</span>
+<span class="mf">3.</span> <span class="n">Determine</span> <span class="n">optimal</span> <span class="n">number</span> <span class="n">of</span> <span class="n">clusters</span> <span class="n">using</span> <span class="n">silhouette</span> <span class="n">score</span>
+<span class="mf">4.</span> <span class="n">Return</span> <span class="n">cluster</span> <span class="n">assignments</span> <span class="ow">and</span> <span class="n">dendrogram</span>
+
+<span class="n">Ward</span> <span class="n">linkage</span> <span class="n">minimizes</span> <span class="n">within</span><span class="o">-</span><span class="n">cluster</span> <span class="n">variance</span><span class="p">,</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">standard</span> <span class="k">for</span> 
+<span class="n">neuroimaging</span> <span class="n">because</span> <span class="n">we</span> <span class="n">want</span> <span class="n">compact</span><span class="p">,</span> <span class="n">similar</span> <span class="n">clusters</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>AI Response:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">cluster_connectivity</span><span class="p">(</span><span class="n">connectivity_matrices</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hierarchical clustering of connectivity patterns.&quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.cluster.hierarchy</span><span class="w"> </span><span class="kn">import</span> <span class="n">linkage</span><span class="p">,</span> <span class="n">fcluster</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">pdist</span>
+    
+    <span class="c1"># Flatten matrices to vectors</span>
+    <span class="n">n_subjects</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">connectivity_matrices</span><span class="p">)</span>
+    <span class="n">n_regions</span> <span class="o">=</span> <span class="n">connectivity_matrices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">vectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">mat</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="k">for</span> <span class="n">mat</span> <span class="ow">in</span> <span class="n">connectivity_matrices</span><span class="p">])</span>
+    
+    <span class="c1"># Compute distances and cluster</span>
+    <span class="n">distances</span> <span class="o">=</span> <span class="n">pdist</span><span class="p">(</span><span class="n">vectors</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
+    <span class="n">linkage_matrix</span> <span class="o">=</span> <span class="n">linkage</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;complete&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Use fixed number of clusters</span>
+    <span class="n">clusters</span> <span class="o">=</span> <span class="n">fcluster</span><span class="p">(</span><span class="n">linkage_matrix</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;maxclust&#39;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">clusters</span><span class="p">,</span> <span class="n">linkage_matrix</span>
+</pre></div>
+</div>
+<p><strong>User Review:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hold</span> <span class="n">on</span><span class="p">,</span> <span class="n">this</span> <span class="n">doesn</span><span class="s1">&#39;t match my expectations:</span>
+
+<span class="n">ISSUES</span><span class="p">:</span>
+<span class="mf">1.</span> <span class="n">Uses</span> <span class="s1">&#39;complete&#39;</span> <span class="n">linkage</span> <span class="n">instead</span> <span class="n">of</span> <span class="s1">&#39;ward&#39;</span><span class="o">.</span> <span class="n">Complete</span> <span class="n">linkage</span> <span class="n">tends</span> <span class="n">to</span> 
+   <span class="n">create</span> <span class="n">elongated</span> <span class="n">clusters</span><span class="p">,</span> <span class="ow">not</span> <span class="n">the</span> <span class="n">compact</span> <span class="n">clusters</span> <span class="n">I</span> <span class="n">want</span><span class="o">.</span>
+
+<span class="mf">2.</span> <span class="n">Uses</span> <span class="s1">&#39;euclidean&#39;</span> <span class="n">distance</span> <span class="n">on</span> <span class="n">flattened</span> <span class="n">matrices</span><span class="o">.</span> <span class="n">I</span> <span class="n">specified</span> <span class="n">using</span> 
+   <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">correlation</span><span class="p">)</span> <span class="k">as</span> <span class="n">the</span> <span class="n">distance</span> <span class="n">metric</span><span class="p">,</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">standard</span> <span class="k">for</span> 
+   <span class="n">connectivity</span> <span class="n">patterns</span><span class="o">.</span>
+
+<span class="mf">3.</span> <span class="n">Uses</span> <span class="n">fixed</span> <span class="mi">3</span> <span class="n">clusters</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">determining</span> <span class="n">optimal</span> <span class="n">k</span> <span class="n">using</span> 
+   <span class="n">silhouette</span> <span class="n">score</span> <span class="k">as</span> <span class="n">I</span> <span class="n">specified</span><span class="o">.</span>
+
+<span class="mf">4.</span> <span class="n">Returns</span> <span class="n">cluster</span> <span class="n">assignments</span> <span class="n">but</span> <span class="n">I</span> <span class="n">also</span> <span class="n">wanted</span> <span class="n">the</span> <span class="n">dendrogram</span> <span class="k">for</span> 
+   <span class="n">visualization</span><span class="o">.</span>
+
+<span class="n">Let</span> <span class="n">me</span> <span class="n">verify</span> <span class="n">my</span> <span class="n">understanding</span> <span class="ow">is</span> <span class="n">correct</span> <span class="n">by</span> <span class="n">checking</span> <span class="n">the</span> <span class="n">literature</span><span class="o">...</span>
+<span class="p">[</span><span class="n">Checks</span> <span class="n">standard</span> <span class="n">neuroimaging</span> <span class="n">clustering</span> <span class="n">papers</span><span class="p">]</span>
+
+<span class="n">Yes</span><span class="p">,</span> <span class="n">Ward</span> <span class="n">linkage</span> <span class="k">with</span> <span class="n">correlation</span><span class="o">-</span><span class="n">based</span> <span class="n">distance</span> <span class="ow">is</span> <span class="n">standard</span><span class="o">.</span> <span class="n">This</span> 
+<span class="n">implementation</span> <span class="n">would</span> <span class="n">give</span> <span class="n">wrong</span> <span class="n">results</span><span class="o">.</span> <span class="n">Let</span> <span class="n">me</span> <span class="n">correct</span> <span class="n">it</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>User to AI:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="n">implementation</span> <span class="n">doesn</span><span class="s1">&#39;t match the standard approach for connectivity </span>
+<span class="n">clustering</span><span class="o">.</span> <span class="n">Please</span> <span class="n">revise</span><span class="p">:</span>
+
+<span class="n">REQUIRED</span> <span class="n">CHANGES</span><span class="p">:</span>
+<span class="mf">1.</span> <span class="n">Distance</span> <span class="n">metric</span><span class="p">:</span> <span class="n">Use</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">correlation</span><span class="p">),</span> <span class="ow">not</span> <span class="n">Euclidean</span>
+   <span class="o">-</span> <span class="n">Connectivity</span> <span class="n">patterns</span> <span class="n">are</span> <span class="n">best</span> <span class="n">compared</span> <span class="n">by</span> <span class="n">correlation</span>
+   <span class="o">-</span> <span class="n">Euclidean</span> <span class="n">distance</span> <span class="n">on</span> <span class="n">flattened</span> <span class="n">matrices</span> <span class="n">doesn</span><span class="s1">&#39;t make sense here</span>
+
+<span class="mf">2.</span> <span class="n">Linkage</span> <span class="n">method</span><span class="p">:</span> <span class="n">Use</span> <span class="s1">&#39;ward&#39;</span><span class="p">,</span> <span class="ow">not</span> <span class="s1">&#39;complete&#39;</span>
+   <span class="o">-</span> <span class="n">Ward</span> <span class="n">minimizes</span> <span class="n">within</span><span class="o">-</span><span class="n">cluster</span> <span class="n">variance</span> <span class="p">(</span><span class="n">standard</span> <span class="k">for</span> <span class="n">neuroimaging</span><span class="p">)</span>
+   <span class="o">-</span> <span class="n">Complete</span> <span class="n">linkage</span> <span class="n">creates</span> <span class="n">elongated</span> <span class="n">clusters</span> <span class="p">(</span><span class="ow">not</span> <span class="n">what</span> <span class="n">we</span> <span class="n">want</span><span class="p">)</span>
+
+<span class="mf">3.</span> <span class="n">Optimal</span> <span class="n">k</span> <span class="n">selection</span><span class="p">:</span> <span class="n">Don</span><span class="s1">&#39;t hardcode 3 clusters</span>
+   <span class="o">-</span> <span class="n">Test</span> <span class="n">k</span> <span class="kn">from</span><span class="w"> </span><span class="mi">2</span> <span class="n">to</span> <span class="mi">10</span>
+   <span class="o">-</span> <span class="n">Select</span> <span class="n">k</span> <span class="n">that</span> <span class="n">maximizes</span> <span class="n">mean</span> <span class="n">silhouette</span> <span class="n">score</span>
+   <span class="o">-</span> <span class="n">Return</span> <span class="n">both</span> <span class="n">the</span> <span class="n">optimal</span> <span class="n">k</span> <span class="ow">and</span> <span class="n">scores</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">k</span> <span class="n">tested</span>
+
+<span class="mf">4.</span> <span class="n">Return</span> <span class="n">dendrogram</span><span class="p">:</span> <span class="n">Include</span> <span class="n">dendrogram</span> <span class="n">data</span> <span class="n">structure</span> <span class="k">for</span> <span class="n">plotting</span>
+
+<span class="n">Implement</span> <span class="n">these</span> <span class="n">corrections</span> <span class="n">based</span> <span class="n">on</span> <span class="n">standard</span> <span class="n">hierarchical</span> <span class="n">clustering</span> 
+<span class="n">practice</span> <span class="ow">in</span> <span class="n">neuroimaging</span> <span class="p">(</span><span class="n">see</span> <span class="n">Yeo</span> <span class="n">et</span> <span class="n">al</span><span class="o">.</span> <span class="mi">2011</span> <span class="k">for</span> <span class="n">reference</span> <span class="n">approach</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+<hr class="docutils" />
+<section id="example-4-testing-against-known-results">
+<h2><span class="section-number">4.2.5. </span>Example 4: Testing Against Known Results<a class="headerlink" href="#example-4-testing-against-known-results" title="Link to this heading">#</a></h2>
+<p>The user generates code and immediately tests it against cases where they know the correct answer. This catches implementation errors that might not be obvious from reading the code alone. The test reveals the implementation is computing the wrong thing despite looking reasonable.</p>
+<div class="proof example dropdown admonition" id="rule10-good-ex3">
+<p class="admonition-title"><span class="caption-number">Example 4.8 </span> (Validating against known ground truth)</p>
+<section class="example-content" id="proof-content">
+<p><strong>AI Generated Code:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_graph_efficiency</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute global efficiency of brain network.</span>
+<span class="sd">    </span>
+<span class="sd">    Global efficiency measures how efficiently information can travel </span>
+<span class="sd">    through the network.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
+    
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_array</span><span class="p">(</span><span class="n">adjacency_matrix</span><span class="p">)</span>
+    
+    <span class="c1"># Compute efficiency</span>
+    <span class="n">efficiency</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">global_efficiency</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">efficiency</span>
+</pre></div>
+</div>
+<p><strong>User Review:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">code</span> <span class="n">looks</span> <span class="n">reasonable</span><span class="p">,</span> <span class="n">but</span> <span class="n">let</span> <span class="n">me</span> <span class="n">test</span> <span class="n">it</span> <span class="n">against</span> <span class="n">a</span> <span class="n">case</span> <span class="n">where</span> <span class="n">I</span> <span class="n">know</span> 
+<span class="n">the</span> <span class="n">correct</span> <span class="n">answer</span><span class="o">...</span>
+</pre></div>
+</div>
+<p><strong>User Test:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test case 1: Complete graph (all nodes connected)</span>
+<span class="c1"># Expected efficiency: 1.0 (shortest path between any two nodes is 1)</span>
+<span class="n">complete</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">complete</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">eff_complete</span> <span class="o">=</span> <span class="n">compute_graph_efficiency</span><span class="p">(</span><span class="n">complete</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Complete graph efficiency: </span><span class="si">{</span><span class="n">eff_complete</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Expected: 1.0</span>
+
+<span class="c1"># Test case 2: Path graph (nodes in a line: 0-1-2-3-4)</span>
+<span class="c1"># Expected efficiency: 0.4 (computed by hand)</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">])</span>
+<span class="n">eff_path</span> <span class="o">=</span> <span class="n">compute_graph_efficiency</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Path graph efficiency: </span><span class="si">{</span><span class="n">eff_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Expected: 0.4</span>
+
+<span class="c1"># Test case 3: Disconnected graph</span>
+<span class="c1"># Expected efficiency: &lt; 1.0 (infinite distances should reduce efficiency)</span>
+<span class="n">disconnected</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">])</span>
+<span class="n">eff_disconnected</span> <span class="o">=</span> <span class="n">compute_graph_efficiency</span><span class="p">(</span><span class="n">disconnected</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Disconnected graph efficiency: </span><span class="si">{</span><span class="n">eff_disconnected</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Expected: ~0.33</span>
+</pre></div>
+</div>
+<p><strong>Results:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Complete graph efficiency: 1.0  ✓ Correct
+Path graph efficiency: 0.6     ✗ Wrong! Expected 0.4
+Disconnected graph efficiency: 0.5  ✗ Wrong! Expected ~0.33
+</pre></div>
+</div>
+<p><strong>User:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>The results don&#39;t match my hand calculations. Let me check the networkx 
+documentation...
+
+OH! The issue is that networkx.from_numpy_array treats the adjacency matrix 
+as WEIGHTED by default. My test matrices are binary (0/1), but networkx is 
+interpreting edge weights.
+
+For brain networks, we typically want:
+- Binary: unweighted connectivity (connected or not)
+- Weighted: connection strength (correlation values)
+
+The current implementation doesn&#39;t specify which, and the default behavior 
+is wrong for my binary test cases.
+
+Let me revise to explicitly handle both weighted and unweighted cases.
+</pre></div>
+</div>
+<p><strong>User to AI:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">implementation</span> <span class="n">has</span> <span class="n">an</span> <span class="n">issue</span><span class="p">:</span> <span class="n">it</span> <span class="n">doesn</span><span class="s1">&#39;t specify whether the network is </span>
+<span class="n">weighted</span> <span class="ow">or</span> <span class="n">unweighted</span><span class="p">,</span> <span class="ow">and</span> <span class="n">networkx</span> <span class="n">defaults</span> <span class="n">to</span> <span class="n">weighted</span> <span class="n">interpretation</span><span class="o">.</span>
+
+<span class="n">Revise</span> <span class="n">to</span><span class="p">:</span>
+<span class="mf">1.</span> <span class="n">Add</span> <span class="n">a</span> <span class="s1">&#39;weighted&#39;</span> <span class="n">parameter</span> <span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span> <span class="k">for</span> <span class="n">binary</span> <span class="n">connectivity</span><span class="p">)</span>
+<span class="mf">2.</span> <span class="n">For</span> <span class="n">weighted</span><span class="o">=</span><span class="kc">False</span><span class="p">:</span> <span class="n">convert</span> <span class="n">adjacency</span> <span class="n">to</span> <span class="n">binary</span> <span class="n">before</span> <span class="n">computing</span> <span class="n">efficiency</span>
+<span class="mf">3.</span> <span class="n">For</span> <span class="n">weighted</span><span class="o">=</span><span class="kc">True</span><span class="p">:</span> <span class="n">use</span> <span class="n">edge</span> <span class="n">weights</span> <span class="ow">in</span> <span class="n">efficiency</span> <span class="n">calculation</span>
+<span class="mf">4.</span> <span class="n">Document</span> <span class="n">the</span> <span class="n">difference</span> <span class="n">clearly</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">docstring</span>
+
+<span class="n">Test</span> <span class="n">both</span> <span class="n">cases</span> <span class="n">to</span> <span class="n">ensure</span> <span class="n">correct</span> <span class="n">results</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">Binary</span> <span class="n">complete</span> <span class="n">graph</span> <span class="n">should</span> <span class="n">give</span> <span class="n">exactly</span> <span class="mf">1.0</span>
+<span class="o">-</span> <span class="n">Binary</span> <span class="n">path</span> <span class="n">graph</span> <span class="n">should</span> <span class="n">give</span> <span class="n">exactly</span> <span class="mf">0.4</span>
+<span class="o">-</span> <span class="n">Weighted</span> <span class="n">networks</span> <span class="n">should</span> <span class="n">use</span> <span class="n">edge</span> <span class="n">weights</span> <span class="ow">in</span> <span class="n">distance</span> <span class="n">calculation</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./rules/quality"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="rule8.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4.1. </span>Rule 8: Monitor Progress and Know When to Restart</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="rule10.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.3. </span>Rule 10: Refine Code Incrementally with Focused Objectives</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">4.2.1. What separates positive from flawed examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-accepting-code-without-review">4.2.2. Example 1: Accepting Code Without Review</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-critical-review-catches-methodological-issues">4.2.3. Example 2: Critical Review Catches Methodological Issues</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-verifying-implementation-matches-expectations">4.2.4. Example 3: Verifying Implementation Matches Expectations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-testing-against-known-results">4.2.5. Example 4: Testing Against Known Results</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Eric W. Bridgeford, et al., Russell Poldrack
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -61,7 +61,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'conclusion/conclusion';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="4.1. Rule 10: Critically Review Generated Code" href="../rules/quality/rule10.html" />
+    <link rel="prev" title="4.3. Rule 10: Refine Code Incrementally with Focused Objectives" href="../rules/quality/rule10.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -188,24 +188,24 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rules/prep/prep.html">1. Preparation &amp; Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../rules/prep/rule1.html">1.1. Rule 1: Gather Domain Knowledge Before Implementation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rules/prep/rule2.html">1.2. Rule 2: Distinguish Programming from Coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules/prep/rule2.html">1.2. Rule 2: Distinguish Problem Framing from Coding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rules/prep/rule3.html">1.3. Rule 3: Choose Appropriate AI Interaction Models</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rules/context/context.html">2. Context Engineering &amp; Interaction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../rules/context/rule4.html">2.1. Rule 4: Start by Thinking Through a Potential Solution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rules/context/rule5.html">2.2. Rule 5: Manage Context Strategically</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rules/context/rule6.html">2.3. Rule 6: Monitor Progress and Know When to Restart</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rules/testing/testing.html">3. Testing &amp; Validation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../rules/testing/rule7.html">3.1. Rule 7: Implement Test-Driven Development with AI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rules/testing/rule8.html">3.2. Rule 8: Build Comprehensive Testing Infrastructure Early</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../rules/testing/rule9.html">3.3. Rule 9: Use AI to Refine and Validate Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules/testing/rule6.html">3.1. Rule 6: Implement Test-Driven Development with AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules/testing/rule7.html">3.2. Rule 7: Leverage AI for Test Planning and Refinement</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../rules/quality/quality.html">4. Code Quality</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../rules/quality/rule10.html">4.1. Rule 10: Critically Review Generated Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules/quality/rule8.html">4.1. Rule 8: Monitor Progress and Know When to Restart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules/quality/rule9.html">4.2. Rule 10: Critically Review Generated Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules/quality/rule10.html">4.3. Rule 10: Refine Code Incrementally with Focused Objectives</a></li>
 </ul>
 </details></li>
 </ul>
@@ -401,7 +401,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -417,6 +419,18 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ethical-considerations-and-responsibility">Ethical Considerations and Responsibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guardrails-for-autonomous-agents">Guardrails for Autonomous Agents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-and-future-directions">Limitations and Future Directions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -428,7 +442,36 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="conclusion">
 <h1>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h1>
-<p>This is concluding.</p>
+<section id="ethical-considerations-and-responsibility">
+<h2>Ethical Considerations and Responsibility<a class="headerlink" href="#ethical-considerations-and-responsibility" title="Link to this heading">#</a></h2>
+<p>The use of AI-assisted coding raises fundamental questions about scientific accountability. When code that generates published results is partly AI-generated, who bears responsibility for errors, methodological flaws, or irreproducible outcomes? The answer must be unequivocal: the scientist. AI tools are instruments, and like any instrument in science, the researcher using them remains fully accountable for validating their outputs and ensuring methodological soundness. This responsibility cannot be delegated to the AI, regardless of how sophisticated the tool or how confident its outputs appear. Researchers must ensure their AI-assisted code is reproducible, well-documented, and scientifically appropriate. When AI generates code that implements a statistical method or analytical pipeline, the researcher must understand that implementation well enough to defend its appropriateness, explain its limitations, and troubleshoot unexpected results. ``AI wrote it’’ is not a valid defense for flawed methodology or incorrect results. Transparency about AI usage in methods sections, while important, does not diminish this responsibility.</p>
+<p>Beyond individual accountability, broader ethical concerns demand serious consideration. The environmental costs of training and running large language models are substantial and measurable \cite{TODO: <several articles that focus on environmental concerns>}. These systems consume enormous amounts of energy and computational resources, raising questions about the sustainability of widespread AI adoption. Further, intellectual property questions surrounding AI training on open-source code and the ownership of AI-generated code remain legally and ethically unsettled \cite{TODO: <several articles that focus on IP concerns>}. Courts have yet to definitively rule on whether training on copyrighted code constitutes fair use, whether AI-generated code can be copyrighted, and who owns the rights to such code when models have been trained on proprietary or licensed material. These are fundamental ethical and legal challenges that the scientific community must grapple with as AI tools become embedded in research infrastructure. While these complex issues merit dedicated treatment beyond our scope here, researchers should recognize that using AI coding tools involves participating in systems with significant unresolved ethical dimensions.</p>
+</section>
+<section id="guardrails-for-autonomous-agents">
+<h2>Guardrails for Autonomous Agents<a class="headerlink" href="#guardrails-for-autonomous-agents" title="Link to this heading">#</a></h2>
+<p>Autonomous coding agents can make extensive changes across a codebase with minimal human intervention, dramatically accelerating development but introducing risks if not properly constrained. The primary danger lies in granting agents too much control without appropriate safeguards. An agent given broad permissions might break existing functionality, introduce security vulnerabilities, or violate architectural principles while reporting success.</p>
+<p>We recommend several guardrails. First, use containerized or sandboxed environments for agent-driven development, isolating agent operations from production systems \cite{TODO: cite further reading book}. Second, commit working code before allowing agent changes, enabling easy rollback. Third, learn how to properly configure agents with explicit constraints about what they can modify and what actions require human approval. Fourth, maintain active monitoring rather than allowing unsupervised operation, as discussed in Rule 8. For individual projects, consider project-specific containers where each agent operates in an isolated environment with restricted file access. As autonomous agents become more capable, developing clear and safe practices for constraining and monitoring their behavior will become increasingly important for maintaining scientific rigor and system safety.</p>
+</section>
+<section id="limitations-and-future-directions">
+<h2>Limitations and Future Directions<a class="headerlink" href="#limitations-and-future-directions" title="Link to this heading">#</a></h2>
+<p>We acknowledge that we are operating in a rapidly evolving technological landscape. For reference, GPT-3 (2020) had a context window of 2,048 tokens \cite{TODO: GPT-3}, GPT-4 (2023) expanded this to variants with tens of thousands of tokens \cite{TODO: GPT-4}8,192 token and s, and current state-of-the-art models like Claude Gemini 2.5 ProSonnet 4.5 (2025) \cite{TODO: Gemini 2.5 Pro} can operate with context windows of millionshundreds of tokens.thousands of tokens or more. Despite this rapid evolution, we have intentionally focused on principles and practices that remain relevant across different AI capabilities. We believe our proposed rules emphasize fundamental skills (domain knowledge, problem decomposition, critical review) and strategies (context management, test-driven development, incremental refinement) that apply regardless of specific tools, and thus far have proven useful throughout the evolution of AI models to-date. We deliberately avoided prescriptive recommendations and strategies tied to specific models, as these would quickly become outdated. Future advances may change which practices prove most valuable, but we believe these rules provide a useful framework for current practice which will remain adaptable as technology matures.</p>
+</section>
+<section id="further-reading">
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<p>The rules presented in this paper provide a framework for using AI tools effectively in scientific computing, but they build upon foundational concepts in software development, reproducibility, and design. The following resources introduce key concepts and practices that support the development of programming skills necessary for effective AI-assisted coding, and may help readers deepen their understanding of principles underlying the rules.</p>
+<ol class="arabic simple">
+<li><p>LeVeque, Randall J., et al. “Reproducible Research for Scientific Computing: Tools and Strategies.” Computing in Science &amp; Engineering, vol. 14, no. 4, 2012, pp. 13-17, doi:10.1109/MCSE.2012.38. This article establishes best practices for reproducible scientific computing that inform our emphasis on documentation, testing, and validation throughout the rules.</p></li>
+<li><p>Ousterhout, John. A Philosophy of Software Design. 2nd ed., Yaknyam Press, 2021. This book articulates core principles of software design including abstraction and modularity that inform our guidance on how to think about programmatic solutions and what to specify as useful context for scientific problems in Rules 4 and 5, as well as how to think through incremental refinement stages for Rule 10.</p></li>
+<li><p>Poldrack, Russell A. Better Code, Better Science. https://poldrack.github.io/BetterCodeBetterScience/frontmatter.html. Accessed Sept 10, 2025. This comprehensive guide introduces AI tools in scientific workflows and provides practical guidance that complements the principles outlined in our rules.</p></li>
+<li><p>Felleisen, Matthias, et al. How to Design Programs: An Introduction to Programming and Computing. 2nd ed., MIT Press, 2018, https://htdp.org. This text emphasizes systematic problem decomposition and design principles that underpin the distinction between programming and coding discussed in Rule 2.</p></li>
+<li><p>Beck, Kent. Test-Driven Development: By Example. Addison-Wesley, 2003. This book provides the foundational methodology for test-driven development discussed in Rule 6, demonstrating how writing tests before implementation can help you to develop more robust and maintainable code.</p></li>
+<li><p>Wiebels, Kristina, and David Moreau. “Leveraging Containers for Reproducible Psychological Research.” Advances in Methods and Practices in Psychological Science, vol. 4, no. 2, 2021, doi:10.1177/25152459211017853. This paper demonstrates how containerization supports reproducible research, directly relevant to the guardrails for autonomous agents discussed in our Discussion section.</p></li>
+</ol>
+</section>
+<section id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Link to this heading">#</a></h2>
+<p>An initial framework of 20 rules was developed by EWB and RAP (10 rules each). These rules were streamlined into 10 rules with assistance from Claude (Anthropic) \cite{TODO: claude_citation}, which were then authored and iteratively refined by the research team into the content, examples, and recommendations presented herein. This work was supported by a grant from the Sloan Foundation to RAP (G-2025-25270).</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -467,7 +510,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4.1. </span>Rule 10: Critically Review Generated Code</p>
+        <p class="prev-next-title"><span class="section-number">4.3. </span>Rule 10: Refine Code Incrementally with Focused Objectives</p>
       </div>
     </a>
 </div>
@@ -476,6 +519,25 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ethical-considerations-and-responsibility">Ethical Considerations and Responsibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guardrails-for-autonomous-agents">Guardrails for Autonomous Agents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-and-future-directions">Limitations and Future Directions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
