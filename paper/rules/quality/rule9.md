@@ -1,5 +1,5 @@
-(rules:rule_10)=
-# Rule 10: Critically Review Generated Code
+(rules:rule_9)=
+# Rule 9: Critically Review Generated Code
 
 Be skeptical about AI's claims of success; the models tend to claim success even when they haven't really solved the problem. You always need to test the solution independently. Read and understand the code to ensure it solves problems in ways that make sense for your domain and match your prior expectation of how the problem should be solved (e.g., how you anticipated a solution looking based on your pseudocode or architecture schematics you developed in Rule 4). AI-generated code requires careful human review to ensure scientific appropriateness, methodological soundness, and alignment with domain standards.
 
