@@ -30,6 +30,7 @@ sphinx:
     bibtex_bibfiles:
       - references.bib
     bibtex_reference_style: label
+    bibtex_default_style: unsrt
   extra_extensions:
     - sphinx_proof
     - sphinx_togglebutton
