@@ -1,3 +1,4 @@
+(rules:rule_10)=
 # Rule 10: Refine Code Incrementally with Focused Objectives
 
 Once you have working, tested code, resist the temptation to ask AI to "improve my codebase." Instead, approach refinement incrementally with clear, focused objectives. Be explicit about what aspect you want to improve: performance optimization, code readability, error handling, modularity, or adherence to specific design patterns. When you recognize that refinement is needed but can't articulate the specific approach (for instance, you know certain logic should be extracted into a separate function but aren't sure how), use AI to help you formulate concrete objectives before implementing changes. Describe what you're trying to achieve and ask the AI to suggest specific refactoring strategies or design patterns that would accomplish your goal, applying the same mindsets delineated in Rules 1 - 9 to help you along the way.

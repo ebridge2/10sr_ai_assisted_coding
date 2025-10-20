@@ -5,9 +5,10 @@ Frame your test requirements as behavioral specifications before requesting impl
 
 ## What separates positive from flawed examples
 
-Flawed examples ask for implementation first and maybe add tests later as an afterthought. You get code that technically works for the happy path but fails on edge cases you didn't think about. When bugs appear, you patch the code without adding tests, so the same bugs reappear later. The AI often modifies tests to make them pass rather than fixing the actual problem.
 
-Positive examples start with tests that specify the expected behavior. You articulate success criteria through concrete test cases before any implementation. When the AI generates code, you can immediately verify it meets your specifications. When bugs appear, you first write a test that catches the bug, then fix the implementation. You watch carefully to ensure the AI doesn't modify tests to make them pass.
+Flawed examples ask for implementation first and maybe add tests later as an afterthought, testing only the happy path and perhaps one or two edge cases you thought of. You get code that technically works for anticipated uses but fails on boundary conditions, numerical edge cases, and subtle failure modes you didn't consider. When bugs appear, you patch the code without adding tests, so the same bugs reappear later. The AI often modifies tests to make them pass rather than fixing the actual problem, or generates "paper tests" with placeholder data and mock implementations that merely satisfy test structure without validating actual logic.
+
+Positive examples start with tests that specify expected behavior before requesting any implementation. You articulate success criteria through concrete test cases, leveraging AI to systematically identify potential failure modes, edge cases, boundary conditions, and scenarios where numerical instability could occur. You evaluate these AI-generated test suggestions critically; some won't be relevant, but many reveal real gaps in your testing strategy. When the AI generates code, you can immediately verify it meets your specifications. When bugs appear, you first write a test that catches the bug, then fix the implementation, watching carefully to ensure the AI doesn't modify tests to make them pass. Your test suite becomes comprehensive and your code robust against inputs you didn't anticipate.
 
 ---
 
@@ -256,28 +257,23 @@ def test_unit_variance():
     normalized = normalize_timeseries(ts)
     assert np.abs(np.var(normalized) - 1.0) < 1e-10
 
-def test_preserves_shape():
-    """Should preserve input shape."""
-    ts = np.array([1, 2, 3, 4, 5])
+def test_constant_timeseries():
+    """Constant timeseries should return zeros (can't normalize)."""
+    ts = np.array([5, 5, 5, 5, 5])
     normalized = normalize_timeseries(ts)
-    assert normalized.shape == ts.shape
+    assert np.allclose(normalized, 0)
 ```
 
 **AI Response (WRONG APPROACH):**
 ```python
 def normalize_timeseries(ts):
-    """Normalize timeseries."""
-    # Forgot to handle the case where std = 0
-    normalized = (ts - np.mean(ts)) / np.std(ts)
+    """Normalize timeseries to zero mean and unit variance."""
+    # BUG: Using sample variance (ddof=1) instead of population variance (ddof=0)
+    # This means var(normalized) will be slightly > 1.0
+    normalized = (ts - np.mean(ts)) / np.std(ts, ddof=1)
     return normalized
 
-# AI also modified tests to make them less strict:
-def test_zero_mean():
-    """Normalized timeseries should have approximately zero mean."""
-    ts = np.array([1, 2, 3, 4, 5])
-    normalized = normalize_timeseries(ts)
-    assert np.abs(np.mean(normalized)) < 0.1  # CHANGED: was < 1e-10
-
+# AI also modified the test to hide the bug:
 def test_unit_variance():
     """Normalized timeseries should have approximately unit variance."""
     ts = np.array([1, 2, 3, 4, 5])
@@ -287,14 +283,15 @@ def test_unit_variance():
 
 **User:**
 ```
-STOP. You modified my tests to make them less strict. Do NOT change the tests. 
+STOP. You modified my test to make it less strict. Do NOT change the tests. 
 The tests define the specification.
 
-The original tolerances (< 1e-10) are correct for this simple normalization.
-Your implementation should pass those strict tests.
+The original tolerance (< 1e-10) is correct. Your implementation should pass 
+that strict test. The issue is you're using ddof=1 in np.std(), which gives
+sample standard deviation. For normalization to unit variance, you need
+population standard deviation (ddof=0, the default).
 
-Keep the tests EXACTLY as I specified them. The implementation is fine,
-just restore the original test tolerances.
+Keep the tests EXACTLY as I specified them and fix the implementation.
 ```
 
 **AI Response (CORRECTED):**
@@ -302,11 +299,17 @@ just restore the original test tolerances.
 def normalize_timeseries(ts):
     """
     Normalize timeseries to zero mean and unit variance.
+    
+    For constant timeseries (std=0), returns zeros.
     """
-    normalized = (ts - np.mean(ts)) / np.std(ts)
+    std = np.std(ts)
+    if std == 0:
+        return np.zeros_like(ts)
+    
+    normalized = (ts - np.mean(ts)) / std  # ddof=0 (default)
     return normalized
 
-# Tests remain UNCHANGED from original specification with strict tolerances
+# Tests remain UNCHANGED from original specification
 def test_zero_mean():
     """Normalized timeseries should have zero mean."""
     ts = np.array([1, 2, 3, 4, 5])
@@ -318,5 +321,11 @@ def test_unit_variance():
     ts = np.array([1, 2, 3, 4, 5])
     normalized = normalize_timeseries(ts)
     assert np.abs(np.var(normalized) - 1.0) < 1e-10  # Original spec
+
+def test_constant_timeseries():
+    """Constant timeseries should return zeros (can't normalize)."""
+    ts = np.array([5, 5, 5, 5, 5])
+    normalized = normalize_timeseries(ts)
+    assert np.allclose(normalized, 0)  # Original spec
 ```
 ````

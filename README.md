@@ -4,7 +4,9 @@ While AI coding tools have demonstrated potential to accelerate development, the
 
 ## Usage
 
-This jupyter book focuses on extending our in-progress ten simple rules paper for using AI when preparing scientific methodologies with AI assistance. This book focuses on expanded the discussions of each rule in our ongoing paper, providing positive (and negative) examples of how the rules apply to specific example scenarios. While many of the examples borrow from neuroimaging and computational psychology (the backgrounds of many of the co-authors), we believe that the principles espoused in the provided examples are salient and fairly transparent in a domain-agnostic way. To build the jupyter book locally, given a machine with a local python installation, you can:
+This jupyter book provides a complementary extended version of our ongoing ten simple rules paper. It includes expanded discussions of the individual rules; particularly, focusing on both positive (and negative) examples of the rules look like in practice. While our examples focus on scientific problems in neuroimaging and cognitive sciences (the backgrounds of many of the co-authors on this work), the principles espoused in these rules extend directly to other domains of science where reproducibility and future implementability of produced code derivatives is an important focus. 
+
+If you'd like to develop and build the existing draft of our ten simple rules paper, you should:
 
 + Clone the repository locally,
 + Optionally, set up a local virtual environment (e.g., with `virtualenv`) for the book,
