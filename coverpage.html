@@ -451,10 +451,12 @@ document.write(`
 <p>This jupyter book provides a complementary extended version of our ongoing ten simple rules paper. It includes expanded discussions of the individual rules; particularly, focusing on both positive (and negative) examples of the rules look like in practice. While our examples focus on scientific problems in neuroimaging and cognitive sciences (the backgrounds of many of the co-authors on this work), the principles espoused in these rules extend directly to other domains of science where reproducibility and future implementability of produced code derivatives is an important focus.</p>
 <p>If you’d like to develop and build the existing draft of our ten simple rules paper, you should:</p>
 <ul class="simple">
-<li><p>Have an up-to-date (Python 3.9+) version of python installed on your local machine,</p></li>
 <li><p>Clone the repository locally,</p></li>
-<li><p>Install jupyter-book locally, with requisite dependencies: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> </code></p></li>
+<li><p>Optionally, set up a local virtual environment (e.g., with <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code>) for the book,</p></li>
+<li><p>Install the dependencies: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jupyter-book</span> <span class="pre">sphinx-proof</span> <span class="pre">sphinx-togglebutton</span></code>,</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">jupyter-book</span> <span class="pre">build</span> <span class="pre">paper/</span></code>.</p></li>
 </ul>
+<p>A fully rendered version of the book will be built in <code class="docutils literal notranslate"><span class="pre">paper/_build/html/index.html</span></code>.</p>
 </section>
 <div class="toctree-wrapper compound">
 </div>

@@ -426,6 +426,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharing-context">Sharing context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -441,11 +442,11 @@ document.write(`
 <span id="intro-background"></span><h1>Background concepts and vocabulary<a class="headerlink" href="#background-concepts-and-vocabulary" title="Link to this heading">#</a></h1>
 <p>To navigate the challenges of AI-assisted coding effectively, researchers should be familiar with several key concepts that underpin these tools:</p>
 <ul class="simple">
-<li><p><strong>Large Language Models (LLMs)</strong> are neural networks trained on vast text corpora that generate text by predicting sequences of tokens, basic units of text processing that typically represent words, parts of words, or individual characters \cite{vaswani2017attention}. For instance, the word “unhappily” might be tokenized as “un”, “##happi”, “##ly”, where ## marks tokens that are not the start of a word.</p></li>
-<li><p><strong>Context windows</strong> define the maximum number of tokens an LLM can consider when generating responses. State-of-the-art models typically handle hundreds of thousands to millions of tokens, constraining how much code and documentation they can simultaneously process. When context limits are exceeded, models lose track of earlier information. Even when information is contained within the context window, attention to mid-document details can degrade (“lost in the middle”), especially for models with very large context windows; this phenomenon is known as <strong>context rot.</strong></p></li>
+<li><p><strong>Large Language Models (LLMs)</strong> are neural networks trained on vast text corpora that generate text by predicting sequences of tokens, basic units of text processing that typically represent words, parts of words, or individual characters <span id="id1">[<a class="reference internal" href="#id13" title="Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. In Advances in neural information processing systems, volume 30. 2017.">2</a>]</span>. For instance, the word “unhappily” might be tokenized as “un”, “##happi”, “##ly”, where ## marks tokens that are not the start of a word.</p></li>
+<li><p><strong>Context windows</strong> define the maximum number of tokens an LLM can consider when generating responses. State-of-the-art models typically handle hundreds of thousands to millions of tokens, constraining how much code and documentation they can simultaneously process. When context limits are exceeded, models lose track of earlier information. Even when information is contained within the context window, attention to mid-document details can degrade (“lost in the middle”), especially for models with very large context windows; this phenomenon is known as <strong>context rot</strong>. For an example of context rot, see <span id="id2">[<a class="reference internal" href="intro.html#id25" title="Chroma. Context rot: understanding ai memory degradation. Technical Report, Chroma, 2024. URL: https://research.trychroma.com/context-rot.">7</a>]</span>.</p></li>
 <li><p><strong>In-context learning</strong> allows models to adapt their behavior based on examples and instructions provided within the current conversation, without permanent changes to the underlying model. This enables direction of model behavior through strategic provision of examples and formatting of instructions.</p></li>
 <li><p><strong>Prompting</strong> encompasses techniques for structuring inputs to elicit desired outputs, including clear requirement specification, strategic provision of examples, and structured formatting. Effective prompting can dramatically improve code quality and relevance.</p></li>
-<li><p><strong>Test-driven development (TDD)</strong> involves writing tests before implementation to specify expected behavior and validate correctness, a practice that becomes even more critical when AI generates the implementation code.</p></li>
+<li><p><strong>Test-driven development (TDD)</strong> involves writing tests before implementation to specify expected behavior and validate correctness, a practice that becomes even more critical when AI generates the implementation code. Test driven development is detailed in <span id="id3">[<a class="reference internal" href="#id18" title="Kent Beck. Test-Driven Development: By Example. Addison-Wesley, Boston, MA, 2003.">3</a>]</span>.</p></li>
 </ul>
 <section id="sharing-context">
 <h2>Sharing context<a class="headerlink" href="#sharing-context" title="Link to this heading">#</a></h2>
@@ -456,6 +457,25 @@ document.write(`
 <li><p><strong>Constitution files</strong> establish non-negotiable principles governing AI behavior throughout development, such as security requirements or methodological constraints.</p></li>
 </ul>
 <p>Together, these tools can help transform AI interactions into consistent, goal-directed collaboration by providing the persistent context and boundaries that AI systems lack natively.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id4">
+<div role="list" class="citation-list">
+<div class="citation" id="id20" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>Chroma. Context rot: understanding ai memory degradation. Technical Report, Chroma, 2024. URL: <a class="reference external" href="https://research.trychroma.com/context-rot">https://research.trychroma.com/context-rot</a>.</p>
+</div>
+<div class="citation" id="id13" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">2</a><span class="fn-bracket">]</span></span>
+<p>Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. In <em>Advances in neural information processing systems</em>, volume 30. 2017.</p>
+</div>
+<div class="citation" id="id18" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Kent Beck. <em>Test-Driven Development: By Example</em>. Addison-Wesley, Boston, MA, 2003.</p>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -524,6 +544,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharing-context">Sharing context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 

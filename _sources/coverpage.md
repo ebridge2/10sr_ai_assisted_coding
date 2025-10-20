@@ -12,6 +12,9 @@ This jupyter book provides a complementary extended version of our ongoing ten s
 
 If you'd like to develop and build the existing draft of our ten simple rules paper, you should:
 
-+ Have an up-to-date (Python 3.9+) version of python installed on your local machine,
 + Clone the repository locally,
-+ Install jupyter-book locally, with requisite dependencies: `pip install `
++ Optionally, set up a local virtual environment (e.g., with `virtualenv`) for the book,
++ Install the dependencies: `pip install jupyter-book sphinx-proof sphinx-togglebutton`,
++ Run `jupyter-book build paper/`.
+
+A fully rendered version of the book will be built in `paper/_build/html/index.html`.
