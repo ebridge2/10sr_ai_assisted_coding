@@ -17,7 +17,7 @@ Positive examples approach refinement systematically. You either identify specif
 
 The user asks AI to generically improve code without specific objectives. The AI makes sweeping changes across multiple dimensions. When tests fail, the user tries to salvage the situation by listing what's wrong, but the AI's attempts to fix the problems make things worse. The conversation becomes increasingly polluted with failed attempts, conflicting constraints, and mounting confusion. What started as "improve the code" turns into a debugging nightmare where it's impossible to tell what's broken, why, or how to fix it. The user eventually gives up and has to revert everything.
 
-````
+````{prf:example} Vague "Improve This" Request
 :label: rule10-bad-ex1
 :class: dropdown
 
@@ -162,7 +162,7 @@ git revert HEAD
 
 The user has working code but suspects it could be improved. Instead of asking AI to fix everything, they request analysis first. The AI identifies specific improvement opportunities. The user evaluates each suggestion in the context of their project; some are valuable, others don't fit their codebase conventions. They choose one high-priority issue to address first and give AI a focused, specific refactoring objective. This diagnostic approach works even for less experienced developers who might not recognize unideal coding patterns themselves.
 
-````
+````{prf:example} Ask AI for Diagnostic Feedback Before Refactoring
 :label: rule10-good-ex1
 :class: dropdown
 
@@ -338,7 +338,7 @@ Continue with threshold_matrix()...
 
 Following the diagnostic approach from Example 2, the user now implements one focused refactoring objective. They work incrementally: make one change, run tests, verify behavior unchanged, commit. When a change breaks something, they catch it immediately and can revert or fix because only one thing changed. This disciplined approach maintains a working codebase throughout the refactoring process. The example shows multiple small steps with verification at each point.
 
-````
+````{prf:example} Incremental Refactoring with Testing
 :label: rule10-good-ex2
 :class: dropdown
 
@@ -497,7 +497,7 @@ git log --oneline -5
 
 The user identifies a performance bottleneck through profiling. Before optimizing, they establish baseline metrics. They request one specific optimization from AI, verify it actually improves performance, and confirm correctness is maintained. When an "optimization" actually makes things worse, they catch it immediately by comparing to the baseline and revert. This metrics-driven approach prevents premature optimization and ensures changes provide real benefits.
 
-````
+````{prf:example} Performance Optimization with Baseline Metrics
 :label: rule10-good-ex3
 :class: dropdown
 
@@ -665,7 +665,7 @@ Reverting to the simple vectorized version which was 355x faster.
 
 The user requests a specific refactoring. The AI implements it but subtly changes behavior in the process. Because the user tests after each change (following the incremental approach), they catch the breakage immediately. They can identify exactly what went wrong, provide corrected requirements, and try again. If they'd made multiple changes at once, they wouldn't know which change caused the problem.
 
-````
+````{prf:example} AI Breaks Code During Refactoring
 :label: rule10-good-ex4
 :class: dropdown
 
