@@ -10,7 +10,7 @@ While AI coding tools have demonstrated potential to accelerate development, the
 
 This Jupyter Book complements our paper "Ten Simple Rules for AI-Assisted Coding in Science" by providing concrete, realistic examples of each rule in action. While the paper articulates principles and rationale, this resource shows you *how to apply them in practice*.
 
-The difference between understanding a principle and applying it effectively often lies in seeing concrete examples. In our paper, space constraints limit how thoroughly we can demonstrate each rule through realistic scenarios. For each rule, you'll find:
+The difference between understanding a principle and applying it effectively often lies in seeing concrete examples. In our paper, space constraints limit how thoroughly we can demonstrate each rule through realistic scenarios. To overcome this in this jupyter book, for each rule, you'll find:
 
 - **The rule itself**: Restated from the paper for easy reference.
 - **What separates positive from flawed examples**: A brief explanation of the key distinctions between good, and flawed, examples relating to the rule.
