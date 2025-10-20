@@ -11,7 +11,7 @@ Positive examples start with upfront planning. You've thought through the proble
 
 ---
 
-## Example 1: Vague Requirements Without Planning
+### Example 1: Vague Requirements Without Planning
 
 The user hasn't thought through what they actually need. No specification of how this integrates with existing code. No clarity on data flow or expected behavior. The AI has to guess at everything (data format, processing steps, output structure). What comes back is generic code that probably doesn't match the actual system architecture. When the user tries to integrate this, they'll discover all sorts of mismatches they should have specified upfront: the function expects a file path but the existing `DataLoader` returns a dictionary; the return type is ambiguous (NIfTI object? numpy array? dictionary?); there's no error handling for missing files or incompatible data; and the validation function is completely arbitrary because the user never specified what valid data looks like. The "modular" request gets interpreted as separate functions, but with no clear interfaces or type specifications, making them impossible to test or reuse independently.
 
@@ -77,7 +77,7 @@ result = preprocess_fmri(images)  # TypeError: expected str, got dict
 
 ---
 
-## Example 2: Upfront Architecture Specification
+### Example 2: Upfront Architecture Specification
 
 The user has done the planning work before asking for code. They specify the complete system architecture with clear class boundaries and responsibilities. They define the exact API for each component including input/output types, error conditions, and side effects. They explain how data flows through the system and what each transformation does. They specify which parts are already implemented versus what needs to be created. This level of detail ensures the AI understands not just what to do, but how it should fit with existing code patterns and design. The resulting implementation can actually be dropped into the codebase because it matches the existing architecture.
 
@@ -208,7 +208,7 @@ def process(self, images: dict[str, nib.Nifti1Image]) -> np.ndarray:
 
 ---
 
-## Example 3: Iterative Refinement with Clear Goals
+### Example 3: Iterative Refinement with Clear Goals
 
 The user starts with a basic specification to establish the core functionality. Once that works, they add complexity through well-defined iterations. Each iteration has clear success criteria and builds naturally on the previous version. The user can verify each iteration independently before moving to the next. This prevents the AI from trying to solve everything at once and making wrong assumptions about priorities. The progressive refinement keeps the conversation focused and makes debugging much easier.
 

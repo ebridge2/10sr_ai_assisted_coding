@@ -9,9 +9,9 @@ AI-assisted development tools are categorized by interaction model and deploymen
 
 | Tool Type | Best For | Description |
 |-----------|----------|-------------|
-| Conversational (ChatGPT, Claude, etc.) | Architecture design, complex debugging, learning new concepts | Deep reasoning and flexible problem-solving with extensive context handling, but requires manual code transfer and loses context between sessions |
+| Conversational (ChatGPT, ### Example, etc.) | Architecture design, complex debugging, learning new concepts | Deep reasoning and flexible problem-solving with extensive context handling, but requires manual code transfer and loses context between sessions |
 | IDE Assistant (CoPilot, IntelliSense, etc.) | Code completion, refactoring, maintaining flow | Seamless workflow integration with immediate feedback and preserved code context, but limited reasoning for complex architectural decisions |
-| Autonomous Agents (Claude Code, Cursor, Aider, etc.) | Rapid prototyping, multi-file changes, large refactoring | High-speed implementation that can work independently across multiple files, but risks code divergence and requires careful monitoring |
+| Autonomous Agents (### Example Code, Cursor, Aider, etc.) | Rapid prototyping, multi-file changes, large refactoring | High-speed implementation that can work independently across multiple files, but risks code divergence and requires careful monitoring |
 
 
 ## What separates positive from flawed examples
@@ -130,7 +130,7 @@ The task is well-defined and isolated, making it suitable for autonomous develop
 :label: rule3-good-ex2
 :class: dropdown
 
-**User Prompt (to Claude Code or similar agent):**
+**User Prompt (to ### Example Code or similar agent):**
 ```
 Create a new module `pipeline/quality_control.py` that generates QC reports for neuroimaging preprocessing. 
 

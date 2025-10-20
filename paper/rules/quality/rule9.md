@@ -11,7 +11,7 @@ Positive examples involve thorough critical review of generated code. You read t
 
 ---
 
-## Example 1: Accepting Code Without Review
+### Example 1: Accepting Code Without Review
 
 The user asks for an implementation, the AI provides code that runs without errors, and the user accepts it because the AI says it's correct. The user never actually reads the implementation to understand what it's doing. Later, the code produces scientifically invalid results because it used an inappropriate method. The problem could have been caught with basic code review.
 
@@ -57,7 +57,7 @@ scientifically appropriate for your use case.
 
 ---
 
-## Example 2: Critical Review Catches Methodological Issues
+### Example 2: Critical Review Catches Methodological Issues
 
 The user receives code from AI and immediately reviews it critically. They notice the implementation doesn't match standard practice in their field. They ask clarifying questions and verify the approach is scientifically appropriate. They catch a methodological issue before using the code for real analysis.
 
@@ -166,7 +166,7 @@ coefficient, modularity) with permutation testing.
 
 ---
 
-## Example 3: Verifying Implementation Matches Expectations
+### Example 3: Verifying Implementation Matches Expectations
 
 The user has a clear expectation of how the algorithm should work (from Rule 4). When reviewing the generated code, they notice the implementation doesn't match their understanding. They identify the discrepancy and get it corrected before using the code.
 
@@ -263,7 +263,7 @@ practice in neuroimaging (see Yeo et al. 2011 for reference approach).
 
 ---
 
-## Example 4: Testing Against Known Results
+### Example 4: Testing Against Known Results
 
 The user generates code and immediately tests it against cases where they know the correct answer. This catches implementation errors that might not be obvious from reading the code alone. The test reveals the implementation is computing the wrong thing despite looking reasonable.
 
