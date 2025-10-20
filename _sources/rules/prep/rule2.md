@@ -1,7 +1,7 @@
 (rules:rule_2)=
 # Rule 2: Distinguish Problem Framing from Coding
 
-Framing a problem in a programmatic way and coding are not the same thing \cite{martin2008clean}. Programmatic problem framing is problem solvinging is problem-solving: understanding the domain, decomposing complex problems, finding the right levels of abstraction, designing algorithms, and making architectural decisions. Coding is the mechanical translation of these concepts into executable syntax in a programming language. Using AI coding tools effectively requires that you deeply understand the problem from a programmatic perspective that you are trying to solve; in most cases this understanding transcends the particular programming language, and the actual code implementation itself. AI tools excel at coding tasks, generating syntactically correct implementations from well-specified requirements, but they currently require human guidance for programmatic problem framing decisions that involve domain expertise, methodological choices, and scientific reasoning. You can't effectively guide or review what you don't understand, so establish fluency in at least one programming language and fundamental concepts before leveraging AI assistance. This foundation allows you to spot when generated code deviates from best practices or introduces subtle bugs. Without this knowledge, you're essentially flying blind, unable to distinguish between elegant solutions and convoluted workarounds.
+Framing a problem in a programmatic way and coding are not the same thing {cite}`martin2008clean`. Programmatic problem framing is problem solvinging is problem-solving: understanding the domain, decomposing complex problems, finding the right levels of abstraction, designing algorithms, and making architectural decisions. Coding is the mechanical translation of these concepts into executable syntax in a programming language. Using AI coding tools effectively requires that you deeply understand the problem from a programmatic perspective that you are trying to solve; in most cases this understanding transcends the particular programming language, and the actual code implementation itself. AI tools excel at coding tasks, generating syntactically correct implementations from well-specified requirements, but they currently require human guidance for programmatic problem framing decisions that involve domain expertise, methodological choices, and scientific reasoning. You can't effectively guide or review what you don't understand, so establish fluency in at least one programming language and fundamental concepts before leveraging AI assistance. This foundation allows you to spot when generated code deviates from best practices or introduces subtle bugs. Without this knowledge, you're essentially flying blind, unable to distinguish between elegant solutions and convoluted workarounds.
 
 ## What separates positive from flawed examples
 
@@ -234,3 +234,9 @@ def louvain_communities(adjacency, resolution=1.0, max_iter=100, tol=1e-4):
     # Returns communities, final_Q
 ```
 ````
+
+## References
+
+```{bibliography}
+:filter: docname in docnames
+```

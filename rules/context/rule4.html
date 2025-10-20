@@ -451,7 +451,7 @@ document.write(`
 <hr class="docutils" />
 <section id="example-1-vague-requirements-without-planning">
 <h2><span class="section-number">2.1.2. </span>Example 1: Vague Requirements Without Planning<a class="headerlink" href="#example-1-vague-requirements-without-planning" title="Link to this heading">#</a></h2>
-<p>The user hasn’t thought through what they actually need. No specification of how this integrates with existing code. No clarity on data flow or expected behavior. The AI has to guess at everything (data format, processing steps, output structure). What comes back is generic code that probably doesn’t match the actual system architecture. When the user tries to integrate this, they’ll discover all sorts of mismatches they should have specified upfront. The validation function is completely arbitrary because the user never specified what valid data looks like.</p>
+<p>The user hasn’t thought through what they actually need. No specification of how this integrates with existing code. No clarity on data flow or expected behavior. The AI has to guess at everything (data format, processing steps, output structure). What comes back is generic code that probably doesn’t match the actual system architecture. When the user tries to integrate this, they’ll discover all sorts of mismatches they should have specified upfront: the function expects a file path but the existing <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> returns a dictionary; the return type is ambiguous (NIfTI object? numpy array? dictionary?); there’s no error handling for missing files or incompatible data; and the validation function is completely arbitrary because the user never specified what valid data looks like. The “modular” request gets interpreted as separate functions, but with no clear interfaces or type specifications, making them impossible to test or reuse independently.</p>
 <div class="proof example dropdown admonition" id="rule4-bad-ex1">
 <p class="admonition-title"><span class="caption-number">Example 2.1 </span> (Dumping requirements without architectural context)</p>
 <section class="example-content" id="proof-content">
@@ -494,12 +494,25 @@ document.write(`
     <span class="k">return</span> <span class="kc">True</span>
 </pre></div>
 </div>
+<p><strong>User tries to integrate:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Existing code uses DataLoader that returns dict</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">()</span>
+<span class="n">images</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;sub-01&#39;</span><span class="p">)</span>  <span class="c1"># Returns {&#39;bold&#39;: NIfTI, &#39;T1w&#39;: NIfTI}</span>
+
+<span class="c1"># But new function expects file path!</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">preprocess_fmri</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>  <span class="c1"># TypeError: expected str, got dict</span>
+
+<span class="c1"># Even if we fix that, what does it return?</span>
+<span class="c1"># NIfTI object? numpy array? dict? Can&#39;t tell from code.</span>
+<span class="c1"># And which image does it operate on? Both? Just BOLD?</span>
+</pre></div>
+</div>
 </section>
 </div></section>
 <hr class="docutils" />
 <section id="example-2-upfront-architecture-specification">
 <h2><span class="section-number">2.1.3. </span>Example 2: Upfront Architecture Specification<a class="headerlink" href="#example-2-upfront-architecture-specification" title="Link to this heading">#</a></h2>
-<p>The user has done the planning work before asking for code. They specify the complete system architecture with clear class boundaries and responsibilities. They define the exact API for each component including input/output types, error conditions, and side effects. They explain how data flows through the system and what each transformation does. They specify which parts are already implemented versus what needs to be created. This gives the AI everything it needs to generate code that integrates naturally. The resulting implementation can actually be dropped into the codebase because it matches the existing architecture.</p>
+<p>The user has done the planning work before asking for code. They specify the complete system architecture with clear class boundaries and responsibilities. They define the exact API for each component including input/output types, error conditions, and side effects. They explain how data flows through the system and what each transformation does. They specify which parts are already implemented versus what needs to be created. This level of detail ensures the AI understands not just what to do, but how it should fit with existing code patterns and design. The resulting implementation can actually be dropped into the codebase because it matches the existing architecture.</p>
 <div class="proof example dropdown admonition" id="rule4-good-ex1">
 <p class="admonition-title"><span class="caption-number">Example 2.2 </span> (Clear architectural specification before implementation)</p>
 <section class="example-content" id="proof-content">

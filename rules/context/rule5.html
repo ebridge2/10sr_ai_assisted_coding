@@ -447,7 +447,7 @@ document.write(`
 <section id="what-separates-positive-from-flawed-examples">
 <h2><span class="section-number">2.2.1. </span>What separates positive from flawed examples<a class="headerlink" href="#what-separates-positive-from-flawed-examples" title="Link to this heading">#</a></h2>
 <p>Flawed examples assume the AI remembers everything from earlier in the conversation or from previous sessions. You add requirements incrementally without restating the full context. You hit context limits without noticing and the AI starts forgetting critical details. The conversation becomes polluted with failed attempts that confuse future interactions. You don’t have any persistent way to carry important project information across sessions.</p>
-<p>Positive examples treat context as a limited resource that needs active management. You provide complete context upfront when starting new tasks. You explicitly restate requirements when conversations get long. You use memory files to persist critical information across sessions. You recognize when context is polluted with failed attempts and restart cleanly. You track what the AI knows versus what it needs to be reminded about.</p>
+<p>Positive examples treat context as a limited resource that needs active management. You provide complete context upfront when starting new tasks. You explicitly restate requirements when conversations get long. You use memory files to persist critical information across sessions. You recognize when context is polluted with failed attempts and restart cleanly. You track what the AI knows versus what it needs to be reminded about; when you run into a problem, you extract lessons from your problem to try to improve your next interaction.</p>
 </section>
 <hr class="docutils" />
 <section id="example-1-incremental-requirements-without-context-management">
@@ -484,7 +484,11 @@ document.write(`
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">And</span> <span class="n">it</span> <span class="n">should</span> <span class="n">cache</span> <span class="n">the</span> <span class="n">validation</span> <span class="n">results</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>[AI is now working with fragmented context spread across 30 messages,
+<p><strong>Message 35:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Wait, why did we remove the S3 support? I said we needed that...
+</pre></div>
+</div>
+<p>[AI is now working with fragmented context spread across 35+ messages,
 probably lost track of earlier requirements, no clear specification of
 what the complete system should be]</p>
 </section>
