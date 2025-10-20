@@ -11,7 +11,7 @@ Positive examples start by explicitly stating what you do and don't know, and sy
 
 ---
 
-## Example 1: Insufficient Domain Research
+### Example 1: Insufficient Domain Research
 
 Jumping to implementation without domain understanding leaves you with code you can't evaluate. You don't know if brain networks should be weighted or binary. Critical preprocessing steps like thresholding strategies and normalization approaches are completely missing. The code uses metrics without domain justification (average path length might be undefined for disconnected graphs, which are common in brain networks). Field-standard tools like Brain Connectivity Toolbox get ignored entirely. You have no way to verify if this approach aligns with neuroscience conventions, and you're stuck with code you fundamentally can't assess.
 
@@ -49,7 +49,7 @@ def analyze_brain_network(adjacency_matrix):
 
 ---
 
-## Example 2: Thorough Domain Exploration
+### Example 2: Thorough Domain Exploration
 
 Starting with explicit acknowledgment of your knowledge level ("understand basic graph theory but new to brain connectivity") sets up productive learning. Asking for specific references before any coding gets you the foundational papers you need. Building understanding iteratively through targeted questions teaches you about standard tools (bctpy), typical data formats, and methodological considerations. Getting concrete papers lets you verify information independently. Most importantly, confirming understanding before moving to implementation means you're now equipped to evaluate whether the AI's eventual code actually makes sense.
 
@@ -127,7 +127,7 @@ Yes, I've reviewed the BCT documentation and Fornito et al. Now I'm ready to imp
 
 ---
 
-## Example 3: Learning Community Standards
+### Example 3: Learning Community Standards
 
 Asking about standards and existing implementations before writing any code gets you oriented in what the field actually uses. You learn that MNE-Python is the neuroscience standard, not just a general-purpose tool. You understand preprocessing requirements specific to EEG (highpass filtering, artifact rejection, reference choice). You get reporting conventions needed for publications (frequency band definitions, dB scale, normalization approaches). Now you have concrete documentation to reference and can make informed decisions about using existing tools versus implementing custom solutions.
 

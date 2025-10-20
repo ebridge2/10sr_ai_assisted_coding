@@ -207,7 +207,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../quality/rule8.html">4.1. Rule 8: Monitor Progress and Know When to Restart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../quality/rule9.html">4.2. Rule 9: Critically Review Generated Code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../quality/rule10.html">4.3. Rule 10: Refine Code Incrementally with Focused Objectives</a></li>
-
 </ul>
 </details></li>
 </ul>
@@ -455,7 +454,7 @@ document.write(`
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Conversational (ChatGPT, Claude, etc.)</p></td>
+<tr class="row-even"><td><p>Conversational (ChatGPT, ### Example, etc.)</p></td>
 <td><p>Architecture design, complex debugging, learning new concepts</p></td>
 <td><p>Deep reasoning and flexible problem-solving with extensive context handling, but requires manual code transfer and loses context between sessions</p></td>
 </tr>
@@ -463,7 +462,7 @@ document.write(`
 <td><p>Code completion, refactoring, maintaining flow</p></td>
 <td><p>Seamless workflow integration with immediate feedback and preserved code context, but limited reasoning for complex architectural decisions</p></td>
 </tr>
-<tr class="row-even"><td><p>Autonomous Agents (Claude Code, Cursor, Aider, etc.)</p></td>
+<tr class="row-even"><td><p>Autonomous Agents (### Example Code, Cursor, Aider, etc.)</p></td>
 <td><p>Rapid prototyping, multi-file changes, large refactoring</p></td>
 <td><p>High-speed implementation that can work independently across multiple files, but risks code divergence and requires careful monitoring</p></td>
 </tr>
@@ -572,7 +571,7 @@ document.write(`
 <div class="proof example dropdown admonition" id="rule3-good-ex2">
 <p class="admonition-title"><span class="caption-number">Example 1.9 </span> (Using autonomous agent for isolated feature development)</p>
 <section class="example-content" id="proof-content">
-<p><strong>User Prompt (to Claude Code or similar agent):</strong></p>
+<p><strong>User Prompt (to ### Example Code or similar agent):</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Create a new module `pipeline/quality_control.py` that generates QC reports for neuroimaging preprocessing. 
 
 **Requirements:**

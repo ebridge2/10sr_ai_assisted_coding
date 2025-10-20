@@ -11,7 +11,7 @@ Positive examples demonstrate clear understanding of the problem at a conceptual
 
 ---
 
-## Example 1: Vibe Coding Without Understanding
+### Example 1: Vibe Coding Without Understanding
 
 The user has no idea what problem they're actually trying to solve. Can't tell if correlation is even the right measure (could need partial correlation, mutual information, something else entirely). There's no specification of what "analyze" means scientifically. Can't evaluate if 0.7 is a meaningful threshold for anything. The loop implementation is inefficient, but the user has no way to know that. The code includes the diagonal (self-correlation equals 1) in the statistics, which is almost certainly wrong. The user can't debug this when it inevitably breaks and can't explain what it's doing to collaborators.
 
@@ -55,7 +55,7 @@ def analyze_connectivity(file_path):
 
 ---
 
-## Example 2: Problem-First Specification
+### Example 2: Problem-First Specification
 
 The user clearly articulates the problem structure: inputs, outputs, constraints. They specify what "connectivity" means in this context (Pearson correlation, not something else). They provide concrete requirements the AI can actually implement. They list validation criteria so they can verify correctness themselves. The NaN handling requirement gets explained explicitly. Now the user can actually check if this solution makes sense. They can debug issues because they understand what should happen. They can explain to collaborators what this code does and why it does it that way.
 
@@ -145,7 +145,7 @@ def compute_functional_connectivity(timeseries, method='pearson'):
 
 ---
 
-## Example 3: Algorithmic Understanding Guides Implementation
+### Example 3: Algorithmic Understanding Guides Implementation
 
 The user understands the algorithm at a conceptual level before asking for any code. They specify the modularity formula explicitly rather than hoping the AI gets it right. They provide concrete stopping criteria and expected behavior. They can verify each component works correctly (modularity calculation, gain computation). They know what "reasonable" output looks like for their domain. They can debug by checking intermediate modularity values match what they expect. They have a comparison point (networkx implementation) for validation.
 

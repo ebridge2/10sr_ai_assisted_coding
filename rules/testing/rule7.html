@@ -207,7 +207,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../quality/rule8.html">4.1. Rule 8: Monitor Progress and Know When to Restart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../quality/rule9.html">4.2. Rule 9: Critically Review Generated Code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../quality/rule10.html">4.3. Rule 10: Refine Code Incrementally with Focused Objectives</a></li>
-
 </ul>
 </details></li>
 </ul>
@@ -426,13 +425,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">3.2.1. What separates positive from flawed examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-only-happy-path-testing">3.2.2. Example 1: Only Happy Path Testing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-no-testing-infrastructure">3.2.3. Example 2: No Testing Infrastructure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-ai-assisted-comprehensive-test-generation">3.2.4. Example 3: AI-Assisted Comprehensive Test Generation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-ai-identifies-performance-edge-cases">3.2.5. Example 4: AI Identifies Performance Edge Cases</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5-comprehensive-testing-infrastructure">3.2.6. Example 5: Comprehensive Testing Infrastructure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-parameterized-tests-and-fixtures">3.2.7. Example 6: Parameterized Tests and Fixtures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">3.2.1. What separates positive from flawed examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-only-happy-path-testing">3.2.1.1. Example 1: Only Happy Path Testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-no-testing-infrastructure">3.2.1.2. Example 2: No Testing Infrastructure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-ai-assisted-comprehensive-test-generation">3.2.1.3. Example 3: AI-Assisted Comprehensive Test Generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-ai-identifies-performance-edge-cases">3.2.1.4. Example 4: AI Identifies Performance Edge Cases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5-comprehensive-testing-infrastructure">3.2.1.5. Example 5: Comprehensive Testing Infrastructure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-parameterized-tests-and-fixtures">3.2.1.6. Example 6: Parameterized Tests and Fixtures</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -451,10 +452,9 @@ document.write(`
 <h2><span class="section-number">3.2.1. </span>What separates positive from flawed examples<a class="headerlink" href="#what-separates-positive-from-flawed-examples" title="Link to this heading">#</a></h2>
 <p>Flawed examples skip testing infrastructure in favor of writing more features. Tests (if they exist) are run manually and inconsistently. Changes slip through without validation. By the time you discover problems, they’ve compounded into major issues. With AI generating code quickly, technical debt accumulates faster than you can track it.</p>
 <p>Positive examples invest in comprehensive testing infrastructure from day one. Every push triggers automated tests. Pre-commit hooks catch issues before they enter the codebase. The infrastructure grows alongside the code. Because AI can generate code so quickly, the testing infrastructure prevents that speed from becoming a liability.</p>
-</section>
 <hr class="docutils" />
 <section id="example-1-only-happy-path-testing">
-<h2><span class="section-number">3.2.2. </span>Example 1: Only Happy Path Testing<a class="headerlink" href="#example-1-only-happy-path-testing" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">3.2.1.1. </span>Example 1: Only Happy Path Testing<a class="headerlink" href="#example-1-only-happy-path-testing" title="Link to this heading">#</a></h3>
 <p>The user writes basic tests that verify the function works for normal inputs. Edge cases, boundary conditions, and failure modes are completely unexplored. The tests pass, giving false confidence. Then production encounters inputs the tests never covered. The code fails in ways that could have been caught with more comprehensive testing.</p>
 <div class="proof example dropdown admonition" id="rule7-bad-ex1">
 <p class="admonition-title"><span class="caption-number">Example 3.5 </span> (Minimal testing without edge case exploration)</p>
@@ -488,7 +488,7 @@ document.write(`
 </div></section>
 <hr class="docutils" />
 <section id="example-2-no-testing-infrastructure">
-<h2><span class="section-number">3.2.3. </span>Example 2: No Testing Infrastructure<a class="headerlink" href="#example-2-no-testing-infrastructure" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">3.2.1.2. </span>Example 2: No Testing Infrastructure<a class="headerlink" href="#example-2-no-testing-infrastructure" title="Link to this heading">#</a></h3>
 <p>The project has some tests but they’re run manually when someone remembers. No CI/CD pipeline. No pre-commit hooks. No automated validation. The AI generates code changes quickly, but there’s no systematic verification. Small issues accumulate into major problems. When bugs are discovered, it’s unclear when they were introduced. Code quality degrades as the team scales.</p>
 <div class="proof example dropdown admonition" id="rule7-bad-ex2">
 <p class="admonition-title"><span class="caption-number">Example 3.6 </span> (Manual testing only)</p>
@@ -524,7 +524,7 @@ document.write(`
 </div></section>
 <hr class="docutils" />
 <section id="example-3-ai-assisted-comprehensive-test-generation">
-<h2><span class="section-number">3.2.4. </span>Example 3: AI-Assisted Comprehensive Test Generation<a class="headerlink" href="#example-3-ai-assisted-comprehensive-test-generation" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">3.2.1.3. </span>Example 3: AI-Assisted Comprehensive Test Generation<a class="headerlink" href="#example-3-ai-assisted-comprehensive-test-generation" title="Link to this heading">#</a></h3>
 <p>The user asks AI to systematically identify edge cases and potential failure modes. The AI suggests boundary conditions, numerical edge cases, error scenarios, and performance considerations the user hadn’t thought of. The user evaluates each suggestion and implements the relevant ones. The resulting test suite is much more robust and catches real issues before production.</p>
 <div class="proof example dropdown admonition" id="rule7-good-ex1">
 <p class="admonition-title"><span class="caption-number">Example 3.7 </span> (Systematic edge case identification with AI)</p>
@@ -818,7 +818,7 @@ document.write(`
 </div></section>
 <hr class="docutils" />
 <section id="example-4-ai-identifies-performance-edge-cases">
-<h2><span class="section-number">3.2.5. </span>Example 4: AI Identifies Performance Edge Cases<a class="headerlink" href="#example-4-ai-identifies-performance-edge-cases" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">3.2.1.4. </span>Example 4: AI Identifies Performance Edge Cases<a class="headerlink" href="#example-4-ai-identifies-performance-edge-cases" title="Link to this heading">#</a></h3>
 <p>The user asks AI to identify performance-related edge cases and potential bottlenecks. The AI suggests benchmark tests for different input sizes and parallelization issues. This catches performance regressions before they reach production.</p>
 <div class="proof example dropdown admonition" id="rule7-good-ex2">
 <p class="admonition-title"><span class="caption-number">Example 3.8 </span> (Performance and scalability testing)</p>
@@ -949,7 +949,7 @@ Here are benchmark tests:
 </div></section>
 <hr class="docutils" />
 <section id="example-5-comprehensive-testing-infrastructure">
-<h2><span class="section-number">3.2.6. </span>Example 5: Comprehensive Testing Infrastructure<a class="headerlink" href="#example-5-comprehensive-testing-infrastructure" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">3.2.1.5. </span>Example 5: Comprehensive Testing Infrastructure<a class="headerlink" href="#example-5-comprehensive-testing-infrastructure" title="Link to this heading">#</a></h3>
 <p>The project has a complete testing infrastructure set up early. GitHub Actions runs tests on every push. Pre-commit hooks catch issues before commit. Multiple test suites (unit, integration, performance) run automatically. The AI helped generate most of this boilerplate. Now when the AI generates code changes, they’re automatically validated. Issues are caught immediately with clear error messages pointing to the problem.</p>
 <div class="proof example dropdown admonition" id="rule7-good-ex3">
 <p class="admonition-title"><span class="caption-number">Example 3.9 </span> (Full CI/CD with automated validation)</p>
@@ -1173,7 +1173,7 @@ Here are benchmark tests:
 </div></section>
 <hr class="docutils" />
 <section id="example-6-parameterized-tests-and-fixtures">
-<h2><span class="section-number">3.2.7. </span>Example 6: Parameterized Tests and Fixtures<a class="headerlink" href="#example-6-parameterized-tests-and-fixtures" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">3.2.1.6. </span>Example 6: Parameterized Tests and Fixtures<a class="headerlink" href="#example-6-parameterized-tests-and-fixtures" title="Link to this heading">#</a></h3>
 <p>The user asks AI to create sophisticated test patterns that would be tedious to write manually. Parameterized tests cover multiple input combinations. Fixtures provide reusable test data. The infrastructure makes it easy to add new test cases. This catches edge cases that manual testing would miss.</p>
 <div class="proof example dropdown admonition" id="rule7-good-ex4">
 <p class="admonition-title"><span class="caption-number">Example 3.10 </span> (Advanced testing patterns generated by AI)</p>
@@ -1301,6 +1301,7 @@ Here are benchmark tests:
 </section>
 </div></section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1366,13 +1367,15 @@ Here are benchmark tests:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">3.2.1. What separates positive from flawed examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-only-happy-path-testing">3.2.2. Example 1: Only Happy Path Testing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-no-testing-infrastructure">3.2.3. Example 2: No Testing Infrastructure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-ai-assisted-comprehensive-test-generation">3.2.4. Example 3: AI-Assisted Comprehensive Test Generation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-ai-identifies-performance-edge-cases">3.2.5. Example 4: AI Identifies Performance Edge Cases</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5-comprehensive-testing-infrastructure">3.2.6. Example 5: Comprehensive Testing Infrastructure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-parameterized-tests-and-fixtures">3.2.7. Example 6: Parameterized Tests and Fixtures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">3.2.1. What separates positive from flawed examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-only-happy-path-testing">3.2.1.1. Example 1: Only Happy Path Testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-no-testing-infrastructure">3.2.1.2. Example 2: No Testing Infrastructure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-ai-assisted-comprehensive-test-generation">3.2.1.3. Example 3: AI-Assisted Comprehensive Test Generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-ai-identifies-performance-edge-cases">3.2.1.4. Example 4: AI Identifies Performance Edge Cases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5-comprehensive-testing-infrastructure">3.2.1.5. Example 5: Comprehensive Testing Infrastructure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-parameterized-tests-and-fixtures">3.2.1.6. Example 6: Parameterized Tests and Fixtures</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

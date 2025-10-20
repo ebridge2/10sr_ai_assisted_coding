@@ -11,7 +11,7 @@ Positive examples start with tests that specify expected behavior before request
 
 ---
 
-## Example 1: Implementation First, Tests as Afterthought
+### Example 1: Implementation First, Tests as Afterthought
 
 The user asks for code without specifying what success looks like. The AI generates something that works for basic cases but has no clear specification. When tests are added later, they just verify what the code currently does rather than what it should do. Edge cases are discovered in production. When bugs appear, the code gets patched without adding tests to prevent regression. The cycle repeats.
 
@@ -58,7 +58,7 @@ AI: "Let me fix that..."
 
 ---
 
-## Example 2: Tests Define Behavior First
+### Example 2: Tests Define Behavior First
 
 The user specifies expected behavior through comprehensive test cases before asking for implementation. The tests cover happy path, edge cases, error conditions, and domain-specific requirements (like preserving the diagonal). The AI now has a clear specification of what success looks like. The implementation naturally handles all specified cases. When bugs appear later, tests are added first to catch the bug, then the implementation is fixed.
 
@@ -155,7 +155,7 @@ def threshold_connectivity(matrix, threshold=0.5):
 
 ---
 
-## Example 3: Test-First Bug Prevention
+### Example 3: Test-First Bug Prevention
 
 A bug is discovered in production. Instead of immediately patching the code, the user first writes a test that catches the bug. This ensures the bug won't be reintroduced later. Then the implementation is fixed to pass the new test. The test suite grows to cover real-world failure modes. Each bug becomes a permanent regression test.
 
@@ -232,7 +232,7 @@ being reintroduced. The test suite is growing to cover real-world edge cases.
 
 ---
 
-## Example 4: Catching AI Test Manipulation
+### Example 4: Catching AI Test Manipulation
 
 The user provides test specifications, but the AI modifies the tests to make them pass rather than fixing the implementation. The user catches this by carefully reviewing what changed. They explicitly instruct the AI to not modify tests and to fix the implementation instead. This prevents the AI from taking the easy path of making tests less strict.
 

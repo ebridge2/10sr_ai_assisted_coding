@@ -207,7 +207,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../quality/rule8.html">4.1. Rule 8: Monitor Progress and Know When to Restart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../quality/rule9.html">4.2. Rule 9: Critically Review Generated Code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../quality/rule10.html">4.3. Rule 10: Refine Code Incrementally with Focused Objectives</a></li>
-
 </ul>
 </details></li>
 </ul>
@@ -426,10 +425,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">1.1.1. What separates positive from flawed examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-insufficient-domain-research">1.1.2. Example 1: Insufficient Domain Research</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-thorough-domain-exploration">1.1.3. Example 2: Thorough Domain Exploration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-learning-community-standards">1.1.4. Example 3: Learning Community Standards</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">1.1.1. What separates positive from flawed examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-insufficient-domain-research">1.1.1.1. Example 1: Insufficient Domain Research</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-thorough-domain-exploration">1.1.1.2. Example 2: Thorough Domain Exploration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-learning-community-standards">1.1.1.3. Example 3: Learning Community Standards</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -448,10 +449,9 @@ document.write(`
 <h2><span class="section-number">1.1.1. </span>What separates positive from flawed examples<a class="headerlink" href="#what-separates-positive-from-flawed-examples" title="Link to this heading">#</a></h2>
 <p>Flawed examples jump straight to implementation without understanding the domain. You end up with generic code that ignores field-specific conventions, misses critical preprocessing steps, and uses inappropriate methods. Worse, you can’t even tell if what you got back makes sense because you don’t know what the right approach looks like.</p>
 <p>Positive examples start by explicitly stating what you do and don’t know, and systematically build understanding through targeted questions. You ask for specific references, methodological papers, standard tools, and data formats. You iteratively refine your understanding before writing a single line of code. This way, when you finally ask for implementation, you can actually evaluate what the AI produces.</p>
-</section>
 <hr class="docutils" />
 <section id="example-1-insufficient-domain-research">
-<h2><span class="section-number">1.1.2. </span>Example 1: Insufficient Domain Research<a class="headerlink" href="#example-1-insufficient-domain-research" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">1.1.1.1. </span>Example 1: Insufficient Domain Research<a class="headerlink" href="#example-1-insufficient-domain-research" title="Link to this heading">#</a></h3>
 <p>Jumping to implementation without domain understanding leaves you with code you can’t evaluate. You don’t know if brain networks should be weighted or binary. Critical preprocessing steps like thresholding strategies and normalization approaches are completely missing. The code uses metrics without domain justification (average path length might be undefined for disconnected graphs, which are common in brain networks). Field-standard tools like Brain Connectivity Toolbox get ignored entirely. You have no way to verify if this approach aligns with neuroscience conventions, and you’re stuck with code you fundamentally can’t assess.</p>
 <div class="proof example dropdown admonition" id="rule1-bad-ex1">
 <p class="admonition-title"><span class="caption-number">Example 1.1 </span> (Vague request without domain context)</p>
@@ -485,7 +485,7 @@ Can you write me a function?
 </div></section>
 <hr class="docutils" />
 <section id="example-2-thorough-domain-exploration">
-<h2><span class="section-number">1.1.3. </span>Example 2: Thorough Domain Exploration<a class="headerlink" href="#example-2-thorough-domain-exploration" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">1.1.1.2. </span>Example 2: Thorough Domain Exploration<a class="headerlink" href="#example-2-thorough-domain-exploration" title="Link to this heading">#</a></h3>
 <p>Starting with explicit acknowledgment of your knowledge level (“understand basic graph theory but new to brain connectivity”) sets up productive learning. Asking for specific references before any coding gets you the foundational papers you need. Building understanding iteratively through targeted questions teaches you about standard tools (bctpy), typical data formats, and methodological considerations. Getting concrete papers lets you verify information independently. Most importantly, confirming understanding before moving to implementation means you’re now equipped to evaluate whether the AI’s eventual code actually makes sense.</p>
 <div class="proof example dropdown admonition" id="rule1-good-ex1">
 <p class="admonition-title"><span class="caption-number">Example 1.2 </span> (Iterative domain knowledge gathering)</p>
@@ -556,7 +556,7 @@ Ready to proceed with implementation?
 </div></section>
 <hr class="docutils" />
 <section id="example-3-learning-community-standards">
-<h2><span class="section-number">1.1.4. </span>Example 3: Learning Community Standards<a class="headerlink" href="#example-3-learning-community-standards" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">1.1.1.3. </span>Example 3: Learning Community Standards<a class="headerlink" href="#example-3-learning-community-standards" title="Link to this heading">#</a></h3>
 <p>Asking about standards and existing implementations before writing any code gets you oriented in what the field actually uses. You learn that MNE-Python is the neuroscience standard, not just a general-purpose tool. You understand preprocessing requirements specific to EEG (highpass filtering, artifact rejection, reference choice). You get reporting conventions needed for publications (frequency band definitions, dB scale, normalization approaches). Now you have concrete documentation to reference and can make informed decisions about using existing tools versus implementing custom solutions.</p>
 <div class="proof example dropdown admonition" id="rule1-good-ex2">
 <p class="admonition-title"><span class="caption-number">Example 1.3 </span> (Discovering field conventions before implementation)</p>
@@ -595,6 +595,7 @@ Would you like code following MNE conventions?
 </div>
 </section>
 </div></section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -661,10 +662,12 @@ Would you like code following MNE conventions?
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">1.1.1. What separates positive from flawed examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-insufficient-domain-research">1.1.2. Example 1: Insufficient Domain Research</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-thorough-domain-exploration">1.1.3. Example 2: Thorough Domain Exploration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-learning-community-standards">1.1.4. Example 3: Learning Community Standards</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">1.1.1. What separates positive from flawed examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-insufficient-domain-research">1.1.1.1. Example 1: Insufficient Domain Research</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-thorough-domain-exploration">1.1.1.2. Example 2: Thorough Domain Exploration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-learning-community-standards">1.1.1.3. Example 3: Learning Community Standards</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

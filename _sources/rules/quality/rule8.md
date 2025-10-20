@@ -13,7 +13,7 @@ Positive examples involve active monitoring and decisive intervention. You watch
 
 ---
 
-## Example 1: Unsupervised AI Goes Off Track
+### Example 1: Unsupervised AI Goes Off Track
 
 The user gives vague instructions and walks away. The AI makes assumptions about what changes are needed. By the time the user checks back, the AI has modified core functionality that shouldn't have been touched, introduced new dependencies without asking, changed the API in breaking ways, and created bugs in previously working code. The user now has to figure out what changed, what broke, and how to salvage any useful parts. Much of the work is unusable and the conversation is polluted with bad approaches.
 
@@ -65,7 +65,7 @@ I can't use any of this. Now I have to figure out what was actually wrong.
 
 ---
 
-## Example 2: Active Monitoring with Early Intervention
+### Example 2: Active Monitoring with Early Intervention
 
 The user stays engaged and watches what the AI is doing in real time. When the AI starts modifying the wrong function, the user stops it immediately. They clarify what should and shouldn't be changed. When the AI proposes a solution that doesn't match the architecture, the user catches it before implementation. This prevents wasted work and keeps the conversation focused on productive changes.
 
@@ -143,7 +143,7 @@ Perfect. Implement that change to _smooth() only. Do not modify any other method
 
 ---
 
-## Example 3: Recognizing When to Restart
+### Example 3: Recognizing When to Restart
 
 After several attempts to fix a complex bug, the conversation has become tangled with conflicting constraints and failed approaches. Rather than continuing to patch, the user recognizes this is a restart situation. They commit the current (working) code, review what went wrong, update memory files with lessons learned, and start a fresh conversation with better specifications. The new attempt succeeds quickly because the requirements are now clear and the context isn't polluted.
 
@@ -227,7 +227,7 @@ Do NOT try to support both modes simultaneously or add pediatric handling.
 
 ---
 
-## Example 4: Using Version Control for Safe Restarts
+### Example 4: Using Version Control for Safe Restarts
 
 The user commits working code before attempting major changes. When the AI's approach turns out to be wrong, reverting is trivial. This makes restarts essentially free. The detailed commit messages (which coding agents excel at writing) make it easy to track what was attempted and why. Version control transforms restarts from costly failures into cheap experiments.
 

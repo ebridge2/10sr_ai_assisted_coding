@@ -207,7 +207,6 @@
 <li class="toctree-l2"><a class="reference internal" href="rule8.html">4.1. Rule 8: Monitor Progress and Know When to Restart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rule9.html">4.2. Rule 9: Critically Review Generated Code</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">4.3. Rule 10: Refine Code Incrementally with Focused Objectives</a></li>
-
 </ul>
 </details></li>
 </ul>
@@ -426,19 +425,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">4.3. Rule 10: Refine Code Incrementally with Focused Objectives</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">4.3.1. What separates positive from flawed examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-vague-improve-this-request">4.3.2. Example 1: Vague “Improve This” Request</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-ask-ai-for-diagnostic-feedback-before-refactoring">4.3.3. Example 2: Ask AI for Diagnostic Feedback Before Refactoring</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-incremental-refactoring-with-testing">4.3.4. Example 3: Incremental Refactoring with Testing</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-performance-optimization-with-baseline-metrics">4.4. Example 4: Performance Optimization with Baseline Metrics</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5-ai-breaks-code-during-refactoring">4.4.1. Example 5: AI Breaks Code During Refactoring</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">4.3.1. What separates positive from flawed examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-vague-improve-this-request">4.3.1.1. Example 1: Vague “Improve This” Request</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-ask-ai-for-diagnostic-feedback-before-refactoring">4.3.1.2. Example 2: Ask AI for Diagnostic Feedback Before Refactoring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-incremental-refactoring-with-testing">4.3.1.3. Example 3: Incremental Refactoring with Testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-performance-optimization-with-baseline-metrics">4.3.1.4. Example 4: Performance Optimization with Baseline Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5-ai-breaks-code-during-refactoring">4.3.1.5. Example 5: AI Breaks Code During Refactoring</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -457,10 +452,9 @@ document.write(`
 <h2><span class="section-number">4.3.1. </span>What separates positive from flawed examples<a class="headerlink" href="#what-separates-positive-from-flawed-examples" title="Link to this heading">#</a></h2>
 <p>Flawed examples ask AI to “improve” or “clean up” code without specific objectives. The AI makes sweeping changes across multiple concerns simultaneously; renaming variables, restructuring logic, changing algorithms, adding abstractions. You can’t evaluate which changes are beneficial because everything changed at once. Tests start failing but you don’t know which modification caused the problem. The AI might introduce technically correct patterns that don’t match your project’s conventions. You waste time untangling good changes from bad ones, or worse, accept problematic changes because you can’t isolate their effects.</p>
 <p>Positive examples approach refinement systematically. You either identify specific issues yourself or ask AI to diagnose problems first, then evaluate its suggestions based on your project context. You tackle one focused objective at a time. You test after each change (improving your testing suite as you go) and revert immediately if something breaks. You recognize that not all AI suggestions are appropriate for your codebase; even good practices can be wrong if they conflict with project or field conventions for specific tendencies or methodologies. This incremental approach lets you understand each change, verify its benefit, and maintain a working codebase throughout refinement.</p>
-</section>
 <hr class="docutils" />
 <section id="example-1-vague-improve-this-request">
-<h2><span class="section-number">4.3.2. </span>Example 1: Vague “Improve This” Request<a class="headerlink" href="#example-1-vague-improve-this-request" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">4.3.1.1. </span>Example 1: Vague “Improve This” Request<a class="headerlink" href="#example-1-vague-improve-this-request" title="Link to this heading">#</a></h3>
 <p>The user asks AI to generically improve code without specific objectives. The AI makes sweeping changes across multiple dimensions. When tests fail, the user tries to salvage the situation by listing what’s wrong, but the AI’s attempts to fix the problems make things worse. The conversation becomes increasingly polluted with failed attempts, conflicting constraints, and mounting confusion. What started as “improve the code” turns into a debugging nightmare where it’s impossible to tell what’s broken, why, or how to fix it. The user eventually gives up and has to revert everything.</p>
 <div class="proof example dropdown admonition" id="rule10-bad-ex1">
 <p class="admonition-title"><span class="caption-number">Example 4.9 </span> (Vague “Improve This” Request)</p>
@@ -592,7 +586,7 @@ git<span class="w"> </span>revert<span class="w"> </span>HEAD
 </div></section>
 <hr class="docutils" />
 <section id="example-2-ask-ai-for-diagnostic-feedback-before-refactoring">
-<h2><span class="section-number">4.3.3. </span>Example 2: Ask AI for Diagnostic Feedback Before Refactoring<a class="headerlink" href="#example-2-ask-ai-for-diagnostic-feedback-before-refactoring" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">4.3.1.2. </span>Example 2: Ask AI for Diagnostic Feedback Before Refactoring<a class="headerlink" href="#example-2-ask-ai-for-diagnostic-feedback-before-refactoring" title="Link to this heading">#</a></h3>
 <p>The user has working code but suspects it could be improved. Instead of asking AI to fix everything, they request analysis first. The AI identifies specific improvement opportunities. The user evaluates each suggestion in the context of their project; some are valuable, others don’t fit their codebase conventions. They choose one high-priority issue to address first and give AI a focused, specific refactoring objective. This diagnostic approach works even for less experienced developers who might not recognize unideal coding patterns themselves.</p>
 <div class="proof example dropdown admonition" id="rule10-good-ex1">
 <p class="admonition-title"><span class="caption-number">Example 4.10 </span> (Ask AI for Diagnostic Feedback Before Refactoring)</p>
@@ -758,7 +752,7 @@ Continue with threshold_matrix()...
 </div></section>
 <hr class="docutils" />
 <section id="example-3-incremental-refactoring-with-testing">
-<h2><span class="section-number">4.3.4. </span>Example 3: Incremental Refactoring with Testing<a class="headerlink" href="#example-3-incremental-refactoring-with-testing" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">4.3.1.3. </span>Example 3: Incremental Refactoring with Testing<a class="headerlink" href="#example-3-incremental-refactoring-with-testing" title="Link to this heading">#</a></h3>
 <p>Following the diagnostic approach from Example 2, the user now implements one focused refactoring objective. They work incrementally: make one change, run tests, verify behavior unchanged, commit. When a change breaks something, they catch it immediately and can revert or fix because only one thing changed. This disciplined approach maintains a working codebase throughout the refactoring process. The example shows multiple small steps with verification at each point.</p>
 <div class="proof example dropdown admonition" id="rule10-good-ex2">
 <p class="admonition-title"><span class="caption-number">Example 4.11 </span> (Incremental Refactoring with Testing)</p>
@@ -901,10 +895,9 @@ git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> 
 </ul>
 </section>
 </div></section>
-</section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="example-4-performance-optimization-with-baseline-metrics">
-<h1><span class="section-number">4.4. </span>Example 4: Performance Optimization with Baseline Metrics<a class="headerlink" href="#example-4-performance-optimization-with-baseline-metrics" title="Link to this heading">#</a></h1>
+<section id="example-4-performance-optimization-with-baseline-metrics">
+<h3><span class="section-number">4.3.1.4. </span>Example 4: Performance Optimization with Baseline Metrics<a class="headerlink" href="#example-4-performance-optimization-with-baseline-metrics" title="Link to this heading">#</a></h3>
 <p>The user identifies a performance bottleneck through profiling. Before optimizing, they establish baseline metrics. They request one specific optimization from AI, verify it actually improves performance, and confirm correctness is maintained. When an “optimization” actually makes things worse, they catch it immediately by comparing to the baseline and revert. This metrics-driven approach prevents premature optimization and ensures changes provide real benefits.</p>
 <div class="proof example dropdown admonition" id="rule10-good-ex3">
 <p class="admonition-title"><span class="caption-number">Example 4.12 </span> (Performance Optimization with Baseline Metrics)</p>
@@ -1057,8 +1050,9 @@ The correlation computation is the problem. Let me look at the code...
 </pre></div>
 </div>
 </section>
-</div><section id="example-5-ai-breaks-code-during-refactoring">
-<h2><span class="section-number">4.4.1. </span>Example 5: AI Breaks Code During Refactoring<a class="headerlink" href="#example-5-ai-breaks-code-during-refactoring" title="Link to this heading">#</a></h2>
+</div></section>
+<section id="example-5-ai-breaks-code-during-refactoring">
+<h3><span class="section-number">4.3.1.5. </span>Example 5: AI Breaks Code During Refactoring<a class="headerlink" href="#example-5-ai-breaks-code-during-refactoring" title="Link to this heading">#</a></h3>
 <p>The user requests a specific refactoring. The AI implements it but subtly changes behavior in the process. Because the user tests after each change (following the incremental approach), they catch the breakage immediately. They can identify exactly what went wrong, provide corrected requirements, and try again. If they’d made multiple changes at once, they wouldn’t know which change caused the problem.</p>
 <div class="proof example dropdown admonition" id="rule10-good-ex4">
 <p class="admonition-title"><span class="caption-number">Example 4.13 </span> (AI Breaks Code During Refactoring)</p>
@@ -1208,6 +1202,7 @@ print<span class="o">(</span><span class="s2">&quot;✓ Behavior now matches ori
 </section>
 </div></section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1273,19 +1268,15 @@ print<span class="o">(</span><span class="s2">&quot;✓ Behavior now matches ori
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">4.3. Rule 10: Refine Code Incrementally with Focused Objectives</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">4.3.1. What separates positive from flawed examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-vague-improve-this-request">4.3.2. Example 1: Vague “Improve This” Request</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-ask-ai-for-diagnostic-feedback-before-refactoring">4.3.3. Example 2: Ask AI for Diagnostic Feedback Before Refactoring</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-incremental-refactoring-with-testing">4.3.4. Example 3: Incremental Refactoring with Testing</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-performance-optimization-with-baseline-metrics">4.4. Example 4: Performance Optimization with Baseline Metrics</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5-ai-breaks-code-during-refactoring">4.4.1. Example 5: AI Breaks Code During Refactoring</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">4.3.1. What separates positive from flawed examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-vague-improve-this-request">4.3.1.1. Example 1: Vague “Improve This” Request</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-ask-ai-for-diagnostic-feedback-before-refactoring">4.3.1.2. Example 2: Ask AI for Diagnostic Feedback Before Refactoring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-incremental-refactoring-with-testing">4.3.1.3. Example 3: Incremental Refactoring with Testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-performance-optimization-with-baseline-metrics">4.3.1.4. Example 4: Performance Optimization with Baseline Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5-ai-breaks-code-during-refactoring">4.3.1.5. Example 5: AI Breaks Code During Refactoring</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>

@@ -207,7 +207,6 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">4.1. Rule 8: Monitor Progress and Know When to Restart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rule9.html">4.2. Rule 9: Critically Review Generated Code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rule10.html">4.3. Rule 10: Refine Code Incrementally with Focused Objectives</a></li>
-
 </ul>
 </details></li>
 </ul>
@@ -426,11 +425,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">4.1.1. What separates positive from flawed examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-unsupervised-ai-goes-off-track">4.1.2. Example 1: Unsupervised AI Goes Off Track</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-active-monitoring-with-early-intervention">4.1.3. Example 2: Active Monitoring with Early Intervention</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-recognizing-when-to-restart">4.1.4. Example 3: Recognizing When to Restart</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-using-version-control-for-safe-restarts">4.1.5. Example 4: Using Version Control for Safe Restarts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">4.1.1. What separates positive from flawed examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-unsupervised-ai-goes-off-track">4.1.1.1. Example 1: Unsupervised AI Goes Off Track</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-active-monitoring-with-early-intervention">4.1.1.2. Example 2: Active Monitoring with Early Intervention</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-recognizing-when-to-restart">4.1.1.3. Example 3: Recognizing When to Restart</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-using-version-control-for-safe-restarts">4.1.1.4. Example 4: Using Version Control for Safe Restarts</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -450,10 +451,9 @@ document.write(`
 <h2><span class="section-number">4.1.1. </span>What separates positive from flawed examples<a class="headerlink" href="#what-separates-positive-from-flawed-examples" title="Link to this heading">#</a></h2>
 <p>Flawed examples let the AI run unsupervised, assuming it will eventually figure things out. You come back to find it’s been making changes you didn’t want, introducing new bugs while fixing old ones, or heading down a completely wrong architectural path. By the time you notice, you’ve wasted significant time and tokens on code you can’t use. The conversation is now polluted with failed approaches that will confuse future attempts.</p>
 <p>Positive examples involve active monitoring and decisive intervention. You watch what the AI is doing and stop it when it goes off track. You recognize when a conversation has gotten too tangled and needs a fresh start. You review what went wrong, update your specifications or memory files, and begin again with better context. You use version control to make restarts cheap and safe.</p>
-</section>
 <hr class="docutils" />
 <section id="example-1-unsupervised-ai-goes-off-track">
-<h2><span class="section-number">4.1.2. </span>Example 1: Unsupervised AI Goes Off Track<a class="headerlink" href="#example-1-unsupervised-ai-goes-off-track" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">4.1.1.1. </span>Example 1: Unsupervised AI Goes Off Track<a class="headerlink" href="#example-1-unsupervised-ai-goes-off-track" title="Link to this heading">#</a></h3>
 <p>The user gives vague instructions and walks away. The AI makes assumptions about what changes are needed. By the time the user checks back, the AI has modified core functionality that shouldn’t have been touched, introduced new dependencies without asking, changed the API in breaking ways, and created bugs in previously working code. The user now has to figure out what changed, what broke, and how to salvage any useful parts. Much of the work is unusable and the conversation is polluted with bad approaches.</p>
 <div class="proof example dropdown admonition" id="rule8-bad-ex1">
 <p class="admonition-title"><span class="caption-number">Example 4.1 </span> (Letting AI work unsupervised with vague instructions)</p>
@@ -499,7 +499,7 @@ I can&#39;t use any of this. Now I have to figure out what was actually wrong.
 </div></section>
 <hr class="docutils" />
 <section id="example-2-active-monitoring-with-early-intervention">
-<h2><span class="section-number">4.1.3. </span>Example 2: Active Monitoring with Early Intervention<a class="headerlink" href="#example-2-active-monitoring-with-early-intervention" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">4.1.1.2. </span>Example 2: Active Monitoring with Early Intervention<a class="headerlink" href="#example-2-active-monitoring-with-early-intervention" title="Link to this heading">#</a></h3>
 <p>The user stays engaged and watches what the AI is doing in real time. When the AI starts modifying the wrong function, the user stops it immediately. They clarify what should and shouldn’t be changed. When the AI proposes a solution that doesn’t match the architecture, the user catches it before implementation. This prevents wasted work and keeps the conversation focused on productive changes.</p>
 <div class="proof example dropdown admonition" id="rule8-good-ex1">
 <p class="admonition-title"><span class="caption-number">Example 4.2 </span> (Real-time monitoring with course correction)</p>
@@ -570,7 +570,7 @@ I can&#39;t use any of this. Now I have to figure out what was actually wrong.
 </div></section>
 <hr class="docutils" />
 <section id="example-3-recognizing-when-to-restart">
-<h2><span class="section-number">4.1.4. </span>Example 3: Recognizing When to Restart<a class="headerlink" href="#example-3-recognizing-when-to-restart" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">4.1.1.3. </span>Example 3: Recognizing When to Restart<a class="headerlink" href="#example-3-recognizing-when-to-restart" title="Link to this heading">#</a></h3>
 <p>After several attempts to fix a complex bug, the conversation has become tangled with conflicting constraints and failed approaches. Rather than continuing to patch, the user recognizes this is a restart situation. They commit the current (working) code, review what went wrong, update memory files with lessons learned, and start a fresh conversation with better specifications. The new attempt succeeds quickly because the requirements are now clear and the context isn’t polluted.</p>
 <div class="proof example dropdown admonition" id="rule8-good-ex2">
 <p class="admonition-title"><span class="caption-number">Example 4.3 </span> (Strategic restart after conversation becomes polluted)</p>
@@ -647,7 +647,7 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 </div></section>
 <hr class="docutils" />
 <section id="example-4-using-version-control-for-safe-restarts">
-<h2><span class="section-number">4.1.5. </span>Example 4: Using Version Control for Safe Restarts<a class="headerlink" href="#example-4-using-version-control-for-safe-restarts" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">4.1.1.4. </span>Example 4: Using Version Control for Safe Restarts<a class="headerlink" href="#example-4-using-version-control-for-safe-restarts" title="Link to this heading">#</a></h3>
 <p>The user commits working code before attempting major changes. When the AI’s approach turns out to be wrong, reverting is trivial. This makes restarts essentially free. The detailed commit messages (which coding agents excel at writing) make it easy to track what was attempted and why. Version control transforms restarts from costly failures into cheap experiments.</p>
 <div class="proof example dropdown admonition" id="rule8-good-ex3">
 <p class="admonition-title"><span class="caption-number">Example 4.4 </span> (Version control enables low-cost restarts)</p>
@@ -698,6 +698,7 @@ git<span class="w"> </span>checkout<span class="w"> </span>preprocessing/pipelin
 </div>
 </section>
 </div></section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -764,11 +765,13 @@ git<span class="w"> </span>checkout<span class="w"> </span>preprocessing/pipelin
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">4.1.1. What separates positive from flawed examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-unsupervised-ai-goes-off-track">4.1.2. Example 1: Unsupervised AI Goes Off Track</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-active-monitoring-with-early-intervention">4.1.3. Example 2: Active Monitoring with Early Intervention</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-recognizing-when-to-restart">4.1.4. Example 3: Recognizing When to Restart</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-using-version-control-for-safe-restarts">4.1.5. Example 4: Using Version Control for Safe Restarts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">4.1.1. What separates positive from flawed examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-unsupervised-ai-goes-off-track">4.1.1.1. Example 1: Unsupervised AI Goes Off Track</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-active-monitoring-with-early-intervention">4.1.1.2. Example 2: Active Monitoring with Early Intervention</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-recognizing-when-to-restart">4.1.1.3. Example 3: Recognizing When to Restart</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-using-version-control-for-safe-restarts">4.1.1.4. Example 4: Using Version Control for Safe Restarts</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

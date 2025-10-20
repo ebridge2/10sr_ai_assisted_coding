@@ -11,7 +11,7 @@ Positive examples treat context as a limited resource that needs active manageme
 
 ---
 
-## Example 1: Incremental Requirements Without Context Management
+### Example 1: Incremental Requirements Without Context Management
 
 The user keeps adding requirements one at a time without ever providing the full picture. The AI is trying to work with fragments of information spread across multiple messages. By the fifth requirement, the AI has probably lost track of earlier constraints. There's no way to know if all the requirements are actually compatible with each other. When this inevitably breaks, the user will have to either restart from scratch or spend time figuring out which requirements got lost. No memory file means next session starts from zero.
 
@@ -66,7 +66,7 @@ what the complete system should be]
 
 ---
 
-## Example 2: Complete Context Upfront with Memory File
+### Example 2: Complete Context Upfront with Memory File
 
 The user provides everything the AI needs to know in the initial message. Complete requirements, constraints, existing code structure, file formats, all specified upfront. The AI can see the full problem and generate a coherent solution. The memory file captures architectural decisions and constraints that should persist across sessions. When the user starts a new session next week, they can reference the memory file and the AI immediately knows the project context. This prevents having to re-explain the entire system every time.
 
@@ -150,7 +150,7 @@ Create class BIDSLoader with methods:
 
 ---
 
-## Example 3: Context Reset When Conversation Gets Polluted
+### Example 3: Context Reset When Conversation Gets Polluted
 
 The conversation has gone off track with multiple failed attempts. Rather than continuing to patch a fundamentally broken approach, the user recognizes the context is polluted. They review what went wrong, update the memory file with lessons learned, and start fresh. The new conversation begins with corrected requirements and avoids the previous mistakes. This is much more efficient than trying to untangle a confused conversation with 30+ messages of failed attempts.
 
@@ -211,7 +211,7 @@ Implement Preprocessor.load_and_prepare() that:
 
 ---
 
-## Example 4: Using Problem Tracking File for Complex Debugging
+### Example 4: Using Problem Tracking File for Complex Debugging
 
 The user maintains a problem tracking file that both they and the AI can reference. As issues are discovered, they get logged with context. The AI can see all known issues and their relationships. This prevents repeatedly fixing the same bug in different places or introducing fixes that conflict with each other. The problem file serves as a shared workspace that persists across sessions and keeps everyone aligned on what needs attention.
 

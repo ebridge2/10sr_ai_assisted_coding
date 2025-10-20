@@ -11,7 +11,7 @@ Positive examples invest in comprehensive testing infrastructure from day one. E
 
 ---
 
-## Example 1: Only Happy Path Testing
+### Example 1: Only Happy Path Testing
 
 The user writes basic tests that verify the function works for normal inputs. Edge cases, boundary conditions, and failure modes are completely unexplored. The tests pass, giving false confidence. Then production encounters inputs the tests never covered. The code fails in ways that could have been caught with more comprehensive testing.
 
@@ -50,7 +50,7 @@ def test_different_sizes():
 ---
 
 
-## Example 2: No Testing Infrastructure
+### Example 2: No Testing Infrastructure
 
 The project has some tests but they're run manually when someone remembers. No CI/CD pipeline. No pre-commit hooks. No automated validation. The AI generates code changes quickly, but there's no systematic verification. Small issues accumulate into major problems. When bugs are discovered, it's unclear when they were introduced. Code quality degrades as the team scales.
 
@@ -90,7 +90,7 @@ Team: "When was this bug introduced?"
 
 ---
 
-## Example 3: AI-Assisted Comprehensive Test Generation
+### Example 3: AI-Assisted Comprehensive Test Generation
 
 The user asks AI to systematically identify edge cases and potential failure modes. The AI suggests boundary conditions, numerical edge cases, error scenarios, and performance considerations the user hadn't thought of. The user evaluates each suggestion and implements the relevant ones. The resulting test suite is much more robust and catches real issues before production.
 
@@ -390,7 +390,7 @@ class TestComputeCorrelation:
 
 ---
 
-## Example 4: AI Identifies Performance Edge Cases
+### Example 4: AI Identifies Performance Edge Cases
 
 The user asks AI to identify performance-related edge cases and potential bottlenecks. The AI suggests benchmark tests for different input sizes and parallelization issues. This catches performance regressions before they reach production.
 
@@ -526,7 +526,7 @@ def test_method_performance(benchmark, method):
 
 ---
 
-## Example 5: Comprehensive Testing Infrastructure
+### Example 5: Comprehensive Testing Infrastructure
 
 The project has a complete testing infrastructure set up early. GitHub Actions runs tests on every push. Pre-commit hooks catch issues before commit. Multiple test suites (unit, integration, performance) run automatically. The AI helped generate most of this boilerplate. Now when the AI generates code changes, they're automatically validated. Issues are caught immediately with clear error messages pointing to the problem.
 
@@ -758,7 +758,7 @@ project/
 
 ---
 
-## Example 6: Parameterized Tests and Fixtures
+### Example 6: Parameterized Tests and Fixtures
 
 The user asks AI to create sophisticated test patterns that would be tedious to write manually. Parameterized tests cover multiple input combinations. Fixtures provide reusable test data. The infrastructure makes it easy to add new test cases. This catches edge cases that manual testing would miss.
 

@@ -207,7 +207,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../quality/rule8.html">4.1. Rule 8: Monitor Progress and Know When to Restart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../quality/rule9.html">4.2. Rule 9: Critically Review Generated Code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../quality/rule10.html">4.3. Rule 10: Refine Code Incrementally with Focused Objectives</a></li>
-
 </ul>
 </details></li>
 </ul>
@@ -426,10 +425,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">2.1.1. What separates positive from flawed examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-vague-requirements-without-planning">2.1.2. Example 1: Vague Requirements Without Planning</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-upfront-architecture-specification">2.1.3. Example 2: Upfront Architecture Specification</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-iterative-refinement-with-clear-goals">2.1.4. Example 3: Iterative Refinement with Clear Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">2.1.1. What separates positive from flawed examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-vague-requirements-without-planning">2.1.1.1. Example 1: Vague Requirements Without Planning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-upfront-architecture-specification">2.1.1.2. Example 2: Upfront Architecture Specification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-iterative-refinement-with-clear-goals">2.1.1.3. Example 3: Iterative Refinement with Clear Goals</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -448,10 +449,9 @@ document.write(`
 <h2><span class="section-number">2.1.1. </span>What separates positive from flawed examples<a class="headerlink" href="#what-separates-positive-from-flawed-examples" title="Link to this heading">#</a></h2>
 <p>Flawed examples dump vague requirements on the AI without any planning. You haven’t thought through how the pieces should fit together, what the data flow looks like, or what success actually means. The AI fills in the gaps with its own assumptions, which are probably wrong for your use case. You end up with code that technically does something but doesn’t integrate well with your existing system.</p>
 <p>Positive examples start with upfront planning. You’ve thought through the problem structure, anticipated how it should be solved, and specified the architectural context. You can articulate inputs, outputs, data flow, and how this component interacts with others. This gives the AI enough structure to generate code that actually fits your needs rather than creating a standalone solution that requires major rework.</p>
-</section>
 <hr class="docutils" />
 <section id="example-1-vague-requirements-without-planning">
-<h2><span class="section-number">2.1.2. </span>Example 1: Vague Requirements Without Planning<a class="headerlink" href="#example-1-vague-requirements-without-planning" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">2.1.1.1. </span>Example 1: Vague Requirements Without Planning<a class="headerlink" href="#example-1-vague-requirements-without-planning" title="Link to this heading">#</a></h3>
 <p>The user hasn’t thought through what they actually need. No specification of how this integrates with existing code. No clarity on data flow or expected behavior. The AI has to guess at everything (data format, processing steps, output structure). What comes back is generic code that probably doesn’t match the actual system architecture. When the user tries to integrate this, they’ll discover all sorts of mismatches they should have specified upfront: the function expects a file path but the existing <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> returns a dictionary; the return type is ambiguous (NIfTI object? numpy array? dictionary?); there’s no error handling for missing files or incompatible data; and the validation function is completely arbitrary because the user never specified what valid data looks like. The “modular” request gets interpreted as separate functions, but with no clear interfaces or type specifications, making them impossible to test or reuse independently.</p>
 <div class="proof example dropdown admonition" id="rule4-bad-ex1">
 <p class="admonition-title"><span class="caption-number">Example 2.1 </span> (Dumping requirements without architectural context)</p>
@@ -512,7 +512,7 @@ document.write(`
 </div></section>
 <hr class="docutils" />
 <section id="example-2-upfront-architecture-specification">
-<h2><span class="section-number">2.1.3. </span>Example 2: Upfront Architecture Specification<a class="headerlink" href="#example-2-upfront-architecture-specification" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">2.1.1.2. </span>Example 2: Upfront Architecture Specification<a class="headerlink" href="#example-2-upfront-architecture-specification" title="Link to this heading">#</a></h3>
 <p>The user has done the planning work before asking for code. They specify the complete system architecture with clear class boundaries and responsibilities. They define the exact API for each component including input/output types, error conditions, and side effects. They explain how data flows through the system and what each transformation does. They specify which parts are already implemented versus what needs to be created. This level of detail ensures the AI understands not just what to do, but how it should fit with existing code patterns and design. The resulting implementation can actually be dropped into the codebase because it matches the existing architecture.</p>
 <div class="proof example dropdown admonition" id="rule4-good-ex1">
 <p class="admonition-title"><span class="caption-number">Example 2.2 </span> (Clear architectural specification before implementation)</p>
@@ -639,7 +639,7 @@ document.write(`
 </div></section>
 <hr class="docutils" />
 <section id="example-3-iterative-refinement-with-clear-goals">
-<h2><span class="section-number">2.1.4. </span>Example 3: Iterative Refinement with Clear Goals<a class="headerlink" href="#example-3-iterative-refinement-with-clear-goals" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">2.1.1.3. </span>Example 3: Iterative Refinement with Clear Goals<a class="headerlink" href="#example-3-iterative-refinement-with-clear-goals" title="Link to this heading">#</a></h3>
 <p>The user starts with a basic specification to establish the core functionality. Once that works, they add complexity through well-defined iterations. Each iteration has clear success criteria and builds naturally on the previous version. The user can verify each iteration independently before moving to the next. This prevents the AI from trying to solve everything at once and making wrong assumptions about priorities. The progressive refinement keeps the conversation focused and makes debugging much easier.</p>
 <div class="proof example dropdown admonition" id="rule4-good-ex2">
 <p class="admonition-title"><span class="caption-number">Example 2.3 </span> (Progressive specification with clear success criteria)</p>
@@ -724,6 +724,7 @@ document.write(`
 </section>
 </div></section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -789,10 +790,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">2.1.1. What separates positive from flawed examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-vague-requirements-without-planning">2.1.2. Example 1: Vague Requirements Without Planning</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-upfront-architecture-specification">2.1.3. Example 2: Upfront Architecture Specification</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-iterative-refinement-with-clear-goals">2.1.4. Example 3: Iterative Refinement with Clear Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">2.1.1. What separates positive from flawed examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-vague-requirements-without-planning">2.1.1.1. Example 1: Vague Requirements Without Planning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-upfront-architecture-specification">2.1.1.2. Example 2: Upfront Architecture Specification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-iterative-refinement-with-clear-goals">2.1.1.3. Example 3: Iterative Refinement with Clear Goals</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

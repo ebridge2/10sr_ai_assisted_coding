@@ -207,7 +207,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../quality/rule8.html">4.1. Rule 8: Monitor Progress and Know When to Restart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../quality/rule9.html">4.2. Rule 9: Critically Review Generated Code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../quality/rule10.html">4.3. Rule 10: Refine Code Incrementally with Focused Objectives</a></li>
-
 </ul>
 </details></li>
 </ul>
@@ -426,11 +425,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">2.2.1. What separates positive from flawed examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-incremental-requirements-without-context-management">2.2.2. Example 1: Incremental Requirements Without Context Management</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-complete-context-upfront-with-memory-file">2.2.3. Example 2: Complete Context Upfront with Memory File</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-context-reset-when-conversation-gets-polluted">2.2.4. Example 3: Context Reset When Conversation Gets Polluted</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-using-problem-tracking-file-for-complex-debugging">2.2.5. Example 4: Using Problem Tracking File for Complex Debugging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">2.2.1. What separates positive from flawed examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-incremental-requirements-without-context-management">2.2.1.1. Example 1: Incremental Requirements Without Context Management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-complete-context-upfront-with-memory-file">2.2.1.2. Example 2: Complete Context Upfront with Memory File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-context-reset-when-conversation-gets-polluted">2.2.1.3. Example 3: Context Reset When Conversation Gets Polluted</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-using-problem-tracking-file-for-complex-debugging">2.2.1.4. Example 4: Using Problem Tracking File for Complex Debugging</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -449,10 +450,9 @@ document.write(`
 <h2><span class="section-number">2.2.1. </span>What separates positive from flawed examples<a class="headerlink" href="#what-separates-positive-from-flawed-examples" title="Link to this heading">#</a></h2>
 <p>Flawed examples assume the AI remembers everything from earlier in the conversation or from previous sessions. You add requirements incrementally without restating the full context. You hit context limits without noticing and the AI starts forgetting critical details. The conversation becomes polluted with failed attempts that confuse future interactions. You don’t have any persistent way to carry important project information across sessions.</p>
 <p>Positive examples treat context as a limited resource that needs active management. You provide complete context upfront when starting new tasks. You explicitly restate requirements when conversations get long. You use memory files to persist critical information across sessions. You recognize when context is polluted with failed attempts and restart cleanly. You track what the AI knows versus what it needs to be reminded about; when you run into a problem, you extract lessons from your problem to try to improve your next interaction.</p>
-</section>
 <hr class="docutils" />
 <section id="example-1-incremental-requirements-without-context-management">
-<h2><span class="section-number">2.2.2. </span>Example 1: Incremental Requirements Without Context Management<a class="headerlink" href="#example-1-incremental-requirements-without-context-management" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">2.2.1.1. </span>Example 1: Incremental Requirements Without Context Management<a class="headerlink" href="#example-1-incremental-requirements-without-context-management" title="Link to this heading">#</a></h3>
 <p>The user keeps adding requirements one at a time without ever providing the full picture. The AI is trying to work with fragments of information spread across multiple messages. By the fifth requirement, the AI has probably lost track of earlier constraints. There’s no way to know if all the requirements are actually compatible with each other. When this inevitably breaks, the user will have to either restart from scratch or spend time figuring out which requirements got lost. No memory file means next session starts from zero.</p>
 <div class="proof example dropdown admonition" id="rule5-bad-ex1">
 <p class="admonition-title"><span class="caption-number">Example 2.4 </span> (Drip-feeding requirements across long conversation)</p>
@@ -496,7 +496,7 @@ what the complete system should be]</p>
 </div></section>
 <hr class="docutils" />
 <section id="example-2-complete-context-upfront-with-memory-file">
-<h2><span class="section-number">2.2.3. </span>Example 2: Complete Context Upfront with Memory File<a class="headerlink" href="#example-2-complete-context-upfront-with-memory-file" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">2.2.1.2. </span>Example 2: Complete Context Upfront with Memory File<a class="headerlink" href="#example-2-complete-context-upfront-with-memory-file" title="Link to this heading">#</a></h3>
 <p>The user provides everything the AI needs to know in the initial message. Complete requirements, constraints, existing code structure, file formats, all specified upfront. The AI can see the full problem and generate a coherent solution. The memory file captures architectural decisions and constraints that should persist across sessions. When the user starts a new session next week, they can reference the memory file and the AI immediately knows the project context. This prevents having to re-explain the entire system every time.</p>
 <div class="proof example dropdown admonition" id="rule5-good-ex1">
 <p class="admonition-title"><span class="caption-number">Example 2.5 </span> (Comprehensive initial specification with persistent context)</p>
@@ -576,7 +576,7 @@ Create class BIDSLoader with methods:
 </div></section>
 <hr class="docutils" />
 <section id="example-3-context-reset-when-conversation-gets-polluted">
-<h2><span class="section-number">2.2.4. </span>Example 3: Context Reset When Conversation Gets Polluted<a class="headerlink" href="#example-3-context-reset-when-conversation-gets-polluted" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">2.2.1.3. </span>Example 3: Context Reset When Conversation Gets Polluted<a class="headerlink" href="#example-3-context-reset-when-conversation-gets-polluted" title="Link to this heading">#</a></h3>
 <p>The conversation has gone off track with multiple failed attempts. Rather than continuing to patch a fundamentally broken approach, the user recognizes the context is polluted. They review what went wrong, update the memory file with lessons learned, and start fresh. The new conversation begins with corrected requirements and avoids the previous mistakes. This is much more efficient than trying to untangle a confused conversation with 30+ messages of failed attempts.</p>
 <div class="proof example dropdown admonition" id="rule5-good-ex2">
 <p class="admonition-title"><span class="caption-number">Example 2.6 </span> (Strategic restart with updated memory file)</p>
@@ -631,7 +631,7 @@ Create class BIDSLoader with methods:
 </div></section>
 <hr class="docutils" />
 <section id="example-4-using-problem-tracking-file-for-complex-debugging">
-<h2><span class="section-number">2.2.5. </span>Example 4: Using Problem Tracking File for Complex Debugging<a class="headerlink" href="#example-4-using-problem-tracking-file-for-complex-debugging" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">2.2.1.4. </span>Example 4: Using Problem Tracking File for Complex Debugging<a class="headerlink" href="#example-4-using-problem-tracking-file-for-complex-debugging" title="Link to this heading">#</a></h3>
 <p>The user maintains a problem tracking file that both they and the AI can reference. As issues are discovered, they get logged with context. The AI can see all known issues and their relationships. This prevents repeatedly fixing the same bug in different places or introducing fixes that conflict with each other. The problem file serves as a shared workspace that persists across sessions and keeps everyone aligned on what needs attention.</p>
 <div class="proof example dropdown admonition" id="rule5-good-ex3">
 <p class="admonition-title"><span class="caption-number">Example 2.7 </span> (Persistent problem tracking across sessions)</p>
@@ -687,6 +687,7 @@ Create class BIDSLoader with methods:
 </div>
 </section>
 </div></section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -753,11 +754,13 @@ Create class BIDSLoader with methods:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">2.2.1. What separates positive from flawed examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-incremental-requirements-without-context-management">2.2.2. Example 1: Incremental Requirements Without Context Management</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-complete-context-upfront-with-memory-file">2.2.3. Example 2: Complete Context Upfront with Memory File</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-context-reset-when-conversation-gets-polluted">2.2.4. Example 3: Context Reset When Conversation Gets Polluted</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-using-problem-tracking-file-for-complex-debugging">2.2.5. Example 4: Using Problem Tracking File for Complex Debugging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-separates-positive-from-flawed-examples">2.2.1. What separates positive from flawed examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-incremental-requirements-without-context-management">2.2.1.1. Example 1: Incremental Requirements Without Context Management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-complete-context-upfront-with-memory-file">2.2.1.2. Example 2: Complete Context Upfront with Memory File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-context-reset-when-conversation-gets-polluted">2.2.1.3. Example 3: Context Reset When Conversation Gets Polluted</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-using-problem-tracking-file-for-complex-debugging">2.2.1.4. Example 4: Using Problem Tracking File for Complex Debugging</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
