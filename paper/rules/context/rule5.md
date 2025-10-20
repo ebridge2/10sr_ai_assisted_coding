@@ -7,7 +7,7 @@
 
 Flawed examples assume the AI remembers everything from earlier in the conversation or from previous sessions. You add requirements incrementally without restating the full context. You hit context limits without noticing and the AI starts forgetting critical details. The conversation becomes polluted with failed attempts that confuse future interactions. You don't have any persistent way to carry important project information across sessions.
 
-Positive examples treat context as a limited resource that needs active management. You provide complete context upfront when starting new tasks. You explicitly restate requirements when conversations get long. You use memory files to persist critical information across sessions. You recognize when context is polluted with failed attempts and restart cleanly. You track what the AI knows versus what it needs to be reminded about.
+Positive examples treat context as a limited resource that needs active management. You provide complete context upfront when starting new tasks. You explicitly restate requirements when conversations get long. You use memory files to persist critical information across sessions. You recognize when context is polluted with failed attempts and restart cleanly. You track what the AI knows versus what it needs to be reminded about; when you run into a problem, you extract lessons from your problem to try to improve your next interaction.
 
 ---
 
@@ -54,7 +54,12 @@ Wait, I forgot to mention it needs to handle compressed files too.
 And it should cache the validation results.
 ```
 
-[AI is now working with fragmented context spread across 30 messages, 
+**Message 35:**
+```
+Wait, why did we remove the S3 support? I said we needed that...
+```
+
+[AI is now working with fragmented context spread across 35+ messages, 
 probably lost track of earlier requirements, no clear specification of 
 what the complete system should be]
 ````
