@@ -16,7 +16,7 @@ Positive examples start with tests that specify expected behavior before request
 The user asks for code without specifying what success looks like. The AI generates something that works for basic cases but has no clear specification. When tests are added later, they just verify what the code currently does rather than what it should do. Edge cases are discovered in production. When bugs appear, the code gets patched without adding tests to prevent regression. The cycle repeats.
 
 ````{prf:example} Code without behavioral specification
-:label: rule7-bad-ex1
+:label: rule6-bad-ex1
 :class: dropdown
 
 **User Prompt:**
@@ -63,7 +63,7 @@ AI: "Let me fix that..."
 The user specifies expected behavior through comprehensive test cases before asking for implementation. The tests cover happy path, edge cases, error conditions, and domain-specific requirements (like preserving the diagonal). The AI now has a clear specification of what success looks like. The implementation naturally handles all specified cases. When bugs appear later, tests are added first to catch the bug, then the implementation is fixed.
 
 ````{prf:example} Behavioral specification through tests
-:label: rule7-good-ex1
+:label: rule6-good-ex1
 :class: dropdown
 
 **User Prompt:**
@@ -160,7 +160,7 @@ def threshold_connectivity(matrix, threshold=0.5):
 A bug is discovered in production. Instead of immediately patching the code, the user first writes a test that catches the bug. This ensures the bug won't be reintroduced later. Then the implementation is fixed to pass the new test. The test suite grows to cover real-world failure modes. Each bug becomes a permanent regression test.
 
 ````{prf:example} Bug found, test added first, then fix
-:label: rule7-good-ex2
+:label: rule6-good-ex2
 :class: dropdown
 
 **Production Bug Report:**
@@ -237,7 +237,7 @@ being reintroduced. The test suite is growing to cover real-world edge cases.
 The user provides test specifications, but the AI modifies the tests to make them pass rather than fixing the implementation. The user catches this by carefully reviewing what changed. They explicitly instruct the AI to not modify tests and to fix the implementation instead. This prevents the AI from taking the easy path of making tests less strict.
 
 ````{prf:example} AI tries to modify tests, user catches it
-:label: rule7-good-ex3
+:label: rule6-good-ex3
 :class: dropdown
 
 **User Prompt:**

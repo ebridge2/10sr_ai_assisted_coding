@@ -454,7 +454,7 @@ document.write(`
 <section id="example-1-unsupervised-ai-goes-off-track">
 <h2><span class="section-number">4.1.2. </span>Example 1: Unsupervised AI Goes Off Track<a class="headerlink" href="#example-1-unsupervised-ai-goes-off-track" title="Link to this heading">#</a></h2>
 <p>The user gives vague instructions and walks away. The AI makes assumptions about what changes are needed. By the time the user checks back, the AI has modified core functionality that shouldn’t have been touched, introduced new dependencies without asking, changed the API in breaking ways, and created bugs in previously working code. The user now has to figure out what changed, what broke, and how to salvage any useful parts. Much of the work is unusable and the conversation is polluted with bad approaches.</p>
-<div class="proof example dropdown admonition" id="rule6-bad-ex1">
+<div class="proof example dropdown admonition" id="rule8-bad-ex1">
 <p class="admonition-title"><span class="caption-number">Example 4.1 </span> (Letting AI work unsupervised with vague instructions)</p>
 <section class="example-content" id="proof-content">
 <p><strong>User Prompt:</strong></p>
@@ -500,7 +500,7 @@ I can&#39;t use any of this. Now I have to figure out what was actually wrong.
 <section id="example-2-active-monitoring-with-early-intervention">
 <h2><span class="section-number">4.1.3. </span>Example 2: Active Monitoring with Early Intervention<a class="headerlink" href="#example-2-active-monitoring-with-early-intervention" title="Link to this heading">#</a></h2>
 <p>The user stays engaged and watches what the AI is doing in real time. When the AI starts modifying the wrong function, the user stops it immediately. They clarify what should and shouldn’t be changed. When the AI proposes a solution that doesn’t match the architecture, the user catches it before implementation. This prevents wasted work and keeps the conversation focused on productive changes.</p>
-<div class="proof example dropdown admonition" id="rule6-good-ex1">
+<div class="proof example dropdown admonition" id="rule8-good-ex1">
 <p class="admonition-title"><span class="caption-number">Example 4.2 </span> (Real-time monitoring with course correction)</p>
 <section class="example-content" id="proof-content">
 <p><strong>User Prompt:</strong></p>
@@ -571,7 +571,7 @@ I can&#39;t use any of this. Now I have to figure out what was actually wrong.
 <section id="example-3-recognizing-when-to-restart">
 <h2><span class="section-number">4.1.4. </span>Example 3: Recognizing When to Restart<a class="headerlink" href="#example-3-recognizing-when-to-restart" title="Link to this heading">#</a></h2>
 <p>After several attempts to fix a complex bug, the conversation has become tangled with conflicting constraints and failed approaches. Rather than continuing to patch, the user recognizes this is a restart situation. They commit the current (working) code, review what went wrong, update memory files with lessons learned, and start a fresh conversation with better specifications. The new attempt succeeds quickly because the requirements are now clear and the context isn’t polluted.</p>
-<div class="proof example dropdown admonition" id="rule6-good-ex2">
+<div class="proof example dropdown admonition" id="rule8-good-ex2">
 <p class="admonition-title"><span class="caption-number">Example 4.3 </span> (Strategic restart after conversation becomes polluted)</p>
 <section class="example-content" id="proof-content">
 <p><strong>After 20+ messages of failed attempts:</strong></p>
@@ -648,7 +648,7 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 <section id="example-4-using-version-control-for-safe-restarts">
 <h2><span class="section-number">4.1.5. </span>Example 4: Using Version Control for Safe Restarts<a class="headerlink" href="#example-4-using-version-control-for-safe-restarts" title="Link to this heading">#</a></h2>
 <p>The user commits working code before attempting major changes. When the AI’s approach turns out to be wrong, reverting is trivial. This makes restarts essentially free. The detailed commit messages (which coding agents excel at writing) make it easy to track what was attempted and why. Version control transforms restarts from costly failures into cheap experiments.</p>
-<div class="proof example dropdown admonition" id="rule6-good-ex3">
+<div class="proof example dropdown admonition" id="rule8-good-ex3">
 <p class="admonition-title"><span class="caption-number">Example 4.4 </span> (Version control enables low-cost restarts)</p>
 <section class="example-content" id="proof-content">
 <p><strong>User:</strong></p>

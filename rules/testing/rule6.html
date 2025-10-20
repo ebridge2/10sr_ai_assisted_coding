@@ -453,7 +453,7 @@ document.write(`
 <section id="example-1-implementation-first-tests-as-afterthought">
 <h2><span class="section-number">3.1.2. </span>Example 1: Implementation First, Tests as Afterthought<a class="headerlink" href="#example-1-implementation-first-tests-as-afterthought" title="Link to this heading">#</a></h2>
 <p>The user asks for code without specifying what success looks like. The AI generates something that works for basic cases but has no clear specification. When tests are added later, they just verify what the code currently does rather than what it should do. Edge cases are discovered in production. When bugs appear, the code gets patched without adding tests to prevent regression. The cycle repeats.</p>
-<div class="proof example dropdown admonition" id="rule7-bad-ex1">
+<div class="proof example dropdown admonition" id="rule6-bad-ex1">
 <p class="admonition-title"><span class="caption-number">Example 3.1 </span> (Code without behavioral specification)</p>
 <section class="example-content" id="proof-content">
 <p><strong>User Prompt:</strong></p>
@@ -494,7 +494,7 @@ document.write(`
 <section id="example-2-tests-define-behavior-first">
 <h2><span class="section-number">3.1.3. </span>Example 2: Tests Define Behavior First<a class="headerlink" href="#example-2-tests-define-behavior-first" title="Link to this heading">#</a></h2>
 <p>The user specifies expected behavior through comprehensive test cases before asking for implementation. The tests cover happy path, edge cases, error conditions, and domain-specific requirements (like preserving the diagonal). The AI now has a clear specification of what success looks like. The implementation naturally handles all specified cases. When bugs appear later, tests are added first to catch the bug, then the implementation is fixed.</p>
-<div class="proof example dropdown admonition" id="rule7-good-ex1">
+<div class="proof example dropdown admonition" id="rule6-good-ex1">
 <p class="admonition-title"><span class="caption-number">Example 3.2 </span> (Behavioral specification through tests)</p>
 <section class="example-content" id="proof-content">
 <p><strong>User Prompt:</strong></p>
@@ -587,7 +587,7 @@ document.write(`
 <section id="example-3-test-first-bug-prevention">
 <h2><span class="section-number">3.1.4. </span>Example 3: Test-First Bug Prevention<a class="headerlink" href="#example-3-test-first-bug-prevention" title="Link to this heading">#</a></h2>
 <p>A bug is discovered in production. Instead of immediately patching the code, the user first writes a test that catches the bug. This ensures the bug won’t be reintroduced later. Then the implementation is fixed to pass the new test. The test suite grows to cover real-world failure modes. Each bug becomes a permanent regression test.</p>
-<div class="proof example dropdown admonition" id="rule7-good-ex2">
+<div class="proof example dropdown admonition" id="rule6-good-ex2">
 <p class="admonition-title"><span class="caption-number">Example 3.3 </span> (Bug found, test added first, then fix)</p>
 <section class="example-content" id="proof-content">
 <p><strong>Production Bug Report:</strong></p>
@@ -658,7 +658,7 @@ document.write(`
 <section id="example-4-catching-ai-test-manipulation">
 <h2><span class="section-number">3.1.5. </span>Example 4: Catching AI Test Manipulation<a class="headerlink" href="#example-4-catching-ai-test-manipulation" title="Link to this heading">#</a></h2>
 <p>The user provides test specifications, but the AI modifies the tests to make them pass rather than fixing the implementation. The user catches this by carefully reviewing what changed. They explicitly instruct the AI to not modify tests and to fix the implementation instead. This prevents the AI from taking the easy path of making tests less strict.</p>
-<div class="proof example dropdown admonition" id="rule7-good-ex3">
+<div class="proof example dropdown admonition" id="rule6-good-ex3">
 <p class="admonition-title"><span class="caption-number">Example 3.4 </span> (AI tries to modify tests, user catches it)</p>
 <section class="example-content" id="proof-content">
 <p><strong>User Prompt:</strong></p>

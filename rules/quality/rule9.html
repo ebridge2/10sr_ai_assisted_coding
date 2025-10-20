@@ -453,7 +453,7 @@ document.write(`
 <section id="example-1-accepting-code-without-review">
 <h2><span class="section-number">4.2.2. </span>Example 1: Accepting Code Without Review<a class="headerlink" href="#example-1-accepting-code-without-review" title="Link to this heading">#</a></h2>
 <p>The user asks for an implementation, the AI provides code that runs without errors, and the user accepts it because the AI says it’s correct. The user never actually reads the implementation to understand what it’s doing. Later, the code produces scientifically invalid results because it used an inappropriate method. The problem could have been caught with basic code review.</p>
-<div class="proof example dropdown admonition" id="rule10-bad-ex1">
+<div class="proof example dropdown admonition" id="rule9-bad-ex1">
 <p class="admonition-title"><span class="caption-number">Example 4.5 </span> (Trusting AI claims without verification)</p>
 <section class="example-content" id="proof-content">
 <p><strong>User Prompt:</strong></p>
@@ -493,7 +493,7 @@ document.write(`
 <section id="example-2-critical-review-catches-methodological-issues">
 <h2><span class="section-number">4.2.3. </span>Example 2: Critical Review Catches Methodological Issues<a class="headerlink" href="#example-2-critical-review-catches-methodological-issues" title="Link to this heading">#</a></h2>
 <p>The user receives code from AI and immediately reviews it critically. They notice the implementation doesn’t match standard practice in their field. They ask clarifying questions and verify the approach is scientifically appropriate. They catch a methodological issue before using the code for real analysis.</p>
-<div class="proof example dropdown admonition" id="rule10-good-ex1">
+<div class="proof example dropdown admonition" id="rule9-good-ex1">
 <p class="admonition-title"><span class="caption-number">Example 4.6 </span> (Reading code to verify scientific appropriateness)</p>
 <section class="example-content" id="proof-content">
 <p><strong>User Prompt:</strong></p>
@@ -596,7 +596,7 @@ Let me ask for clarification...
 <section id="example-3-verifying-implementation-matches-expectations">
 <h2><span class="section-number">4.2.4. </span>Example 3: Verifying Implementation Matches Expectations<a class="headerlink" href="#example-3-verifying-implementation-matches-expectations" title="Link to this heading">#</a></h2>
 <p>The user has a clear expectation of how the algorithm should work (from Rule 4). When reviewing the generated code, they notice the implementation doesn’t match their understanding. They identify the discrepancy and get it corrected before using the code.</p>
-<div class="proof example dropdown admonition" id="rule10-good-ex2">
+<div class="proof example dropdown admonition" id="rule9-good-ex2">
 <p class="admonition-title"><span class="caption-number">Example 4.7 </span> (Checking implementation matches prior expectations)</p>
 <section class="example-content" id="proof-content">
 <p><strong>User Context (from Rule 4 planning):</strong></p>
@@ -687,7 +687,7 @@ Let me ask for clarification...
 <section id="example-4-testing-against-known-results">
 <h2><span class="section-number">4.2.5. </span>Example 4: Testing Against Known Results<a class="headerlink" href="#example-4-testing-against-known-results" title="Link to this heading">#</a></h2>
 <p>The user generates code and immediately tests it against cases where they know the correct answer. This catches implementation errors that might not be obvious from reading the code alone. The test reveals the implementation is computing the wrong thing despite looking reasonable.</p>
-<div class="proof example dropdown admonition" id="rule10-good-ex3">
+<div class="proof example dropdown admonition" id="rule9-good-ex3">
 <p class="admonition-title"><span class="caption-number">Example 4.8 </span> (Validating against known ground truth)</p>
 <section class="example-content" id="proof-content">
 <p><strong>AI Generated Code:</strong></p>

@@ -16,7 +16,7 @@ Positive examples involve thorough critical review of generated code. You read t
 The user asks for an implementation, the AI provides code that runs without errors, and the user accepts it because the AI says it's correct. The user never actually reads the implementation to understand what it's doing. Later, the code produces scientifically invalid results because it used an inappropriate method. The problem could have been caught with basic code review.
 
 ````{prf:example} Trusting AI claims without verification
-:label: rule10-bad-ex1
+:label: rule9-bad-ex1
 :class: dropdown
 
 **User Prompt:**
@@ -62,7 +62,7 @@ scientifically appropriate for your use case.
 The user receives code from AI and immediately reviews it critically. They notice the implementation doesn't match standard practice in their field. They ask clarifying questions and verify the approach is scientifically appropriate. They catch a methodological issue before using the code for real analysis.
 
 ````{prf:example} Reading code to verify scientific appropriateness
-:label: rule10-good-ex1
+:label: rule9-good-ex1
 :class: dropdown
 
 **User Prompt:**
@@ -171,7 +171,7 @@ coefficient, modularity) with permutation testing.
 The user has a clear expectation of how the algorithm should work (from Rule 4). When reviewing the generated code, they notice the implementation doesn't match their understanding. They identify the discrepancy and get it corrected before using the code.
 
 ````{prf:example} Checking implementation matches prior expectations
-:label: rule10-good-ex2
+:label: rule9-good-ex2
 :class: dropdown
 
 **User Context (from Rule 4 planning):**
@@ -268,7 +268,7 @@ practice in neuroimaging (see Yeo et al. 2011 for reference approach).
 The user generates code and immediately tests it against cases where they know the correct answer. This catches implementation errors that might not be obvious from reading the code alone. The test reveals the implementation is computing the wrong thing despite looking reasonable.
 
 ````{prf:example} Validating against known ground truth
-:label: rule10-good-ex3
+:label: rule9-good-ex3
 :class: dropdown
 
 **AI Generated Code:**
