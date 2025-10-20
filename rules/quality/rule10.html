@@ -462,88 +462,81 @@ document.write(`
 <section id="example-1-vague-improve-this-request">
 <h2><span class="section-number">4.3.2. </span>Example 1: Vague “Improve This” Request<a class="headerlink" href="#example-1-vague-improve-this-request" title="Link to this heading">#</a></h2>
 <p>The user asks AI to generically improve code without specific objectives. The AI makes sweeping changes across multiple dimensions. When tests fail, the user tries to salvage the situation by listing what’s wrong, but the AI’s attempts to fix the problems make things worse. The conversation becomes increasingly polluted with failed attempts, conflicting constraints, and mounting confusion. What started as “improve the code” turns into a debugging nightmare where it’s impossible to tell what’s broken, why, or how to fix it. The user eventually gives up and has to revert everything.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:label: rule10-bad-ex1
-:class: dropdown
+<div class="proof example dropdown admonition" id="rule10-bad-ex1">
+<p class="admonition-title"><span class="caption-number">Example 4.9 </span> (Vague “Improve This” Request)</p>
+<section class="example-content" id="proof-content">
+<p><strong>User Prompt:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="n">connectivity</span> <span class="n">analysis</span> <span class="n">code</span> <span class="n">works</span> <span class="n">but</span> <span class="n">could</span> <span class="n">be</span> <span class="n">better</span><span class="o">.</span> <span class="n">Clean</span> <span class="n">it</span> <span class="n">up</span> <span class="ow">and</span> <span class="n">improve</span> <span class="n">it</span><span class="o">.</span>
 
-**User Prompt:**
-```
-This connectivity analysis code works but could be better. Clean it up and improve it.
+<span class="p">[</span><span class="n">pastes</span> <span class="mi">200</span> <span class="n">lines</span> <span class="n">of</span> <span class="n">working</span> <span class="n">code</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>AI Response:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># AI makes sweeping changes:</span>
 
-[pastes 200 lines of working code]
-```
+<span class="c1"># 1. Renamed everything (mat → connectivity_matrix, compute_stats → analyze_network)</span>
+<span class="c1"># 2. Restructured into new class hierarchy (added AbstractConnectivityAnalyzer base)</span>
+<span class="c1"># 3. Changed correlation algorithm (Pearson → Spearman without asking)</span>
+<span class="c1"># 4. Added caching decorator</span>
+<span class="c1"># 5. Introduced dependency injection</span>
+<span class="c1"># 6. Switched from numpy to pandas for some operations</span>
+<span class="c1"># 7. Added type hints everywhere</span>
+<span class="c1"># 8. Extracted 5 new helper functions</span>
+<span class="c1"># 9. Changed function signatures</span>
+<span class="c1"># 10. Added extensive logging</span>
 
-**AI Response:**
-```python
-# AI makes sweeping changes:
+<span class="c1"># [200 lines of &quot;improved&quot; code that looks completely different]</span>
+</pre></div>
+</div>
+<p><strong>User Runs Tests:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/
+<span class="c1"># FAILED: 8 of 15 tests failing</span>
+</pre></div>
+</div>
+<p><strong>User to AI:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">refactoring</span> <span class="n">broke</span> <span class="n">things</span><span class="o">.</span> <span class="n">Problems</span> <span class="n">I</span> <span class="n">see</span><span class="p">:</span>
 
-# 1. Renamed everything (mat → connectivity_matrix, compute_stats → analyze_network)
-# 2. Restructured into new class hierarchy (added AbstractConnectivityAnalyzer base)
-# 3. Changed correlation algorithm (Pearson → Spearman without asking)
-# 4. Added caching decorator
-# 5. Introduced dependency injection
-# 6. Switched from numpy to pandas for some operations
-# 7. Added type hints everywhere
-# 8. Extracted 5 new helper functions
-# 9. Changed function signatures
-# 10. Added extensive logging
+<span class="mf">1.</span> <span class="n">Tests</span> <span class="n">failing</span> <span class="n">because</span> <span class="n">function</span> <span class="n">signatures</span> <span class="n">changed</span>
+<span class="mf">2.</span> <span class="n">Spearman</span> <span class="n">correlation</span> <span class="n">gives</span> <span class="n">different</span> <span class="n">results</span> <span class="n">than</span> <span class="n">our</span> <span class="n">validated</span> <span class="n">Pearson</span> <span class="n">approach</span>
+<span class="mf">3.</span> <span class="n">The</span> <span class="n">new</span> <span class="k">class</span><span class="w"> </span><span class="nc">hierarchy</span> <span class="ow">is</span> <span class="n">too</span> <span class="nb">complex</span>
+<span class="mf">4.</span> <span class="n">Pandas</span> <span class="n">dependency</span> <span class="n">added</span> <span class="n">but</span> <span class="n">we</span><span class="s1">&#39;re minimizing dependencies</span>
+<span class="mf">5.</span> <span class="n">The</span> <span class="n">caching</span> <span class="ow">is</span> <span class="n">causing</span> <span class="n">stale</span> <span class="n">results</span> <span class="ow">in</span> <span class="n">some</span> <span class="n">tests</span>
+<span class="mf">6.</span> <span class="n">Logging</span> <span class="n">statements</span> <span class="n">are</span> <span class="n">breaking</span> <span class="n">when</span> <span class="n">run</span> <span class="ow">in</span> <span class="n">test</span> <span class="n">environment</span>
+<span class="mf">7.</span> <span class="n">Some</span> <span class="n">extracted</span> <span class="n">functions</span> <span class="n">are</span> <span class="n">called</span> <span class="n">only</span> <span class="n">once</span> <span class="p">(</span><span class="n">unnecessary</span> <span class="n">abstraction</span><span class="p">)</span>
 
-# [200 lines of &quot;improved&quot; code that looks completely different]
-```
+<span class="n">Fix</span> <span class="n">these</span> <span class="n">issues</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>AI’s “Fix” Attempt:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># AI tries to address all issues simultaneously:</span>
 
-**User Runs Tests:**
-```bash
-pytest tests/
-# FAILED: 8 of 15 tests failing
-```
+<span class="c1"># 1. Keeps new function signatures but adds wrapper functions for old signatures</span>
+<span class="c1"># 2. Adds parameter to switch between Pearson/Spearman</span>
+<span class="c1"># 3. Keeps class hierarchy but adds backward compatibility methods</span>
+<span class="c1"># 4. Makes pandas import optional with fallback</span>
+<span class="c1"># 5. Adds cache invalidation logic</span>
+<span class="c1"># 6. Wraps logging in try/except blocks</span>
+<span class="c1"># 7. Inlines some functions but not others (inconsistent)</span>
 
-**User to AI:**
-```
-The refactoring broke things. Problems I see:
+<span class="c1"># NOW THERE ARE TWO VERSIONS OF EVERYTHING</span>
+<span class="c1"># Code is even more complex than before</span>
+</pre></div>
+</div>
+<p><strong>User Tests Again:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/
+<span class="c1"># FAILED: 10 of 15 tests failing (WORSE!)</span>
 
-1. Tests failing because function signatures changed
-2. Spearman correlation gives different results than our validated Pearson approach
-3. The new class hierarchy is too complex
-4. Pandas dependency added but we&#39;re minimizing dependencies
-5. The caching is causing stale results in some tests
-6. Logging statements are breaking when run in test environment
-7. Some extracted functions are called only once (unnecessary abstraction)
-
-Fix these issues.
-```
-
-**AI&#39;s &quot;Fix&quot; Attempt:**
-```python
-# AI tries to address all issues simultaneously:
-
-# 1. Keeps new function signatures but adds wrapper functions for old signatures
-# 2. Adds parameter to switch between Pearson/Spearman
-# 3. Keeps class hierarchy but adds backward compatibility methods
-# 4. Makes pandas import optional with fallback
-# 5. Adds cache invalidation logic
-# 6. Wraps logging in try/except blocks
-# 7. Inlines some functions but not others (inconsistent)
-
-# NOW THERE ARE TWO VERSIONS OF EVERYTHING
-# Code is even more complex than before
-```
-
-**User Tests Again:**
-```bash
-pytest tests/
-# FAILED: 10 of 15 tests failing (WORSE!)
-
-# New problems appeared:
-# - Wrapper functions have subtle behavioral differences
-# - Pearson/Spearman parameter not threaded through all calls
-# - Backward compatibility methods create duplicate state
-# - Optional pandas import broke type hints
-# - Cache invalidation is too aggressive, now caching nothing
-# - try/except around logging swallows actual errors
-```
-
-**User to AI:**
-```
-This is worse! Now we have:
+<span class="c1"># New problems appeared:</span>
+<span class="c1"># - Wrapper functions have subtle behavioral differences</span>
+<span class="c1"># - Pearson/Spearman parameter not threaded through all calls</span>
+<span class="c1"># - Backward compatibility methods create duplicate state</span>
+<span class="c1"># - Optional pandas import broke type hints</span>
+<span class="c1"># - Cache invalidation is too aggressive, now caching nothing</span>
+<span class="c1"># - try/except around logging swallows actual errors</span>
+</pre></div>
+</div>
+<p><strong>User to AI:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>This is worse! Now we have:
 - Wrapper functions that behave slightly differently than originals
 - The Pearson/Spearman parameter isn&#39;t being passed through correctly
 - More tests failing than before
@@ -551,107 +544,100 @@ This is worse! Now we have:
 
 Just revert the Spearman change and remove the wrappers. Keep the original 
 function signatures.
-```
+</pre></div>
+</div>
+<p><strong>AI’s Second “Fix”:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># AI tries to revert some changes while keeping others:</span>
 
-**AI&#39;s Second &quot;Fix&quot;:**
-```python
-# AI tries to revert some changes while keeping others:
+<span class="c1"># Removes wrappers but keeps new signatures (CONFLICT!)</span>
+<span class="c1"># Changes back to Pearson but keeps the method parameter (unused now)</span>
+<span class="c1"># Removes some of the class hierarchy but not all (inconsistent state)</span>
+<span class="c1"># Keeps caching in some places but removes it from others</span>
+<span class="c1"># Some logging statements removed, others kept</span>
 
-# Removes wrappers but keeps new signatures (CONFLICT!)
-# Changes back to Pearson but keeps the method parameter (unused now)
-# Removes some of the class hierarchy but not all (inconsistent state)
-# Keeps caching in some places but removes it from others
-# Some logging statements removed, others kept
+<span class="c1"># THE CODE IS NOW A FRANKENSTEIN MIX OF OLD AND NEW</span>
+</pre></div>
+</div>
+<p><strong>User Tests Again:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/
+<span class="c1"># FAILED: 12 of 15 tests failing (EVEN WORSE!)</span>
 
-# THE CODE IS NOW A FRANKENSTEIN MIX OF OLD AND NEW
-```
+<span class="c1"># The code is now in an impossible state:</span>
+<span class="c1"># - Mix of old and new patterns</span>
+<span class="c1"># - Inconsistent state between related functions</span>
+<span class="c1"># - Parameters that exist but aren&#39;t used</span>
+<span class="c1"># - Class hierarchy that&#39;s partially implemented</span>
+<span class="c1"># - Import statements for dependencies that aren&#39;t used</span>
+</pre></div>
+</div>
+<p><strong>User’s Final Attempt:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">can</span><span class="s1">&#39;t even tell what the code is trying to do anymore. We have:</span>
+<span class="o">-</span> <span class="n">Vestiges</span> <span class="n">of</span> <span class="n">the</span> <span class="n">old</span> <span class="n">implementation</span> <span class="n">mixed</span> <span class="k">with</span> <span class="n">new</span>
+<span class="o">-</span> <span class="n">Unused</span> <span class="n">parameters</span> <span class="ow">and</span> <span class="n">imports</span> <span class="n">everywhere</span>
+<span class="o">-</span> <span class="n">Functions</span> <span class="n">that</span> <span class="n">call</span> <span class="n">each</span> <span class="n">other</span> <span class="ow">in</span> <span class="n">confusing</span> <span class="n">ways</span>
+<span class="o">-</span> <span class="n">Tests</span> <span class="n">failing</span> <span class="k">for</span> <span class="n">reasons</span> <span class="n">I</span> <span class="n">can</span><span class="s1">&#39;t diagnose</span>
 
-**User Tests Again:**
-```bash
-pytest tests/
-# FAILED: 12 of 15 tests failing (EVEN WORSE!)
+<span class="n">This</span> <span class="ow">is</span> <span class="n">unsalvageable</span><span class="o">.</span> <span class="n">I</span><span class="s1">&#39;m reverting everything.</span>
+</pre></div>
+</div>
+<p><strong>Git Revert:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>diff<span class="w"> </span>HEAD~1<span class="w"> </span>HEAD<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+<span class="c1"># 847 lines changed</span>
 
-# The code is now in an impossible state:
-# - Mix of old and new patterns
-# - Inconsistent state between related functions
-# - Parameters that exist but aren&#39;t used
-# - Class hierarchy that&#39;s partially implemented
-# - Import statements for dependencies that aren&#39;t used
-```
-
-**User&#39;s Final Attempt:**
-```
-I can&#39;t even tell what the code is trying to do anymore. We have:
-- Vestiges of the old implementation mixed with new
-- Unused parameters and imports everywhere
-- Functions that call each other in confusing ways
-- Tests failing for reasons I can&#39;t diagnose
-
-This is unsalvageable. I&#39;m reverting everything.
-```
-
-**Git Revert:**
-```bash
-git diff HEAD~1 HEAD | wc -l
-# 847 lines changed
-
-git revert HEAD
-# Back to working code from before &quot;improvements&quot;
-```
+git<span class="w"> </span>revert<span class="w"> </span>HEAD
+<span class="c1"># Back to working code from before &quot;improvements&quot;</span>
 </pre></div>
 </div>
 </section>
+</div></section>
 <hr class="docutils" />
 <section id="example-2-ask-ai-for-diagnostic-feedback-before-refactoring">
 <h2><span class="section-number">4.3.3. </span>Example 2: Ask AI for Diagnostic Feedback Before Refactoring<a class="headerlink" href="#example-2-ask-ai-for-diagnostic-feedback-before-refactoring" title="Link to this heading">#</a></h2>
 <p>The user has working code but suspects it could be improved. Instead of asking AI to fix everything, they request analysis first. The AI identifies specific improvement opportunities. The user evaluates each suggestion in the context of their project; some are valuable, others don’t fit their codebase conventions. They choose one high-priority issue to address first and give AI a focused, specific refactoring objective. This diagnostic approach works even for less experienced developers who might not recognize unideal coding patterns themselves.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:label: rule10-good-ex1
-:class: dropdown
+<div class="proof example dropdown admonition" id="rule10-good-ex1">
+<p class="admonition-title"><span class="caption-number">Example 4.10 </span> (Ask AI for Diagnostic Feedback Before Refactoring)</p>
+<section class="example-content" id="proof-content">
+<p><strong>User Prompt:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Review</span> <span class="n">this</span> <span class="n">brain</span> <span class="n">connectivity</span> <span class="n">analysis</span> <span class="n">code</span> <span class="ow">and</span> <span class="n">identify</span> <span class="n">specific</span> <span class="n">improvement</span> 
+<span class="n">opportunities</span><span class="o">.</span> <span class="n">Don</span><span class="s1">&#39;t implement anything yet; just analyze what you see.</span>
 
-**User Prompt:**
-```
-Review this brain connectivity analysis code and identify specific improvement 
-opportunities. Don&#39;t implement anything yet; just analyze what you see.
+<span class="p">[</span><span class="n">pastes</span> <span class="mi">150</span> <span class="n">lines</span> <span class="n">of</span> <span class="n">working</span> <span class="n">code</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>AI Response:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span><span class="s1">&#39;ve identified several improvement opportunities:</span>
 
-[pastes 150 lines of working code]
-```
+<span class="mf">1.</span> <span class="o">**</span><span class="n">Repeated</span> <span class="n">validation</span> <span class="n">logic</span><span class="o">**</span> <span class="p">(</span><span class="n">Lines</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">103</span><span class="p">)</span>
+   <span class="o">-</span> <span class="n">Input</span> <span class="n">shape</span> <span class="n">checking</span> <span class="n">repeated</span> <span class="ow">in</span> <span class="mi">3</span> <span class="n">functions</span>
+   <span class="o">-</span> <span class="n">NaN</span> <span class="n">detection</span> <span class="n">duplicated</span> <span class="n">across</span> <span class="n">methods</span>
+   <span class="o">-</span> <span class="n">Recommendation</span><span class="p">:</span> <span class="n">Extract</span> <span class="n">into</span> <span class="n">validate_connectivity_matrix</span><span class="p">()</span> <span class="n">function</span>
 
-**AI Response:**
-```
-I&#39;ve identified several improvement opportunities:
+<span class="mf">2.</span> <span class="o">**</span><span class="n">Deeply</span> <span class="n">nested</span> <span class="n">conditionals</span><span class="o">**</span> <span class="p">(</span><span class="n">Lines</span> <span class="mi">45</span><span class="o">-</span><span class="mi">62</span><span class="p">)</span>
+   <span class="o">-</span> <span class="mi">4</span> <span class="n">levels</span> <span class="n">of</span> <span class="n">nesting</span> <span class="ow">in</span> <span class="n">threshold_matrix</span><span class="p">()</span>
+   <span class="o">-</span> <span class="n">Logic</span> <span class="n">flow</span> <span class="n">hard</span> <span class="n">to</span> <span class="n">follow</span>
+   <span class="o">-</span> <span class="n">Recommendation</span><span class="p">:</span> <span class="n">Extract</span> <span class="n">conditions</span> <span class="n">into</span> <span class="n">guard</span> <span class="n">clauses</span> <span class="ow">or</span> <span class="n">helper</span> <span class="n">functions</span>
 
-1. **Repeated validation logic** (Lines 23, 67, 103)
-   - Input shape checking repeated in 3 functions
-   - NaN detection duplicated across methods
-   - Recommendation: Extract into validate_connectivity_matrix() function
+<span class="mf">3.</span> <span class="o">**</span><span class="n">Inconsistent</span> <span class="n">naming</span><span class="o">**</span> 
+   <span class="o">-</span> <span class="n">Mix</span> <span class="n">of</span> <span class="s1">&#39;mat&#39;</span><span class="p">,</span> <span class="s1">&#39;matrix&#39;</span><span class="p">,</span> <span class="s1">&#39;conn_matrix&#39;</span> <span class="k">for</span> <span class="n">same</span> <span class="n">concept</span>
+   <span class="o">-</span> <span class="n">Function</span> <span class="n">names</span> <span class="n">inconsistent</span><span class="p">:</span> <span class="n">compute_metrics</span><span class="p">()</span> <span class="n">vs</span> <span class="n">calculateStats</span><span class="p">()</span>
+   <span class="o">-</span> <span class="n">Recommendation</span><span class="p">:</span> <span class="n">Standardize</span> <span class="n">to</span> <span class="s1">&#39;connectivity_matrix&#39;</span> <span class="ow">and</span> <span class="n">snake_case</span> <span class="n">throughout</span>
 
-2. **Deeply nested conditionals** (Lines 45-62)
-   - 4 levels of nesting in threshold_matrix()
-   - Logic flow hard to follow
-   - Recommendation: Extract conditions into guard clauses or helper functions
+<span class="mf">4.</span> <span class="o">**</span><span class="n">Magic</span> <span class="n">numbers</span><span class="o">**</span> <span class="p">(</span><span class="n">Lines</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">91</span><span class="p">)</span>
+   <span class="o">-</span> <span class="n">Hardcoded</span> <span class="n">values</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.7</span> <span class="n">without</span> <span class="n">explanation</span>
+   <span class="o">-</span> <span class="n">Recommendation</span><span class="p">:</span> <span class="n">Extract</span> <span class="k">as</span> <span class="n">named</span> <span class="n">constants</span> <span class="k">with</span> <span class="n">documentation</span>
 
-3. **Inconsistent naming** 
-   - Mix of &#39;mat&#39;, &#39;matrix&#39;, &#39;conn_matrix&#39; for same concept
-   - Function names inconsistent: compute_metrics() vs calculateStats()
-   - Recommendation: Standardize to &#39;connectivity_matrix&#39; and snake_case throughout
+<span class="mf">5.</span> <span class="o">**</span><span class="n">Tight</span> <span class="n">coupling</span><span class="o">**</span>
+   <span class="o">-</span> <span class="n">StatisticalAnalysis</span> <span class="n">directly</span> <span class="n">instantiates</span> <span class="n">Preprocessor</span>
+   <span class="o">-</span> <span class="n">Hard</span> <span class="n">to</span> <span class="n">test</span> <span class="ow">or</span> <span class="n">swap</span> <span class="n">implementations</span>
+   <span class="o">-</span> <span class="n">Recommendation</span><span class="p">:</span> <span class="n">Use</span> <span class="n">dependency</span> <span class="n">injection</span> <span class="n">pattern</span>
 
-4. **Magic numbers** (Lines 34, 78, 91)
-   - Hardcoded values: 0.05, 100, 0.7 without explanation
-   - Recommendation: Extract as named constants with documentation
-
-5. **Tight coupling**
-   - StatisticalAnalysis directly instantiates Preprocessor
-   - Hard to test or swap implementations
-   - Recommendation: Use dependency injection pattern
-
-6. **Missing type hints**
-   - Function signatures don&#39;t specify types
-   - Recommendation: Add type annotations for better IDE support
-```
-
-**User&#39;s Thought Process:**
-```
-Let me evaluate each suggestion for our project:
+<span class="mf">6.</span> <span class="o">**</span><span class="n">Missing</span> <span class="nb">type</span> <span class="n">hints</span><span class="o">**</span>
+   <span class="o">-</span> <span class="n">Function</span> <span class="n">signatures</span> <span class="n">don</span><span class="s1">&#39;t specify types</span>
+   <span class="o">-</span> <span class="n">Recommendation</span><span class="p">:</span> <span class="n">Add</span> <span class="nb">type</span> <span class="n">annotations</span> <span class="k">for</span> <span class="n">better</span> <span class="n">IDE</span> <span class="n">support</span>
+</pre></div>
+</div>
+<p><strong>User’s Thought Process:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Let me evaluate each suggestion for our project:
 
 1. Repeated validation - YES. I keep copying the same validation and it&#39;s 
    error-prone. This is a real problem.
@@ -676,273 +662,255 @@ Let me evaluate each suggestion for our project:
    → Priority: LOW (maybe later)
 
 Decision: Start with #1 (validation extraction). Clear win, high impact.
-```
+</pre></div>
+</div>
+<p><strong>User to AI:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Good</span> <span class="n">analysis</span><span class="o">.</span> <span class="n">Let</span><span class="s1">&#39;s address #1 first: the repeated validation logic.</span>
 
-**User to AI:**
-```
-Good analysis. Let&#39;s address #1 first: the repeated validation logic.
+<span class="n">Create</span> <span class="n">a</span> <span class="n">validation</span> <span class="n">function</span><span class="p">:</span>
 
-Create a validation function:
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_connectivity_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">allow_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">require_symmetric</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validate connectivity matrix meets requirements.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    matrix : np.ndarray</span>
+<span class="sd">        Connectivity matrix to validate</span>
+<span class="sd">    allow_nan : bool</span>
+<span class="sd">        Whether NaN values are acceptable</span>
+<span class="sd">    require_symmetric : bool</span>
+<span class="sd">        Whether matrix must be symmetric</span>
+<span class="sd">        </span>
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If validation fails, with specific explanation of what&#39;s wrong</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-def validate_connectivity_matrix(matrix, allow_nan=False, require_symmetric=True):
-    &quot;&quot;&quot;
-    Validate connectivity matrix meets requirements.
-    
-    Parameters
-    ----------
-    matrix : np.ndarray
-        Connectivity matrix to validate
-    allow_nan : bool
-        Whether NaN values are acceptable
-    require_symmetric : bool
-        Whether matrix must be symmetric
-        
-    Raises
-    ------
-    ValueError
-        If validation fails, with specific explanation of what&#39;s wrong
-    &quot;&quot;&quot;
+<span class="n">Then</span> <span class="n">refactor</span> <span class="n">compute_correlation</span><span class="p">(),</span> <span class="n">threshold_matrix</span><span class="p">(),</span> <span class="ow">and</span> <span class="n">compute_metrics</span><span class="p">()</span> 
+<span class="n">to</span> <span class="n">use</span> <span class="n">this</span> <span class="n">validator</span><span class="o">.</span>
 
-Then refactor compute_correlation(), threshold_matrix(), and compute_metrics() 
-to use this validator.
+<span class="n">Do</span> <span class="n">this</span> <span class="n">incrementally</span><span class="p">:</span>
+<span class="mf">1.</span> <span class="n">Show</span> <span class="n">me</span> <span class="n">the</span> <span class="n">validator</span> <span class="n">implementation</span> <span class="n">first</span>
+<span class="mf">2.</span> <span class="n">Then</span> <span class="n">update</span> <span class="n">compute_correlation</span><span class="p">()</span> <span class="n">to</span> <span class="n">use</span> <span class="n">it</span> <span class="p">(</span><span class="n">I</span><span class="s1">&#39;ll test)</span>
+<span class="mf">3.</span> <span class="n">Then</span> <span class="n">threshold_matrix</span><span class="p">()</span> <span class="p">(</span><span class="n">I</span><span class="s1">&#39;ll test)  </span>
+<span class="mf">4.</span> <span class="n">Then</span> <span class="n">compute_metrics</span><span class="p">()</span> <span class="p">(</span><span class="n">I</span><span class="s1">&#39;ll test)</span>
 
-Do this incrementally:
-1. Show me the validator implementation first
-2. Then update compute_correlation() to use it (I&#39;ll test)
-3. Then threshold_matrix() (I&#39;ll test)  
-4. Then compute_metrics() (I&#39;ll test)
-
-Don&#39;t change anything else; just the validation extraction.
-```
-
-**AI Implements Validator:**
-```python
-def validate_connectivity_matrix(matrix, allow_nan=False, require_symmetric=True):
-    &quot;&quot;&quot;Validate connectivity matrix meets requirements.&quot;&quot;&quot;
+<span class="n">Don</span><span class="s1">&#39;t change anything else; just the validation extraction.</span>
+</pre></div>
+</div>
+<p><strong>AI Implements Validator:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">validate_connectivity_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">allow_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">require_symmetric</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validate connectivity matrix meets requirements.&quot;&quot;&quot;</span>
     
-    # Check type
-    if not isinstance(matrix, np.ndarray):
-        raise ValueError(f&quot;Expected numpy array, got {type(matrix)}&quot;)
+    <span class="c1"># Check type</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected numpy array, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     
-    # Check dimensions
-    if matrix.ndim != 2:
-        raise ValueError(f&quot;Expected 2D array, got {matrix.ndim}D&quot;)
+    <span class="c1"># Check dimensions</span>
+    <span class="k">if</span> <span class="n">matrix</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected 2D array, got </span><span class="si">{</span><span class="n">matrix</span><span class="o">.</span><span class="n">ndim</span><span class="si">}</span><span class="s2">D&quot;</span><span class="p">)</span>
     
-    # Check square
-    if matrix.shape[0] != matrix.shape[1]:
-        raise ValueError(f&quot;Expected square matrix, got shape {matrix.shape}&quot;)
+    <span class="c1"># Check square</span>
+    <span class="k">if</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected square matrix, got shape </span><span class="si">{</span><span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     
-    # Check for NaN
-    if not allow_nan and np.any(np.isnan(matrix)):
-        raise ValueError(&quot;Matrix contains NaN values&quot;)
+    <span class="c1"># Check for NaN</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">allow_nan</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">matrix</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Matrix contains NaN values&quot;</span><span class="p">)</span>
     
-    # Check symmetry
-    if require_symmetric and not np.allclose(matrix, matrix.T, equal_nan=True):
-        raise ValueError(&quot;Matrix is not symmetric&quot;)
+    <span class="c1"># Check symmetry</span>
+    <span class="k">if</span> <span class="n">require_symmetric</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">matrix</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">equal_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Matrix is not symmetric&quot;</span><span class="p">)</span>
     
-    return True
-```
-
-**User:**
-```
-Good. Now update compute_correlation() to use this validator at the start.
-```
-
-**AI Updates First Function:**
-```python
-def compute_correlation(timeseries):
-    &quot;&quot;&quot;Compute correlation matrix from timeseries.&quot;&quot;&quot;
-    # OLD: Manual validation code here (5 lines)
-    # NEW: Use validator
-    # Note: Don&#39;t validate here since input is timeseries, not connectivity matrix
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p><strong>User:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Good</span><span class="o">.</span> <span class="n">Now</span> <span class="n">update</span> <span class="n">compute_correlation</span><span class="p">()</span> <span class="n">to</span> <span class="n">use</span> <span class="n">this</span> <span class="n">validator</span> <span class="n">at</span> <span class="n">the</span> <span class="n">start</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>AI Updates First Function:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_correlation</span><span class="p">(</span><span class="n">timeseries</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute correlation matrix from timeseries.&quot;&quot;&quot;</span>
+    <span class="c1"># OLD: Manual validation code here (5 lines)</span>
+    <span class="c1"># NEW: Use validator</span>
+    <span class="c1"># Note: Don&#39;t validate here since input is timeseries, not connectivity matrix</span>
     
-    conn_matrix = np.corrcoef(timeseries)
+    <span class="n">conn_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">timeseries</span><span class="p">)</span>
     
-    # Validate output
-    validate_connectivity_matrix(conn_matrix, allow_nan=True, require_symmetric=True)
+    <span class="c1"># Validate output</span>
+    <span class="n">validate_connectivity_matrix</span><span class="p">(</span><span class="n">conn_matrix</span><span class="p">,</span> <span class="n">allow_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">require_symmetric</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     
-    return conn_matrix
-```
-
-**User Tests:**
-```
-✓ All tests pass
+    <span class="k">return</span> <span class="n">conn_matrix</span>
+</pre></div>
+</div>
+<p><strong>User Tests:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>✓ All tests pass
 ✓ git diff shows only compute_correlation() changed
 ✓ Validation logic now centralized
 
 Continue with threshold_matrix()...
-```
 </pre></div>
 </div>
 </section>
+</div></section>
 <hr class="docutils" />
 <section id="example-3-incremental-refactoring-with-testing">
 <h2><span class="section-number">4.3.4. </span>Example 3: Incremental Refactoring with Testing<a class="headerlink" href="#example-3-incremental-refactoring-with-testing" title="Link to this heading">#</a></h2>
 <p>Following the diagnostic approach from Example 2, the user now implements one focused refactoring objective. They work incrementally: make one change, run tests, verify behavior unchanged, commit. When a change breaks something, they catch it immediately and can revert or fix because only one thing changed. This disciplined approach maintains a working codebase throughout the refactoring process. The example shows multiple small steps with verification at each point.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:label: rule10-good-ex2
-:class: dropdown
-
-**Context:** Following Example 2&#39;s diagnosis, user is implementing validation extraction
-
-**Step 1: Create validator function**
-```python
-# New function added
-def validate_connectivity_matrix(matrix, allow_nan=False, require_symmetric=True):
-    # [implementation from Example 2]
-```
-
-**Test Step 1:**
-```bash
-pytest tests/test_validation.py -v
-# All validation tests pass
-git add src/connectivity/validation.py
-git commit -m &quot;Add validate_connectivity_matrix function
-
-Extracts repeated validation logic into reusable function.
-No behavior changes yet; just adding the function.&quot;
-```
-
-**Step 2: Update first function**
-```python
-def compute_correlation(timeseries):
-    &quot;&quot;&quot;Compute correlation matrix from timeseries.&quot;&quot;&quot;
-    # Replace inline validation with validator call
-    conn_matrix = np.corrcoef(timeseries)
-    validate_connectivity_matrix(conn_matrix, allow_nan=True, require_symmetric=True)
-    return conn_matrix
-```
-
-**Test Step 2:**
-```bash
-pytest tests/test_correlation.py -v
-# ✓ All pass - behavior unchanged
-
-git add src/connectivity/correlation.py
-git commit -m &quot;Update compute_correlation to use centralized validation
-
-Removes duplicate validation code. Behavior unchanged.&quot;
-```
-
-**Step 3: Update second function**
-```python
-def threshold_matrix(connectivity_matrix, threshold=0.5):
-    &quot;&quot;&quot;Threshold connectivity matrix.&quot;&quot;&quot;
-    # Replace inline validation
-    validate_connectivity_matrix(connectivity_matrix, 
-                                allow_nan=False, 
-                                require_symmetric=True)
-    
-    thresholded = connectivity_matrix.copy()
-    thresholded[np.abs(thresholded) &lt; threshold] = 0
-    np.fill_diagonal(thresholded, 0)  # Preserve diagonal
-    
-    return thresholded
-```
-
-**Test Step 3:**
-```bash
-pytest tests/test_threshold.py -v
-# ✓ All pass
-
-git add src/connectivity/threshold.py  
-git commit -m &quot;Update threshold_matrix to use centralized validation
-
-Second function migrated to shared validator.&quot;
-```
-
-**Step 4: Update third function**
-```python
-def compute_metrics(connectivity_matrix):
-    &quot;&quot;&quot;Compute graph metrics from connectivity.&quot;&quot;&quot;
-    # Replace inline validation
-    validate_connectivity_matrix(connectivity_matrix,
-                                allow_nan=False,
-                                require_symmetric=True)
-    
-    # Compute metrics
-    # [rest of implementation]
-```
-
-**Test Step 4:**
-```bash
-pytest tests/test_metrics.py -v
-
-# FAILURE!
-# test_metrics_with_nan FAILED - ValueError: Matrix contains NaN values
-```
-
-**User Analysis:**
-```
-Wait, the test is trying to verify that compute_metrics() handles NaN gracefully,
-but now the validator is rejecting NaN before we get to that logic.
-
-Looking at the old code... we were actually checking for NaN and handling it
-specifically in this function. The validator is too strict here.
-
-Option 1: Change validator call to allow_nan=True
-Option 2: Keep the validation strict but update the test
-
-Checking the specification... compute_metrics() should reject NaN (unlike
-compute_correlation which allows it). The old test was wrong. Let me fix the test.
-```
-
-**Fix Test:**
-```python
-def test_metrics_with_nan():
-    &quot;&quot;&quot;compute_metrics should reject NaN values.&quot;&quot;&quot;
-    matrix = np.random.randn(10, 10)
-    matrix[0, 1] = np.nan
-    
-    # OLD: Expected this to handle gracefully
-    # NEW: Should raise ValueError
-    with pytest.raises(ValueError, match=&quot;NaN&quot;):
-        compute_metrics(matrix)
-```
-
-**Test Again:**
-```bash
-pytest tests/test_metrics.py -v
-# ✓ All pass now
-
-git add src/connectivity/metrics.py tests/test_metrics.py
-git commit -m &quot;Update compute_metrics to use centralized validation
-
-Fixed test to match intended behavior: NaN should be rejected.
-All validation logic now centralized.&quot;
-```
-
-**Final Verification:**
-```bash
-# Run full test suite
-pytest tests/ -v
-# ✓ All 47 tests pass
-
-# Check what changed overall
-git log --oneline -5
-# 4 commits, each focused on one change
-# Easy to review, easy to revert if needed
-```
-
-**Result:**
-- Validation logic successfully centralized
-- All three functions refactored
-- One test bug caught and fixed
-- Code works throughout entire process
-- Clear commit history documents what happened
+<div class="proof example dropdown admonition" id="rule10-good-ex2">
+<p class="admonition-title"><span class="caption-number">Example 4.11 </span> (Incremental Refactoring with Testing)</p>
+<section class="example-content" id="proof-content">
+<p><strong>Context:</strong> Following Example 2’s diagnosis, user is implementing validation extraction</p>
+<p><strong>Step 1: Create validator function</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># New function added</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_connectivity_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">allow_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">require_symmetric</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="c1"># [implementation from Example 2]</span>
 </pre></div>
 </div>
+<p><strong>Test Step 1:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/test_validation.py<span class="w"> </span>-v
+<span class="c1"># All validation tests pass</span>
+git<span class="w"> </span>add<span class="w"> </span>src/connectivity/validation.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add validate_connectivity_matrix function</span>
+
+<span class="s2">Extracts repeated validation logic into reusable function.</span>
+<span class="s2">No behavior changes yet; just adding the function.&quot;</span>
+</pre></div>
+</div>
+<p><strong>Step 2: Update first function</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_correlation</span><span class="p">(</span><span class="n">timeseries</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute correlation matrix from timeseries.&quot;&quot;&quot;</span>
+    <span class="c1"># Replace inline validation with validator call</span>
+    <span class="n">conn_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">timeseries</span><span class="p">)</span>
+    <span class="n">validate_connectivity_matrix</span><span class="p">(</span><span class="n">conn_matrix</span><span class="p">,</span> <span class="n">allow_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">require_symmetric</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">conn_matrix</span>
+</pre></div>
+</div>
+<p><strong>Test Step 2:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/test_correlation.py<span class="w"> </span>-v
+<span class="c1"># ✓ All pass - behavior unchanged</span>
+
+git<span class="w"> </span>add<span class="w"> </span>src/connectivity/correlation.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Update compute_correlation to use centralized validation</span>
+
+<span class="s2">Removes duplicate validation code. Behavior unchanged.&quot;</span>
+</pre></div>
+</div>
+<p><strong>Step 3: Update second function</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">threshold_matrix</span><span class="p">(</span><span class="n">connectivity_matrix</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Threshold connectivity matrix.&quot;&quot;&quot;</span>
+    <span class="c1"># Replace inline validation</span>
+    <span class="n">validate_connectivity_matrix</span><span class="p">(</span><span class="n">connectivity_matrix</span><span class="p">,</span> 
+                                <span class="n">allow_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+                                <span class="n">require_symmetric</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">thresholded</span> <span class="o">=</span> <span class="n">connectivity_matrix</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">thresholded</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">thresholded</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">thresholded</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Preserve diagonal</span>
+    
+    <span class="k">return</span> <span class="n">thresholded</span>
+</pre></div>
+</div>
+<p><strong>Test Step 3:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/test_threshold.py<span class="w"> </span>-v
+<span class="c1"># ✓ All pass</span>
+
+git<span class="w"> </span>add<span class="w"> </span>src/connectivity/threshold.py<span class="w">  </span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Update threshold_matrix to use centralized validation</span>
+
+<span class="s2">Second function migrated to shared validator.&quot;</span>
+</pre></div>
+</div>
+<p><strong>Step 4: Update third function</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_metrics</span><span class="p">(</span><span class="n">connectivity_matrix</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute graph metrics from connectivity.&quot;&quot;&quot;</span>
+    <span class="c1"># Replace inline validation</span>
+    <span class="n">validate_connectivity_matrix</span><span class="p">(</span><span class="n">connectivity_matrix</span><span class="p">,</span>
+                                <span class="n">allow_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                <span class="n">require_symmetric</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># Compute metrics</span>
+    <span class="c1"># [rest of implementation]</span>
+</pre></div>
+</div>
+<p><strong>Test Step 4:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/test_metrics.py<span class="w"> </span>-v
+
+<span class="c1"># FAILURE!</span>
+<span class="c1"># test_metrics_with_nan FAILED - ValueError: Matrix contains NaN values</span>
+</pre></div>
+</div>
+<p><strong>User Analysis:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Wait</span><span class="p">,</span> <span class="n">the</span> <span class="n">test</span> <span class="ow">is</span> <span class="n">trying</span> <span class="n">to</span> <span class="n">verify</span> <span class="n">that</span> <span class="n">compute_metrics</span><span class="p">()</span> <span class="n">handles</span> <span class="n">NaN</span> <span class="n">gracefully</span><span class="p">,</span>
+<span class="n">but</span> <span class="n">now</span> <span class="n">the</span> <span class="n">validator</span> <span class="ow">is</span> <span class="n">rejecting</span> <span class="n">NaN</span> <span class="n">before</span> <span class="n">we</span> <span class="n">get</span> <span class="n">to</span> <span class="n">that</span> <span class="n">logic</span><span class="o">.</span>
+
+<span class="n">Looking</span> <span class="n">at</span> <span class="n">the</span> <span class="n">old</span> <span class="n">code</span><span class="o">...</span> <span class="n">we</span> <span class="n">were</span> <span class="n">actually</span> <span class="n">checking</span> <span class="k">for</span> <span class="n">NaN</span> <span class="ow">and</span> <span class="n">handling</span> <span class="n">it</span>
+<span class="n">specifically</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">function</span><span class="o">.</span> <span class="n">The</span> <span class="n">validator</span> <span class="ow">is</span> <span class="n">too</span> <span class="n">strict</span> <span class="n">here</span><span class="o">.</span>
+
+<span class="n">Option</span> <span class="mi">1</span><span class="p">:</span> <span class="n">Change</span> <span class="n">validator</span> <span class="n">call</span> <span class="n">to</span> <span class="n">allow_nan</span><span class="o">=</span><span class="kc">True</span>
+<span class="n">Option</span> <span class="mi">2</span><span class="p">:</span> <span class="n">Keep</span> <span class="n">the</span> <span class="n">validation</span> <span class="n">strict</span> <span class="n">but</span> <span class="n">update</span> <span class="n">the</span> <span class="n">test</span>
+
+<span class="n">Checking</span> <span class="n">the</span> <span class="n">specification</span><span class="o">...</span> <span class="n">compute_metrics</span><span class="p">()</span> <span class="n">should</span> <span class="n">reject</span> <span class="n">NaN</span> <span class="p">(</span><span class="n">unlike</span>
+<span class="n">compute_correlation</span> <span class="n">which</span> <span class="n">allows</span> <span class="n">it</span><span class="p">)</span><span class="o">.</span> <span class="n">The</span> <span class="n">old</span> <span class="n">test</span> <span class="n">was</span> <span class="n">wrong</span><span class="o">.</span> <span class="n">Let</span> <span class="n">me</span> <span class="n">fix</span> <span class="n">the</span> <span class="n">test</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Fix Test:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_metrics_with_nan</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;compute_metrics should reject NaN values.&quot;&quot;&quot;</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    
+    <span class="c1"># OLD: Expected this to handle gracefully</span>
+    <span class="c1"># NEW: Should raise ValueError</span>
+    <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="s2">&quot;NaN&quot;</span><span class="p">):</span>
+        <span class="n">compute_metrics</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Test Again:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/test_metrics.py<span class="w"> </span>-v
+<span class="c1"># ✓ All pass now</span>
+
+git<span class="w"> </span>add<span class="w"> </span>src/connectivity/metrics.py<span class="w"> </span>tests/test_metrics.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Update compute_metrics to use centralized validation</span>
+
+<span class="s2">Fixed test to match intended behavior: NaN should be rejected.</span>
+<span class="s2">All validation logic now centralized.&quot;</span>
+</pre></div>
+</div>
+<p><strong>Final Verification:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run full test suite</span>
+pytest<span class="w"> </span>tests/<span class="w"> </span>-v
+<span class="c1"># ✓ All 47 tests pass</span>
+
+<span class="c1"># Check what changed overall</span>
+git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>-5
+<span class="c1"># 4 commits, each focused on one change</span>
+<span class="c1"># Easy to review, easy to revert if needed</span>
+</pre></div>
+</div>
+<p><strong>Result:</strong></p>
+<ul class="simple">
+<li><p>Validation logic successfully centralized</p></li>
+<li><p>All three functions refactored</p></li>
+<li><p>One test bug caught and fixed</p></li>
+<li><p>Code works throughout entire process</p></li>
+<li><p>Clear commit history documents what happened</p></li>
+</ul>
 </section>
+</div></section>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="example-4-performance-optimization-with-baseline-metrics">
 <h1><span class="section-number">4.4. </span>Example 4: Performance Optimization with Baseline Metrics<a class="headerlink" href="#example-4-performance-optimization-with-baseline-metrics" title="Link to this heading">#</a></h1>
 <p>The user identifies a performance bottleneck through profiling. Before optimizing, they establish baseline metrics. They request one specific optimization from AI, verify it actually improves performance, and confirm correctness is maintained. When an “optimization” actually makes things worse, they catch it immediately by comparing to the baseline and revert. This metrics-driven approach prevents premature optimization and ensures changes provide real benefits.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:label: rule10-good-ex3
-:class: dropdown
-
-**User Analysis:**
-```
-Current performance profiling shows:
+<div class="proof example dropdown admonition" id="rule10-good-ex3">
+<p class="admonition-title"><span class="caption-number">Example 4.12 </span> (Performance Optimization with Baseline Metrics)</p>
+<section class="example-content" id="proof-content">
+<p><strong>User Analysis:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Current performance profiling shows:
 - Total processing: 45 seconds per subject
 - Breakdown:
   * Loading data: 3s
@@ -951,314 +919,294 @@ Current performance profiling shows:
   * Statistical tests: 6s
 
 The correlation computation is the problem. Let me look at the code...
-```
-
-**Current Implementation:**
-```python
-def compute_connectivity(timeseries):
-    &quot;&quot;&quot;
-    Compute pairwise correlations.
-    
-    Args:
-        timeseries: (n_regions, n_timepoints) array
-    &quot;&quot;&quot;
-    n_regions = timeseries.shape[0]
-    connectivity = np.zeros((n_regions, n_regions))
-    
-    # Nested loops - probably the bottleneck
-    for i in range(n_regions):
-        for j in range(n_regions):
-            connectivity[i, j] = np.corrcoef(timeseries[i], timeseries[j])[0, 1]
-    
-    return connectivity
-```
-
-**Establish Baseline:**
-```python
-# Create benchmark
-import time
-
-def benchmark_connectivity():
-    &quot;&quot;&quot;Benchmark current implementation.&quot;&quot;&quot;
-    timeseries = np.random.randn(100, 500)  # Typical data size
-    
-    times = []
-    for _ in range(10):
-        start = time.time()
-        result = compute_connectivity(timeseries)
-        times.append(time.time() - start)
-    
-    return {
-        &#39;mean&#39;: np.mean(times),
-        &#39;std&#39;: np.std(times),
-        &#39;min&#39;: np.min(times),
-        &#39;max&#39;: np.max(times)
-    }
-
-baseline = benchmark_connectivity()
-print(f&quot;Baseline: {baseline[&#39;mean&#39;]:.3f}s ± {baseline[&#39;std&#39;]:.3f}s&quot;)
-# Baseline: 2.847s ± 0.043s
-```
-
-**User to AI:**
-```
-Optimize compute_connectivity() for speed. Current performance: 2.85 seconds.
-
-SPECIFIC OPTIMIZATION:
-Replace the nested loop with vectorized numpy operation. The current 
-implementation calls np.corrcoef() 10,000 times (100x100). We should call 
-it once on the entire timeseries matrix.
-
-CONSTRAINTS:
-- Must maintain identical output (within floating point tolerance)
-- Must handle NaN values the same way
-- Should use numpy only (no new dependencies)
-
-TARGET: Under 0.1 seconds (30x improvement)
-
-Show implementation, and I&#39;ll benchmark it.
-```
-
-**AI Optimized Version:**
-```python
-def compute_connectivity(timeseries):
-    &quot;&quot;&quot;
-    Compute pairwise correlations using vectorized operations.
-    
-    Args:
-        timeseries: (n_regions, n_timepoints) array
-    &quot;&quot;&quot;
-    # Single call to corrcoef instead of nested loops
-    connectivity = np.corrcoef(timeseries)
-    return connectivity
-```
-
-**User Benchmarks:**
-```python
-# Test correctness first
-old_result = compute_connectivity_old(test_data)
-new_result = compute_connectivity(test_data)
-assert np.allclose(old_result, new_result)
-print(&quot;✓ Correctness verified&quot;)
-
-# Benchmark new version
-new_perf = benchmark_connectivity()
-print(f&quot;New: {new_perf[&#39;mean&#39;]:.3f}s ± {new_perf[&#39;std&#39;]:.3f}s&quot;)
-# New: 0.008s ± 0.001s
-
-# Compare
-speedup = baseline[&#39;mean&#39;] / new_perf[&#39;mean&#39;]
-print(f&quot;Speedup: {speedup:.1f}x&quot;)
-# Speedup: 355.9x
-
-print(&quot;✓ Target achieved (&gt;30x improvement)&quot;)
-```
-
-**Full Test Suite:**
-```bash
-pytest tests/test_connectivity.py -v
-# ✓ All 15 tests pass
-# No behavior changes despite major performance improvement
-```
-
-**User:**
-```
-Excellent. Commit this optimization.
-```
-
-**Alternative Scenario: &quot;Optimization&quot; Makes Things Worse:**
-
-**AI &quot;Optimized&quot; Version:**
-```python
-def compute_connectivity_v2(timeseries):
-    &quot;&quot;&quot;Optimize using sparse matrix operations.&quot;&quot;&quot;
-    from scipy.sparse import csr_matrix
-    
-    # Convert to sparse (thinking this will be faster)
-    sparse_ts = csr_matrix(timeseries)
-    # [complicated sparse correlation implementation]
-```
-
-**User Benchmarks:**
-```python
-new_perf = benchmark_connectivity_v2()
-print(f&quot;Sparse version: {new_perf[&#39;mean&#39;]:.3f}s&quot;)
-# Sparse version: 4.231s
-
-print(f&quot;Comparison to baseline: {new_perf[&#39;mean&#39;] / baseline[&#39;mean&#39;]:.2f}x&quot;)
-# Comparison to baseline: 1.49x SLOWER
-
-print(&quot;✗ This &#39;optimization&#39; actually made it worse!&quot;)
-```
-
-**User Summary:**
-```
-This sparse matrix approach is actually slower than the original. The overhead 
-of sparse operations doesn&#39;t pay off for dense correlation matrices.
-
-Reverting to the simple vectorized version which was 355x faster.
-```
 </pre></div>
 </div>
-<section id="example-5-ai-breaks-code-during-refactoring">
-<h2><span class="section-number">4.4.1. </span>Example 5: AI Breaks Code During Refactoring<a class="headerlink" href="#example-5-ai-breaks-code-during-refactoring" title="Link to this heading">#</a></h2>
-<p>The user requests a specific refactoring. The AI implements it but subtly changes behavior in the process. Because the user tests after each change (following the incremental approach), they catch the breakage immediately. They can identify exactly what went wrong, provide corrected requirements, and try again. If they’d made multiple changes at once, they wouldn’t know which change caused the problem.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:label: rule10-good-ex4
-:class: dropdown
-
-**User Request:**
-```
-Extract the network thresholding logic from analyze_network() into a separate 
-function threshold_by_density().
-
-Current code:
-```
-```python
-def analyze_network(connectivity_matrix, density=0.2):
-    &quot;&quot;&quot;Analyze network properties at given density.&quot;&quot;&quot;
-    # Threshold to keep top X% of connections
-    threshold_value = np.percentile(np.abs(connectivity_matrix), 
-                                   100 * (1 - density))
+<p><strong>Current Implementation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_connectivity</span><span class="p">(</span><span class="n">timeseries</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute pairwise correlations.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        timeseries: (n_regions, n_timepoints) array</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n_regions</span> <span class="o">=</span> <span class="n">timeseries</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">connectivity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_regions</span><span class="p">,</span> <span class="n">n_regions</span><span class="p">))</span>
     
-    thresholded = connectivity_matrix.copy()
-    thresholded[np.abs(thresholded) &lt; threshold_value] = 0
+    <span class="c1"># Nested loops - probably the bottleneck</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_regions</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_regions</span><span class="p">):</span>
+            <span class="n">connectivity</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">timeseries</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">timeseries</span><span class="p">[</span><span class="n">j</span><span class="p">])[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
     
-    # Compute metrics on thresholded network
-    metrics = compute_graph_metrics(thresholded)
-    return metrics
-```
+    <span class="k">return</span> <span class="n">connectivity</span>
+</pre></div>
+</div>
+<p><strong>Establish Baseline:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create benchmark</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
-**User to AI:**
-```
-Extract the thresholding logic (lines 3-6) into:
-
-def threshold_by_density(connectivity_matrix, density=0.2):
-    &quot;&quot;&quot;Keep only top density% of connections by absolute value.&quot;&quot;&quot;
-    # Extract threshold computation and application here
-    return thresholded_matrix
-
-Then update analyze_network() to call this function.
-```
-
-**AI Implementation:**
-```python
-def threshold_by_density(connectivity_matrix, density=0.2):
-    &quot;&quot;&quot;Keep only top density% of connections by absolute value.&quot;&quot;&quot;
-    threshold_value = np.percentile(connectivity_matrix,  # BUG: removed np.abs()
-                                   100 * (1 - density))
+<span class="k">def</span><span class="w"> </span><span class="nf">benchmark_connectivity</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Benchmark current implementation.&quot;&quot;&quot;</span>
+    <span class="n">timeseries</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>  <span class="c1"># Typical data size</span>
     
-    thresholded = connectivity_matrix.copy()
-    thresholded[connectivity_matrix &lt; threshold_value] = 0  # BUG: wrong comparison
+    <span class="n">times</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">compute_connectivity</span><span class="p">(</span><span class="n">timeseries</span><span class="p">)</span>
+        <span class="n">times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
     
-    return thresholded
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">times</span><span class="p">),</span>
+        <span class="s1">&#39;std&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">times</span><span class="p">),</span>
+        <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">times</span><span class="p">),</span>
+        <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>
+    <span class="p">}</span>
 
-def analyze_network(connectivity_matrix, density=0.2):
-    &quot;&quot;&quot;Analyze network properties at given density.&quot;&quot;&quot;
-    thresholded = threshold_by_density(connectivity_matrix, density)
-    metrics = compute_graph_metrics(thresholded)
-    return metrics
-```
+<span class="n">baseline</span> <span class="o">=</span> <span class="n">benchmark_connectivity</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Baseline: </span><span class="si">{</span><span class="n">baseline</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s ± </span><span class="si">{</span><span class="n">baseline</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+<span class="c1"># Baseline: 2.847s ± 0.043s</span>
+</pre></div>
+</div>
+<p><strong>User to AI:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Optimize</span> <span class="n">compute_connectivity</span><span class="p">()</span> <span class="k">for</span> <span class="n">speed</span><span class="o">.</span> <span class="n">Current</span> <span class="n">performance</span><span class="p">:</span> <span class="mf">2.85</span> <span class="n">seconds</span><span class="o">.</span>
 
-**User Tests:**
-```bash
-pytest tests/test_network_analysis.py -v
+<span class="n">SPECIFIC</span> <span class="n">OPTIMIZATION</span><span class="p">:</span>
+<span class="n">Replace</span> <span class="n">the</span> <span class="n">nested</span> <span class="n">loop</span> <span class="k">with</span> <span class="n">vectorized</span> <span class="n">numpy</span> <span class="n">operation</span><span class="o">.</span> <span class="n">The</span> <span class="n">current</span> 
+<span class="n">implementation</span> <span class="n">calls</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">()</span> <span class="mi">10</span><span class="p">,</span><span class="mi">000</span> <span class="n">times</span> <span class="p">(</span><span class="mi">100</span><span class="n">x100</span><span class="p">)</span><span class="o">.</span> <span class="n">We</span> <span class="n">should</span> <span class="n">call</span> 
+<span class="n">it</span> <span class="n">once</span> <span class="n">on</span> <span class="n">the</span> <span class="n">entire</span> <span class="n">timeseries</span> <span class="n">matrix</span><span class="o">.</span>
 
-FAILED tests/test_network_analysis.py::test_threshold_by_density
-FAILED tests/test_network_analysis.py::test_analyze_symmetric_network
+<span class="n">CONSTRAINTS</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">Must</span> <span class="n">maintain</span> <span class="n">identical</span> <span class="n">output</span> <span class="p">(</span><span class="n">within</span> <span class="n">floating</span> <span class="n">point</span> <span class="n">tolerance</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">Must</span> <span class="n">handle</span> <span class="n">NaN</span> <span class="n">values</span> <span class="n">the</span> <span class="n">same</span> <span class="n">way</span>
+<span class="o">-</span> <span class="n">Should</span> <span class="n">use</span> <span class="n">numpy</span> <span class="n">only</span> <span class="p">(</span><span class="n">no</span> <span class="n">new</span> <span class="n">dependencies</span><span class="p">)</span>
 
-# Two tests failed after the refactoring
-```
+<span class="n">TARGET</span><span class="p">:</span> <span class="n">Under</span> <span class="mf">0.1</span> <span class="n">seconds</span> <span class="p">(</span><span class="mi">30</span><span class="n">x</span> <span class="n">improvement</span><span class="p">)</span>
 
-**User Investigation:**
-```python
-# Check what&#39;s wrong
-test_matrix = np.array([
-    [ 1.0,  0.8, -0.6,  0.3],
-    [ 0.8,  1.0,  0.2, -0.7],
-    [-0.6,  0.2,  1.0,  0.4],
-    [ 0.3, -0.7,  0.4,  1.0]
-])
+<span class="n">Show</span> <span class="n">implementation</span><span class="p">,</span> <span class="ow">and</span> <span class="n">I</span><span class="s1">&#39;ll benchmark it.</span>
+</pre></div>
+</div>
+<p><strong>AI Optimized Version:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_connectivity</span><span class="p">(</span><span class="n">timeseries</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute pairwise correlations using vectorized operations.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        timeseries: (n_regions, n_timepoints) array</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Single call to corrcoef instead of nested loops</span>
+    <span class="n">connectivity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">timeseries</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">connectivity</span>
+</pre></div>
+</div>
+<p><strong>User Benchmarks:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test correctness first</span>
+<span class="n">old_result</span> <span class="o">=</span> <span class="n">compute_connectivity_old</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+<span class="n">new_result</span> <span class="o">=</span> <span class="n">compute_connectivity</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">old_result</span><span class="p">,</span> <span class="n">new_result</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✓ Correctness verified&quot;</span><span class="p">)</span>
 
-result = threshold_by_density(test_matrix, density=0.5)
+<span class="c1"># Benchmark new version</span>
+<span class="n">new_perf</span> <span class="o">=</span> <span class="n">benchmark_connectivity</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;New: </span><span class="si">{</span><span class="n">new_perf</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s ± </span><span class="si">{</span><span class="n">new_perf</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+<span class="c1"># New: 0.008s ± 0.001s</span>
 
-print(&quot;Result:&quot;)
-print(result)
-# Result shows negative values are kept, positive weak connections removed
-# This is BACKWARDS from expected behavior
+<span class="c1"># Compare</span>
+<span class="n">speedup</span> <span class="o">=</span> <span class="n">baseline</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">new_perf</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Speedup: </span><span class="si">{</span><span class="n">speedup</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">x&quot;</span><span class="p">)</span>
+<span class="c1"># Speedup: 355.9x</span>
 
-print(&quot;\nExpected: Keep strongest connections by absolute value&quot;)
-print(&quot;Actual: Threshold is based on raw values, not absolute values&quot;)
-
-# The bug: AI removed np.abs() from percentile calculation
-# AND used wrong comparison (&lt; instead of checking absolute value)
-```
-
-**User to AI:**
-```
-The refactoring introduced two bugs:
-
-BUG 1: Line 3 should be np.percentile(np.abs(connectivity_matrix), ...)
-       You removed the np.abs(), so threshold is computed on raw values
-       instead of absolute values. This means strong negative correlations
-       get incorrectly removed.
-
-BUG 2: Line 6 should threshold by absolute value: 
-       thresholded[np.abs(thresholded) &lt; threshold_value] = 0
-       Your version only removes values below threshold, not weak values
-       in general.
-
-The function should keep the top X% strongest connections regardless of sign.
-
-Fix both bugs.
-```
-
-**AI Corrected Version:**
-```python
-def threshold_by_density(connectivity_matrix, density=0.2):
-    &quot;&quot;&quot;Keep only top density% of connections by absolute value.&quot;&quot;&quot;
-    # Threshold based on absolute values
-    threshold_value = np.percentile(np.abs(connectivity_matrix),
-                                   100 * (1 - density))
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✓ Target achieved (&gt;30x improvement)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Full Test Suite:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/test_connectivity.py<span class="w"> </span>-v
+<span class="c1"># ✓ All 15 tests pass</span>
+<span class="c1"># No behavior changes despite major performance improvement</span>
+</pre></div>
+</div>
+<p><strong>User:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Excellent</span><span class="o">.</span> <span class="n">Commit</span> <span class="n">this</span> <span class="n">optimization</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Alternative Scenario: “Optimization” Makes Things Worse:</strong></p>
+<p><strong>AI “Optimized” Version:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_connectivity_v2</span><span class="p">(</span><span class="n">timeseries</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Optimize using sparse matrix operations.&quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.sparse</span><span class="w"> </span><span class="kn">import</span> <span class="n">csr_matrix</span>
     
-    thresholded = connectivity_matrix.copy()
-    # Zero out connections weaker than threshold (by absolute value)
-    thresholded[np.abs(thresholded) &lt; threshold_value] = 0
-    
-    return thresholded
-```
+    <span class="c1"># Convert to sparse (thinking this will be faster)</span>
+    <span class="n">sparse_ts</span> <span class="o">=</span> <span class="n">csr_matrix</span><span class="p">(</span><span class="n">timeseries</span><span class="p">)</span>
+    <span class="c1"># [complicated sparse correlation implementation]</span>
+</pre></div>
+</div>
+<p><strong>User Benchmarks:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_perf</span> <span class="o">=</span> <span class="n">benchmark_connectivity_v2</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sparse version: </span><span class="si">{</span><span class="n">new_perf</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+<span class="c1"># Sparse version: 4.231s</span>
 
-**User Tests Again:**
-```bash
-pytest tests/test_network_analysis.py -v
-# ✓ All tests pass
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Comparison to baseline: </span><span class="si">{</span><span class="n">new_perf</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">baseline</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">x&quot;</span><span class="p">)</span>
+<span class="c1"># Comparison to baseline: 1.49x SLOWER</span>
 
-# Verify behavior explicitly
-result = threshold_by_density(test_matrix, density=0.5)
-strong_connections = np.sum(result != 0) - 4  # Exclude diagonal
-print(f&quot;Strong connections kept: {strong_connections}&quot;)
-# Strong connections kept: 4 (top 50% of 8 off-diagonal connections)
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✗ This &#39;optimization&#39; actually made it worse!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>User Summary:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="n">sparse</span> <span class="n">matrix</span> <span class="n">approach</span> <span class="ow">is</span> <span class="n">actually</span> <span class="n">slower</span> <span class="n">than</span> <span class="n">the</span> <span class="n">original</span><span class="o">.</span> <span class="n">The</span> <span class="n">overhead</span> 
+<span class="n">of</span> <span class="n">sparse</span> <span class="n">operations</span> <span class="n">doesn</span><span class="s1">&#39;t pay off for dense correlation matrices.</span>
 
-print(&quot;✓ Behavior now matches original implementation&quot;)
-```
-
-**User Reflection:**
-```
-Good thing I tested immediately after the refactoring. If I&#39;d made multiple 
-changes at once, I wouldn&#39;t know which one introduced the bug.
-
-The incremental approach caught this quickly:
-1. One change (extraction)
-2. Test immediately  
-3. Caught bug
-4. Fixed and verified
-5. Now safe to move to next refactoring
-
-If I&#39;d asked AI to &quot;improve the whole module,&quot; this bug would be buried 
-among dozens of changes and much harder to diagnose.
-```
+<span class="n">Reverting</span> <span class="n">to</span> <span class="n">the</span> <span class="n">simple</span> <span class="n">vectorized</span> <span class="n">version</span> <span class="n">which</span> <span class="n">was</span> <span class="mi">355</span><span class="n">x</span> <span class="n">faster</span><span class="o">.</span>
 </pre></div>
 </div>
 </section>
+</div><section id="example-5-ai-breaks-code-during-refactoring">
+<h2><span class="section-number">4.4.1. </span>Example 5: AI Breaks Code During Refactoring<a class="headerlink" href="#example-5-ai-breaks-code-during-refactoring" title="Link to this heading">#</a></h2>
+<p>The user requests a specific refactoring. The AI implements it but subtly changes behavior in the process. Because the user tests after each change (following the incremental approach), they catch the breakage immediately. They can identify exactly what went wrong, provide corrected requirements, and try again. If they’d made multiple changes at once, they wouldn’t know which change caused the problem.</p>
+<div class="proof example dropdown admonition" id="rule10-good-ex4">
+<p class="admonition-title"><span class="caption-number">Example 4.13 </span> (AI Breaks Code During Refactoring)</p>
+<section class="example-content" id="proof-content">
+<p><strong>User Request:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Extract</span> <span class="n">the</span> <span class="n">network</span> <span class="n">thresholding</span> <span class="n">logic</span> <span class="kn">from</span><span class="w"> </span><span class="nn">analyze_network</span><span class="p">()</span> <span class="n">into</span> <span class="n">a</span> <span class="n">separate</span> 
+<span class="n">function</span> <span class="n">threshold_by_density</span><span class="p">()</span><span class="o">.</span>
+
+<span class="n">Current</span> <span class="n">code</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">analyze_network</span><span class="p">(</span><span class="n">connectivity_matrix</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Analyze network properties at given density.&quot;&quot;&quot;</span>
+    <span class="c1"># Threshold to keep top X% of connections</span>
+    <span class="n">threshold_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">connectivity_matrix</span><span class="p">),</span> 
+                                   <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">density</span><span class="p">))</span>
+    
+    <span class="n">thresholded</span> <span class="o">=</span> <span class="n">connectivity_matrix</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">thresholded</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">thresholded</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">threshold_value</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="c1"># Compute metrics on thresholded network</span>
+    <span class="n">metrics</span> <span class="o">=</span> <span class="n">compute_graph_metrics</span><span class="p">(</span><span class="n">thresholded</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">metrics</span>
+</pre></div>
+</div>
+<p><strong>User to AI:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Extract</span> <span class="n">the</span> <span class="n">thresholding</span> <span class="n">logic</span> <span class="p">(</span><span class="n">lines</span> <span class="mi">3</span><span class="o">-</span><span class="mi">6</span><span class="p">)</span> <span class="n">into</span><span class="p">:</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">threshold_by_density</span><span class="p">(</span><span class="n">connectivity_matrix</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Keep only top density% of connections by absolute value.&quot;&quot;&quot;</span>
+    <span class="c1"># Extract threshold computation and application here</span>
+    <span class="k">return</span> <span class="n">thresholded_matrix</span>
+
+<span class="n">Then</span> <span class="n">update</span> <span class="n">analyze_network</span><span class="p">()</span> <span class="n">to</span> <span class="n">call</span> <span class="n">this</span> <span class="n">function</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>AI Implementation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">threshold_by_density</span><span class="p">(</span><span class="n">connectivity_matrix</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Keep only top density% of connections by absolute value.&quot;&quot;&quot;</span>
+    <span class="n">threshold_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">connectivity_matrix</span><span class="p">,</span>  <span class="c1"># BUG: removed np.abs()</span>
+                                   <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">density</span><span class="p">))</span>
+    
+    <span class="n">thresholded</span> <span class="o">=</span> <span class="n">connectivity_matrix</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">thresholded</span><span class="p">[</span><span class="n">connectivity_matrix</span> <span class="o">&lt;</span> <span class="n">threshold_value</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># BUG: wrong comparison</span>
+    
+    <span class="k">return</span> <span class="n">thresholded</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">analyze_network</span><span class="p">(</span><span class="n">connectivity_matrix</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Analyze network properties at given density.&quot;&quot;&quot;</span>
+    <span class="n">thresholded</span> <span class="o">=</span> <span class="n">threshold_by_density</span><span class="p">(</span><span class="n">connectivity_matrix</span><span class="p">,</span> <span class="n">density</span><span class="p">)</span>
+    <span class="n">metrics</span> <span class="o">=</span> <span class="n">compute_graph_metrics</span><span class="p">(</span><span class="n">thresholded</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">metrics</span>
+</pre></div>
+</div>
+<p><strong>User Tests:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/test_network_analysis.py<span class="w"> </span>-v
+
+FAILED<span class="w"> </span>tests/test_network_analysis.py::test_threshold_by_density
+FAILED<span class="w"> </span>tests/test_network_analysis.py::test_analyze_symmetric_network
+
+<span class="c1"># Two tests failed after the refactoring</span>
+</pre></div>
+</div>
+<p><strong>User Investigation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check what&#39;s wrong</span>
+<span class="n">test_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span> <span class="mf">1.0</span><span class="p">,</span>  <span class="mf">0.8</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.6</span><span class="p">,</span>  <span class="mf">0.3</span><span class="p">],</span>
+    <span class="p">[</span> <span class="mf">0.8</span><span class="p">,</span>  <span class="mf">1.0</span><span class="p">,</span>  <span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">],</span>
+    <span class="p">[</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span>  <span class="mf">0.2</span><span class="p">,</span>  <span class="mf">1.0</span><span class="p">,</span>  <span class="mf">0.4</span><span class="p">],</span>
+    <span class="p">[</span> <span class="mf">0.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">,</span>  <span class="mf">0.4</span><span class="p">,</span>  <span class="mf">1.0</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">threshold_by_density</span><span class="p">(</span><span class="n">test_matrix</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Result:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="c1"># Result shows negative values are kept, positive weak connections removed</span>
+<span class="c1"># This is BACKWARDS from expected behavior</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Expected: Keep strongest connections by absolute value&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Actual: Threshold is based on raw values, not absolute values&quot;</span><span class="p">)</span>
+
+<span class="c1"># The bug: AI removed np.abs() from percentile calculation</span>
+<span class="c1"># AND used wrong comparison (&lt; instead of checking absolute value)</span>
+</pre></div>
+</div>
+<p><strong>User to AI:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">refactoring</span> <span class="n">introduced</span> <span class="n">two</span> <span class="n">bugs</span><span class="p">:</span>
+
+<span class="n">BUG</span> <span class="mi">1</span><span class="p">:</span> <span class="n">Line</span> <span class="mi">3</span> <span class="n">should</span> <span class="n">be</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">connectivity_matrix</span><span class="p">),</span> <span class="o">...</span><span class="p">)</span>
+       <span class="n">You</span> <span class="n">removed</span> <span class="n">the</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(),</span> <span class="n">so</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="n">computed</span> <span class="n">on</span> <span class="n">raw</span> <span class="n">values</span>
+       <span class="n">instead</span> <span class="n">of</span> <span class="n">absolute</span> <span class="n">values</span><span class="o">.</span> <span class="n">This</span> <span class="n">means</span> <span class="n">strong</span> <span class="n">negative</span> <span class="n">correlations</span>
+       <span class="n">get</span> <span class="n">incorrectly</span> <span class="n">removed</span><span class="o">.</span>
+
+<span class="n">BUG</span> <span class="mi">2</span><span class="p">:</span> <span class="n">Line</span> <span class="mi">6</span> <span class="n">should</span> <span class="n">threshold</span> <span class="n">by</span> <span class="n">absolute</span> <span class="n">value</span><span class="p">:</span> 
+       <span class="n">thresholded</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">thresholded</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">threshold_value</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+       <span class="n">Your</span> <span class="n">version</span> <span class="n">only</span> <span class="n">removes</span> <span class="n">values</span> <span class="n">below</span> <span class="n">threshold</span><span class="p">,</span> <span class="ow">not</span> <span class="n">weak</span> <span class="n">values</span>
+       <span class="ow">in</span> <span class="n">general</span><span class="o">.</span>
+
+<span class="n">The</span> <span class="n">function</span> <span class="n">should</span> <span class="n">keep</span> <span class="n">the</span> <span class="n">top</span> <span class="n">X</span><span class="o">%</span> <span class="n">strongest</span> <span class="n">connections</span> <span class="n">regardless</span> <span class="n">of</span> <span class="n">sign</span><span class="o">.</span>
+
+<span class="n">Fix</span> <span class="n">both</span> <span class="n">bugs</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>AI Corrected Version:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">threshold_by_density</span><span class="p">(</span><span class="n">connectivity_matrix</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Keep only top density% of connections by absolute value.&quot;&quot;&quot;</span>
+    <span class="c1"># Threshold based on absolute values</span>
+    <span class="n">threshold_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">connectivity_matrix</span><span class="p">),</span>
+                                   <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">density</span><span class="p">))</span>
+    
+    <span class="n">thresholded</span> <span class="o">=</span> <span class="n">connectivity_matrix</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="c1"># Zero out connections weaker than threshold (by absolute value)</span>
+    <span class="n">thresholded</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">thresholded</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">threshold_value</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">return</span> <span class="n">thresholded</span>
+</pre></div>
+</div>
+<p><strong>User Tests Again:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/test_network_analysis.py<span class="w"> </span>-v
+<span class="c1"># ✓ All tests pass</span>
+
+<span class="c1"># Verify behavior explicitly</span>
+<span class="nv">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>threshold_by_density<span class="o">(</span>test_matrix,<span class="w"> </span><span class="nv">density</span><span class="o">=</span><span class="m">0</span>.5<span class="o">)</span>
+<span class="nv">strong_connections</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>np.sum<span class="o">(</span>result<span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="o">)</span><span class="w"> </span>-<span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="c1"># Exclude diagonal</span>
+print<span class="o">(</span>f<span class="s2">&quot;Strong connections kept: {strong_connections}&quot;</span><span class="o">)</span>
+<span class="c1"># Strong connections kept: 4 (top 50% of 8 off-diagonal connections)</span>
+
+print<span class="o">(</span><span class="s2">&quot;✓ Behavior now matches original implementation&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p><strong>User Reflection:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Good</span> <span class="n">thing</span> <span class="n">I</span> <span class="n">tested</span> <span class="n">immediately</span> <span class="n">after</span> <span class="n">the</span> <span class="n">refactoring</span><span class="o">.</span> <span class="n">If</span> <span class="n">I</span><span class="s1">&#39;d made multiple </span>
+<span class="n">changes</span> <span class="n">at</span> <span class="n">once</span><span class="p">,</span> <span class="n">I</span> <span class="n">wouldn</span><span class="s1">&#39;t know which one introduced the bug.</span>
+
+<span class="n">The</span> <span class="n">incremental</span> <span class="n">approach</span> <span class="n">caught</span> <span class="n">this</span> <span class="n">quickly</span><span class="p">:</span>
+<span class="mf">1.</span> <span class="n">One</span> <span class="n">change</span> <span class="p">(</span><span class="n">extraction</span><span class="p">)</span>
+<span class="mf">2.</span> <span class="n">Test</span> <span class="n">immediately</span>  
+<span class="mf">3.</span> <span class="n">Caught</span> <span class="n">bug</span>
+<span class="mf">4.</span> <span class="n">Fixed</span> <span class="ow">and</span> <span class="n">verified</span>
+<span class="mf">5.</span> <span class="n">Now</span> <span class="n">safe</span> <span class="n">to</span> <span class="n">move</span> <span class="n">to</span> <span class="nb">next</span> <span class="n">refactoring</span>
+
+<span class="n">If</span> <span class="n">I</span><span class="s1">&#39;d asked AI to &quot;improve the whole module,&quot; this bug would be buried </span>
+<span class="n">among</span> <span class="n">dozens</span> <span class="n">of</span> <span class="n">changes</span> <span class="ow">and</span> <span class="n">much</span> <span class="n">harder</span> <span class="n">to</span> <span class="n">diagnose</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+</div></section>
 </section>
 
     <script type="text/x-thebe-config">
