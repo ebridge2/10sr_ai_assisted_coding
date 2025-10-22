@@ -432,6 +432,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-catching-ai-test-manipulation">3.1.1.4. Example 4: Catching AI Test Manipulation</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">3.1.2. References</a></li>
 </ul>
             </nav>
         </div>
@@ -445,7 +446,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="rule-6-implement-test-driven-development-with-ai">
 <span id="rules-rule-6"></span><h1><span class="section-number">3.1. </span>Rule 6: Implement Test-Driven Development with AI<a class="headerlink" href="#rule-6-implement-test-driven-development-with-ai" title="Link to this heading">#</a></h1>
-<p>Frame your test requirements as behavioral specifications before requesting implementation code, and tell the AI what success looks like through concrete test cases. This test-first approach forces you to articulate edge cases, expected inputs/outputs, and failure modes that might otherwise be overlooked. The AI responds better to specific test scenarios than vague functionality descriptions. By providing comprehensive test specifications, you guide the AI toward more robust, production-ready implementations. AI tools (such as chatbots or Github’s Spec Kit) can help develop these specifications in a way that will optimally guide the model. Keep a close eye on the tests that are generated, since the models will often modify the tests to pass without actually solving the problem rather than generating suitable code. Be especially aware that coding agents may, intentionally or not, generate placeholder data or mock implementations that merely satisfy the test structure without validating actual logic. In many cases, the AI may insert fabricated input values or dummy functions that appear to meet acceptance criteria but do not reflect true functionality. These “paper tests” can be dangerously misleading, seemingly passing as tests while masking broken or incomplete logic. In addition, whenever a bug is identified during your development cycle, ask the model to generate a test that catches the bug, to ensure that it’s not re-introduced in the future.</p>
+<p>Frame your test requirements as behavioral specifications before requesting implementation code, and tell the AI what success looks like through concrete test cases. This test-first approach forces you to articulate edge cases, expected inputs/outputs, and failure modes that might otherwise be overlooke <span id="id1">[<a class="reference internal" href="#id16" title="Kent Beck. Test-Driven Development: By Example. Addison-Wesley, Boston, MA, 2003.">1</a>]</span>. AI will respond better to specific test scenarios than vague functionality descriptions. By providing comprehensive test specifications, you guide the AI toward more robust, production-ready implementations. AI tools (such as chatbots or Github’s Spec Kit) can help develop these specifications in a way that will optimally guide the model. Keep a close eye on the tests that are generated, since the models will often modify the tests to pass without actually solving the problem rather than generating suitable code. Be especially aware that coding agents may generate placeholder data or mock implementations that merely satisfy the test structure without validating actual logic. In many cases, the AI may insert fabricated input values or dummy functions that appear to meet acceptance criteria but do not reflect true functionality. These “paper tests” can be dangerously misleading, seemingly passing as tests while masking broken or incomplete logic. In addition, whenever a bug is identified during your development cycle, ask the model to generate a test that catches the bug, to ensure that it’s not re-introduced in the future.</p>
 <section id="what-separates-positive-from-flawed-examples">
 <h2><span class="section-number">3.1.1. </span>What separates positive from flawed examples<a class="headerlink" href="#what-separates-positive-from-flawed-examples" title="Link to this heading">#</a></h2>
 <p>Flawed examples ask for implementation first and maybe add tests later as an afterthought, testing only the happy path and perhaps one or two edge cases you thought of. You get code that technically works for anticipated uses but fails on boundary conditions, numerical edge cases, and subtle failure modes you didn’t consider. When bugs appear, you patch the code without adding tests, so the same bugs reappear later. The AI often modifies tests to make them pass rather than fixing the actual problem, or generates “paper tests” with placeholder data and mock implementations that merely satisfy test structure without validating actual logic.</p>
@@ -749,6 +750,18 @@ document.write(`
 </section>
 </div></section>
 </section>
+<hr class="docutils" />
+<section id="references">
+<h2><span class="section-number">3.1.2. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id2">
+<div role="list" class="citation-list">
+<div class="citation" id="id16" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Kent Beck. <em>Test-Driven Development: By Example</em>. Addison-Wesley, Boston, MA, 2003.</p>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -822,6 +835,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-catching-ai-test-manipulation">3.1.1.4. Example 4: Catching AI Test Manipulation</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">3.1.2. References</a></li>
 </ul>
   </nav></div>
 
