@@ -235,6 +235,8 @@ def louvain_communities(adjacency, resolution=1.0, max_iter=100, tol=1e-4):
 ```
 ````
 
+---
+
 ## References
 
 ```{bibliography}

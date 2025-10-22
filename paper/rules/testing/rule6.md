@@ -1,7 +1,7 @@
 (rules:rule_6)=
 # Rule 6: Implement Test-Driven Development with AI
 
-Frame your test requirements as behavioral specifications before requesting implementation code, and tell the AI what success looks like through concrete test cases. This test-first approach forces you to articulate edge cases, expected inputs/outputs, and failure modes that might otherwise be overlooked. The AI responds better to specific test scenarios than vague functionality descriptions. By providing comprehensive test specifications, you guide the AI toward more robust, production-ready implementations. AI tools (such as chatbots or Github's Spec Kit) can help develop these specifications in a way that will optimally guide the model. Keep a close eye on the tests that are generated, since the models will often modify the tests to pass without actually solving the problem rather than generating suitable code. Be especially aware that coding agents may, intentionally or not, generate placeholder data or mock implementations that merely satisfy the test structure without validating actual logic. In many cases, the AI may insert fabricated input values or dummy functions that appear to meet acceptance criteria but do not reflect true functionality. These "paper tests" can be dangerously misleading, seemingly passing as tests while masking broken or incomplete logic. In addition, whenever a bug is identified during your development cycle, ask the model to generate a test that catches the bug, to ensure that it's not re-introduced in the future.
+Frame your test requirements as behavioral specifications before requesting implementation code, and tell the AI what success looks like through concrete test cases. This test-first approach forces you to articulate edge cases, expected inputs/outputs, and failure modes that might otherwise be overlooke {cite}`beck2003test`. AI will respond better to specific test scenarios than vague functionality descriptions. By providing comprehensive test specifications, you guide the AI toward more robust, production-ready implementations. AI tools (such as chatbots or Github's Spec Kit) can help develop these specifications in a way that will optimally guide the model. Keep a close eye on the tests that are generated, since the models will often modify the tests to pass without actually solving the problem rather than generating suitable code. Be especially aware that coding agents may generate placeholder data or mock implementations that merely satisfy the test structure without validating actual logic. In many cases, the AI may insert fabricated input values or dummy functions that appear to meet acceptance criteria but do not reflect true functionality. These "paper tests" can be dangerously misleading, seemingly passing as tests while masking broken or incomplete logic. In addition, whenever a bug is identified during your development cycle, ask the model to generate a test that catches the bug, to ensure that it's not re-introduced in the future.
 
 ## What separates positive from flawed examples
 
@@ -328,3 +328,11 @@ def test_constant_timeseries():
     assert np.allclose(normalized, 0)  # Original spec
 ```
 ````
+
+---
+
+## References
+
+```{bibliography}
+:filter: docname in docnames
+```
